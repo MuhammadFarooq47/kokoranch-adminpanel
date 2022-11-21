@@ -24,6 +24,11 @@ import { ReactComponent as DownArrow } from "../../../assets/images/icons/down-a
 import { ReactComponent as PeoplesGroup } from "../../../assets/images/icons/peoples-group.svg";
 import { ReactComponent as Agriculture } from "../../../assets/images/icons/agriculture.svg";
 import { ReactComponent as UserTrades } from "../../../assets/images/icons/user-trades.svg";
+import { ReactComponent as AdsIcon } from "../../../assets/images/icons/AdsIcon.svg";
+import { ReactComponent as Categories } from "../../../assets/images/icons/categories.svg";
+import { ReactComponent as Mobile } from "../../../assets/images/icons/mobile.svg";
+import { ReactComponent as ContactIcon } from "../../../assets/images/icons/contacts-icon.svg";
+
 
 
 import Images from "../../../constants/images";
@@ -31,6 +36,12 @@ import { LOGOUT } from "../../../redux/actions/authentication";
 
 export default function VendorSideBar({ children }) {
   const [sidebar, setSidebar] = useState(true);
+  const [state,setState]=useState({
+    userManagement:true,
+    userOrders:true,
+    specialServices:true,
+    WebAndApp:true,
+  })
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const childrenWithProps = React.Children.map(children, (child) => {
@@ -80,6 +91,7 @@ export default function VendorSideBar({ children }) {
               </h4>
             </div>
           </div>
+          <div className="sidebar-content">
           <h4 className="fs-5">
             <NavLink to="/admin-profile" className="vendor-link" end>
               <div>
@@ -171,9 +183,13 @@ export default function VendorSideBar({ children }) {
             }}
           >
           <h4 className="fs-4 title-color">User Management</h4>  
-          <DownArrow fill={'#14A384'} width={15} />
+          <div style={{cursor:'pointer'}}>
+          <DownArrow fill={'#14A384'} width={15} onClick={()=>setState({...state,userManagement:!state.userManagement})} />
           </div>
-          <h4 className="fs-5">
+          </div>
+          {state.userManagement == true && (
+            <>
+            <h4 className="fs-5">
             {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
             <div className="vendor-inbox-link">
 
@@ -205,6 +221,129 @@ export default function VendorSideBar({ children }) {
               &nbsp; User Trades
             </div>
           </h4>
+          </>
+
+            )}
+
+          {/* third Heading */}
+          <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+          >
+          <h4 className="fs-4 title-color">User Orders</h4>  
+          <div style={{cursor:'pointer'}}>
+          <DownArrow fill={'#14A384'} width={15} onClick={()=>setState({...state,userOrders:!state.userOrders})} />
+          </div>
+          </div>
+          {state.userOrders ==true &&
+           ( 
+            <>
+           <h4 className="fs-5">
+            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+            <div className="vendor-inbox-link">
+
+              <FeatherList fill="white" width={15} />
+              &nbsp; Vendor Product Orders
+            </div>
+          </h4>
+          <h4 className="fs-5">
+            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+            <div className="vendor-inbox-link">
+
+              <FeatherList fill="white" width={15} />
+              &nbsp; Agricultural Services Orders
+            </div>
+          </h4>
+          <h4 className="fs-5">
+            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+            <div className="vendor-inbox-link">
+
+              <UserTrades fill="white" width={15} />
+              &nbsp; Trade Requests
+            </div>
+          </h4>
+          </>
+          
+          )
+          }
+            {/* Fourth Heading */}
+            <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+          <h4 className="fs-4 title-color">Special Services</h4> 
+          <div style={{cursor:'pointer'}}>
+          <DownArrow fill={'#14A384'} width={15} onClick={()=>setState({...state,specialServices:!state.specialServices})} />
+            </div> 
+          </div>
+          { state.specialServices ==true &&
+           ( <h4 className="fs-5">
+            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+            <div className="vendor-inbox-link">
+
+              <AdsIcon fill="white" width={15} />
+              &nbsp; Medical Merijuana Ads
+            </div>
+          </h4>)
+          }
+            {/* fifth Heading */}
+            <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+          <h4 className="fs-4 title-color">Web and App Management &nbsp; </h4>  
+          <div style={{cursor:'pointer'}}>
+          <DownArrow fill={'#14A384'} width={15} onClick={()=>setState({...state,WebAndApp:!state.WebAndApp})} />
+          </div>
+          </div>
+         { state.WebAndApp ==true && (
+         <>
+         <h4 className="fs-5">
+            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+            <div className="vendor-inbox-link">
+
+              <Categories fill="white" width={15} />
+              &nbsp; Categories
+            </div>
+          </h4>
+          <h4 className="fs-5">
+            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+            <div className="vendor-inbox-link">
+
+              <Agriculture fill="white" width={15} />
+              &nbsp; Web Banners
+            </div>
+          </h4>
+          <h4 className="fs-5">
+            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+            <div className="vendor-inbox-link">
+
+              <Mobile fill="white" width={15} />
+              &nbsp; App Banners
+            </div>
+          </h4>
+          <h4 className="fs-5">
+            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+            <div className="vendor-inbox-link">
+
+              <ContactIcon fill="white" width={15} />
+              &nbsp; Contact Details
+            </div>
+          </h4>
+         </>
+          
+          )
+          }
+          </div>
           {/* <h4>
             <NavLink to="/vendor-settings" className="vendor-link">
               <div>
