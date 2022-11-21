@@ -1,0 +1,54 @@
+.loginForm{
+    height: 55vh;
+    width: 100%;
+    /* border-radius: 10%; */
+    /* border: 0.5px solid #0000004D; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 60px ;
+    border-radius: 5%;
+    /* box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px; */
+    /* box-shadow: rgba(0, 0, 0, 0.3) 0px 25px 50px -12px; */
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    /* opacity: 0.5; */
+    /* padding: 20px; */
+}
+.formBody{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: aqua; */
+}
+
+.inputField{
+height: 40px;
+width: 80%;
+background-color: aqua;
+margin: 10px;
+}
+.loginInput{
+    width:100%;
+    height: 100%;
+    border:none;
+    background-color: #212121;
+    padding: 5px;
+    color: #ffffff;
+    font-family: 'poppins';
+    font-weight: lighter;
+    outline: none;
+}
+.loginInput::placeholder {
+   padding-left: 10px;
+  }
+  .forgotPassowrd{
+    width: 80% ;
+    /* background-color: aqua; */
+    display: flex;
+    /* gap: 10; */
+    align-items: center;
+    justify-content: space-between;
+  }
