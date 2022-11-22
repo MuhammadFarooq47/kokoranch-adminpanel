@@ -81,14 +81,16 @@
 }
 
 .filter-prop {
+
   background-color: #14a384;
   color: white;
   width: 15rem;
   padding: 1.5rem;
   border-radius: 10px;
+  z-index: 5;
   position: absolute;
   right: 3%;
-  top: 18%;
+  top: 22%;
   p {
     margin-bottom: 1rem;
   }

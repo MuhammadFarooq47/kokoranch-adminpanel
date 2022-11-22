@@ -68,7 +68,7 @@ const rows = [
   createData("Nigeria", "NG", 200962417, 923768),
   createData("Brazil", "BR", 210147125, 8515767),
 ];
-const TableComponent = ({ tHeadData, tRowData, activeCard }) => {
+const TableComponent = ({ tHeadData, tRowData, activeCard,delete1,onClick}) => {
   // console.log("activeCard", activeCard);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -147,15 +147,20 @@ const TableComponent = ({ tHeadData, tRowData, activeCard }) => {
                                 justifyContent: "center",
                               }}
                             >
-                              <button className="btn btn-solid btn-solid-primary table-btn">
+                              <button 
+                              className="btn btn-solid btn-solid-primary table-btn"
+                              onClick={onClick}
+                              >
                                 View
                               </button>
-                              <button
+                             {delete1 ==true && ( <button
                                 className="btn btn-solid btn-solid-danger table-btn"
                                 style={{ marginLeft: "10px" }}
                               >
                                 Delete
                               </button>
+                             )  
+                            }
                             </div>
                           ) : column.format && typeof value === "number" ? (
                             column.format(value)

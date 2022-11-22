@@ -4,8 +4,10 @@ import NavBar from "./NavBar";
 import InfoCards from "./Components/InfoCards";
 import FormControlAuth from "./Components/formControl";
 import TableComponent from "./Components/Table";
+import { useNavigate } from "react-router-dom";
 
 function VendorProducts({ setSidebar, sidebar }) {
+  const navigate=useNavigate()
   const [tableHeadData, seTableHeadData] = useState([
     { id: "code", label: "code" },
     { id: "updateDate", label: "Update Date" },
@@ -149,6 +151,8 @@ function VendorProducts({ setSidebar, sidebar }) {
                   tHeadData={tableHeadData}
                   tRowData={tableRowData}
                   activeCard={"total"}
+                  delete1={true}
+                  onClick={()=>navigate('/product-details')}
                 />
               </div>
             </div>

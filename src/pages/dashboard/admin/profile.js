@@ -3,11 +3,57 @@ import PhoneInput from "react-phone-input-2";
 import { FaRegEdit } from "react-icons/fa";
 import Images from "../../../constants/images";
 import NavBar from "./NavBar";
+import { Grid } from "@mui/material";
+import { useEffect } from "react";
 
 export default function Profile({ setSidebar, sidebar }) {
   const [editAble, setEditAble] = useState(false);
   const [bankEditable, setBankEditable] = useState(false);
+  const [show,setShow]=useState(false);
+  const [loginDevices,setLoginDevices]=useState([
+    {
+      deviceName:'Windows PC. Canberra,Asutralia',
+      browser:'Chrome',
+      status:'Active Now'
+    },
+    {
+      deviceName:'Windows PC. Canberra,Asutralia',
+      browser:'Chrome',
+      status:'Active Now'
+    },
+    {
+      deviceName:'Windows PC. Canberra,Asutralia',
+      browser:'Chrome',
+      status:'Active Now'
+    },
+    {
+      deviceName:'Windows PC. Canberra,Asutralia',
+      browser:'Chrome',
+      status:'Active Now'
+    },
+    {
+      deviceName:'Windows PC. Canberra,Asutralia',
+      browser:'Chrome',
+      status:'Active Now'
+    },
+    {
+      deviceName:'Windows PC. Canberra,Asutralia',
+      browser:'Chrome',
+      status:'Active Now'
+    },
 
+  ]);
+  const [showingItems,setShowingItems]=useState([]);
+  useEffect(()=>{
+    setShowingItems([...loginDevices.slice(0,4)])
+    if(loginDevices.length > 4){
+      setShow(true);
+    }
+  },[]);
+  const handleMore=()=>{
+    setShowingItems(loginDevices);
+    setShow(!show);
+  }
   return (
     <>
       <NavBar setSidebar={setSidebar} sidebar={sidebar} title="My Profile" />
@@ -180,29 +226,66 @@ export default function Profile({ setSidebar, sidebar }) {
         <div className="vendor-profile-main_form">
           <div className="bank-details">
             <h4 className="bank-details-heading">
-              {bankEditable && "Edit "}Bank Account Details :
+              {bankEditable && "Edit "}Security and Login :
             </h4>
             {!bankEditable && (
-              <div>
-                <p className="bank-detail mb-4">
-                  Bank Name :
-                  <span className="bank-detail-light">
-                    &nbsp; Bank Of America
-                  </span>
-                </p>
-                <p className="bank-detail mb-4">
-                  Bank Account Number:
-                  <span className="bank-detail-light">
-                    &nbsp; 5160-6679-1290-2354
-                  </span>
-                </p>
-                <p className="bank-detail">
-                  Routing No:
-                  <span className="bank-detail-light">
-                    &nbsp; VG34JTEZ3557176284859324
-                  </span>
-                </p>
-              </div>
+              <Grid container>
+                <Grid 
+                  item 
+                  lg={6}
+                  className='security-login-mainDiv'
+                    p={'2rem'}
+                  alignItems='center'
+                  direction='column'
+                    >
+                {/* <div className='security-and-login'> */}
+                  <div className="security-and-login-textWithButton">
+                    <span style={{'fontFamily':'var(--font-style)',fontSize:'14px'}}>
+                     Change Password
+                    </span>
+                    <button className='button-2'>
+                      Edit
+                    </button>
+                  </div>
+                  <hr style={{margin:'10px 0px 10px 0px '}}  />
+                  <h5 style={{marginBottom:'1rem'}}>
+                  Where you're logged in
+                  </h5>
+
+                  { showingItems?.map(item=>{
+                    return(
+                    <div className="security-and-login-details">
+                    <span style={{'fontFamily':'var(--font-style)',fontSize:'14px'}}>
+                     {item.deviceName}
+                    </span>
+                    <div style={{display:'flex',alignItems:'center',gap:'1rem'}}>
+                      <span style={{fontSize:'12px'}} >{item.browser} </span>
+                      <span style={{fontSize:'12px',color:'green'}}>{item.status}</span>
+                    </div>
+                    </div>
+                    )}
+                  )}
+                  <div style={{display:'flex',alignItems:'center',justifyContent:show?'space-between' : 'flex-end'}}>
+                    {show ==true && (
+                    <span 
+                    style={{fontSize:'12px',color:'blueviolet',cursor:'pointer'}}
+                    onClick={handleMore}
+                    > See More </span>
+                    )}
+                    <span style={{fontSize:'12px',color:'green'}}>Logout of all sessions</span>
+                  </div>
+                  {/* </div> */}
+                </Grid>
+              </Grid>
+                // {/* <p className="bank-detail mb-4">
+                //   Bank Name :
+                //   <span className="bank-detail-light">
+                //     &nbsp; Bank Of America
+                //   </span>
+                // </p> */}
+              
+             
+             
             )}
             {bankEditable && (
               <div className="row">
@@ -248,7 +331,7 @@ export default function Profile({ setSidebar, sidebar }) {
                 </div>
               </div>
             )}
-            {!bankEditable && (
+            {/* {!bankEditable && (
               <div className="row mt-5">
                 <div className="col-12 col-md-6 col-lg-4">
                   <button
@@ -261,7 +344,7 @@ export default function Profile({ setSidebar, sidebar }) {
                   </button>
                 </div>
               </div>
-            )}
+            )} */}
             {bankEditable && (
               <div className="row mt-5">
                 <div className="col-12 col-md-6 col-lg-4">

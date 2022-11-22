@@ -13,17 +13,20 @@ export default function Popup(props) {
         onHide={() => setOpen(false)}
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        contentClassName="modalClass"
+        // style={{borderRadius:'10%'}}
       >
         <div className="close-icon">
           <span
             data-bs-dismiss="modal"
             aria-label="Close"
             onClick={() => setOpen(false)}
-          >
+            >
             <FaRegTimesCircle />
           </span>
         </div>
         {children}
+ 
       </Modal>
     </>
   );

@@ -31,6 +31,12 @@ const AdminProfile = React.lazy(() =>
 const VendorProducts = React.lazy(() =>
   import("../pages/dashboard/admin/Products")
 );
+const AdminProductDetails = React.lazy(() =>
+  import("../pages/dashboard/admin/ProductDetails")
+);
+const AdminProductDetailsEdit = React.lazy(() =>
+  import("../pages/dashboard/admin/ProductDetailsEdit")
+);
 const VendorServices = React.lazy(() =>
   import("../pages/dashboard/admin/Services")
 );
@@ -43,7 +49,15 @@ const VendorProductOrders = React.lazy(() =>
 const VendorProductShippingDetail = React.lazy(() =>
   import("../pages/dashboard/admin/ProductShippingDetail")
 );
-
+const AdminProductShippingDetailEdit = React.lazy(() =>
+  import("../pages/dashboard/admin/ProductShippingDetailEdit")
+);
+const FeaturedProductAndServices = React.lazy(() =>
+  import("../pages/dashboard/admin/Featured")
+);
+const AdminProductOrderDetails = React.lazy(() =>
+  import("../pages/dashboard/admin/ProductOrderDetails")
+);
 const Home = React.lazy(() => import("../pages/screens/home"));
 export default function Navigation() {
   // INITIZING STORAGES
@@ -125,6 +139,36 @@ export default function Navigation() {
         }
       />
       <Route
+        path="/product-details"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <AdminProductDetails />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/product-details/edit"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <AdminProductDetailsEdit />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/admin-product-details"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <AdminProductOrderDetails />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
         path="/agricultural-services"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -145,6 +189,16 @@ export default function Navigation() {
         }
       />
       <Route
+        path="/admin-productshippingdetails-edit"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <AdminProductShippingDetailEdit />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
         path="/vendor-productorders"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -160,6 +214,16 @@ export default function Navigation() {
           <Suspense fallback={<FullScreenLoader />}>
             <VendorSideBar>
               <VendorServiceOrders />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/featured-productandservices"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <FeaturedProductAndServices />
             </VendorSideBar>
           </Suspense>
         }

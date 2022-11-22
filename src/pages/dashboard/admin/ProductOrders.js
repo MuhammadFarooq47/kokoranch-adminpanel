@@ -14,8 +14,10 @@ import Table from "./Components/Table";
 import FormControlAuth from "./Components/formControl";
 import TableComponent from "./Components/Table";
 import SearchBar from "./Components/SearchBar";
+import {useNavigate} from "react-router-dom"
 
 function VendorProductOrders({ setSidebar, sidebar }) {
+  const navigate = useNavigate();
   const [tableHeadData, seTableHeadData] = useState([
     { id: "orderNo", label: "Order No" },
     { id: "userId", label: "User Id" },
@@ -101,7 +103,7 @@ function VendorProductOrders({ setSidebar, sidebar }) {
       <NavBar
         setSidebar={setSidebar}
         sidebar={sidebar}
-        title="Product Orders"
+        title="Admin Product Orders"
       />
 
       <article className="vendor-profile-main">
@@ -148,6 +150,7 @@ function VendorProductOrders({ setSidebar, sidebar }) {
                   tHeadData={tableHeadData}
                   tRowData={tableRowData}
                   activeCard={"total"}
+                  onClick={()=>navigate('/admin-product-details')}
                 />
               </div>
             </div>

@@ -99,3 +99,15 @@
   display: -ms-flexbox;
   display: flex;
 }
+.productDetailEdit-main{
+  // background-color: aquamarine;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 95%;
+  overflow-y:scroll;
+  overflow-x:none;
+}
+.productDetailEdit-main::-webkit-scrollbar{
+  display: none;
+}

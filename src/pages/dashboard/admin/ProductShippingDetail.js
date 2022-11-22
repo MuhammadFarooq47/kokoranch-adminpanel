@@ -1,9 +1,11 @@
 import { Paper } from "@mui/material";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as PlusIcon } from "../../../assets/images/icons/icons8-plus.svg";
 import NavBar from "./NavBar";
 
 function ProductShippingDetail({ sidebar, setSidebar }) {
+  const navigate= useNavigate();
   const [data, setData] = useState({
     location: "karta hisdfhjkh",
     shippingTo: "shdfkjhs",
@@ -96,6 +98,7 @@ function ProductShippingDetail({ sidebar, setSidebar }) {
             paddingRight: "20PX",
             width: "120px",
           }}
+          onClick={()=>navigate('/admin-productshippingdetails-edit')}
         >
           <div
             style={{
