@@ -55,6 +55,9 @@ const AdminProductShippingDetailEdit = React.lazy(() =>
 const FeaturedProductAndServices = React.lazy(() =>
   import("../pages/dashboard/admin/Featured")
 );
+const ViewFeaturedDetails = React.lazy(() =>
+  import("../pages/dashboard/admin/ViewFeaturedDetails")
+);
 const AdminProductOrderDetails = React.lazy(() =>
   import("../pages/dashboard/admin/ProductOrderDetails")
 );
@@ -228,7 +231,16 @@ export default function Navigation() {
           </Suspense>
         }
       />
-
+      <Route
+        path="/view-featured-productandservices/:id"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <ViewFeaturedDetails />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
       <Route
         path="/vendor-serviceorder"
         element={

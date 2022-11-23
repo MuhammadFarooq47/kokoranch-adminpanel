@@ -166,7 +166,7 @@ function Featured({ setSidebar, sidebar }) {
                 edit={"featured"}
                 activeCard={"total"}
                 delete={false}
-                onClick={()=>navigate('/admin-product-details')}
+                onClick={()=>navigate(`/view-featured-productandservices/${123456}`)}
               />
             </div>
           </div>

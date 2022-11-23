@@ -5,14 +5,17 @@ import NavBar from "./NavBar";
 import { useNavigate, useLocation } from "react-router-dom";
 import Popup from "../../../components/popUp/popUp";
 import { TiTick } from "react-icons/ti";
-import { FaExclamation } from "react-icons/fa";
-
+import { FaExclamation, } from "react-icons/fa";
+import {MdCancel} from "react-icons/md"
+import{ReactComponent as CameraInputIcon}  from '../../../assets/images/icons/camera-input-icon.svg';
+import {Grid} from "@mui/material";
 function ProductDetailsEdit({ sidebar, setSidebar }) {
   let navigate = useNavigate();
   const location = useLocation();
   const [popupOpen, setPopupOpen] = useState(false);
   const [successfulPopup, setSuccessfulPopup] = useState(false);
   const [orderStatus, setOrderStatus] = useState("completed");
+  const [productImages,setProductImages]=useState([]);
   const [data, setData] = useState({
     location: "karta hisdfhjkh",
     shippingTo: "shdfkjhs",
@@ -20,6 +23,25 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
     Return: "skjdhfkjsdhf",
     ShippingAndHandling: "sjdhfjksh",
   });
+  const handleFile=(e)=>{
+    const files=[...e.target.files];
+    // arr.map(item=>console.log('filesssssssssssssss',item))
+    
+    let arr=[...productImages];
+    if(files.length>0){
+      files.map(item=>{
+        arr.push(URL.createObjectURL(item));
+      });
+      setProductImages([...arr]);
+    }
+  }
+  const handleProductDelete=(i)=>{
+    console.log('indexx>>>>>>>',i)
+    let arr=[...productImages];
+    arr.splice(i,1);
+    setProductImages(arr);
+  };
+  console.log(productImages)
   return (
     <>
       <Popup open={successfulPopup} setOpen={setSuccessfulPopup}>
@@ -225,15 +247,28 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
               <label htmlFor="firstName" className="form-label">
                 Upload Up to 12 Photos
               </label>
-
-              <input
-                type="number"
-                className="form-control"
-                id="firstName"
-                name="firstName"
-                placeholder="Free Shipping"
-                required
-              />
+              <Grid container alignItems={'center'} spacing={2} gap='10px'>
+                <Grid item lg={3} md={4} sm={3} xs={4} >
+                  <label style={{display:'inline-block',alignItems:'center',justifyContent:'center',cursor:'pointer'}}>
+                   <div style={{height:'100px',width:'100px',padding:'10px',border:'0.5px solid #FFFFFF',display:'flex',alignItems:'center',justifyContent:'center'}}> 
+                   <input type='file' style={{display:'none'}} onChange={handleFile} multiple />
+                    <CameraInputIcon fill="#FFFFFF" style={{height:'30px',width:'30px'}} />
+                   </div>
+                  </label>
+                </Grid>
+               {productImages.map((item,i)=>{
+                return(
+                  <Grid item lg={3} md={4} sm={3} xs={4}>
+                  <div style={{height:'100px',width:'100px',position:'relative',display:'flex',alignItems:'center',justifyContent:'center'}}>
+                  <img src={item} style={{height:'100%',width:'100%',objectFit:'cover'}} />
+                  <MdCancel fill={'green'} style={{position:'absolute',top:-8,right:-8,zIndex:5,cursor:'pointer'}} onClick={()=>handleProductDelete(i)}/>
+                  </div>
+                </Grid>
+                )
+               })              
+                }
+              </Grid>
+              
             </div>
           </div>
           <div className="row">

@@ -152,7 +152,7 @@ function VendorProducts({ setSidebar, sidebar }) {
                   tRowData={tableRowData}
                   activeCard={"total"}
                   delete1={true}
-                  onClick={()=>navigate('/product-details')}
+                  onClick={()=>navigate('/product-details?admin')}
                 />
               </div>
             </div>

@@ -8,8 +8,10 @@ import Category1 from "../../../assets/images/category1.png";
 const ProductDetails = ({ setSidebar, sidebar }) => {
   const navigate = useNavigate();
   const location = useLocation();
-
-  console.log(location);
+  // console.log('query>>>>>>>>',req.query);
+  console.log('query>>>>>>>>',location.search);
+  const arr= location.search.split('?');
+  const admin= arr[1] == 'admin'? true:false;
   const [popupOpen, setPopupOpen] = useState(false);
   const [deletePopup, setDeletePopup] = useState(false);
   const [successfulPopup, setSuccessfulPopup] = useState(false);
@@ -162,10 +164,31 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
       <NavBar
         setSidebar={setSidebar}
         sidebar={sidebar}
-        title="Admin Product Details"
+        title={admin ? "Admin Product Details": "Product Details"}
       />
+  
       <div className="row">
-        <div className="col-12 col-sm-12 col-md-12 col-lg-12 mt-5 d-flex justify-content-end align-items-center">
+        {!admin && (<div className="col-12 col-sm-12 col-md-12 col-lg-6" style={{display:'flex',flexDirection:'column',gap:'10px',padding:'10px 0px 0px 20px',justifyContent:'space-between'}}  >
+            <div style={{display:'flex',alignItems:'center',gap:'10px'}}>
+              <h4 style={{fontWeight:'bold'}}>Product Owner:</h4>
+              <h4 style={{color:'#14A384',fontWeight:'bold'}}>Sara Miller</h4>
+            </div>
+            <div style={{display:'flex',alignItems:'center',gap:'10px'}}>
+              <h4 style={{fontWeight:'bold'}}>Owner UserId:</h4>
+              <h4 style={{color:'#14A384',fontWeight:'bold'}}>1234</h4>
+            </div>
+          
+        </div>)}
+        <div className="col-12 col-sm-12 col-md-12 col-lg-12  d-flex justify-content-end align-items-center">
+        {!admin && ( <button
+              onClick={() => {
+                setPopupOpen(true);
+              }}
+              className="btn btn-solid btn-solid-primary soi-btn mx-2"
+              style={{ width: "fit-content" }}
+            >
+              View Product Page
+          </button>)}
           <h3
             className="mx-3"
             style={{ cursor: "pointer" }}
@@ -177,7 +200,7 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
           </h3>
         </div>
       </div>
-      <div className="bg-black-pad my-5 " style={{ height: "75vh" }}>
+      <div className="bg-black-pad my-5 " style={{ height:admin?"75vh":"65vh" }}>
         <div className="soi-top ">
           <div className="row">
             <div className="col-4 col-sm-12 col-md-4 col-lg-4 soi-orderNo">
@@ -185,7 +208,7 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
             </div>
             <div className="col-2 col-sm-12 col-md-2 col-lg-2 soi-orderNo"></div>
             <div className="col-6 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-end align-items-center">
-              <button
+              {admin && (<button
                 onClick={() => {
                   navigate("/product-details/edit");
                 }}
@@ -193,7 +216,7 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
                 style={{ width: "fit-content" }}
               >
                 Edit
-              </button>
+              </button>)}
               <button
                 className="btn btn-solid btn-solid-danger soi-btn mx-3"
                 onClick={() => setDeletePopup(true)}
@@ -201,26 +224,26 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
               >
                 Delete
               </button>
-              <button
+             {admin && ( <button
                 className="btn btn-solid btn-solid-process soi-btn "
                 onClick={() => navigate("/make-it-featured")}
                 style={{ width: "fit-content" }}
               >
                 Make it Featured
-              </button>
+              </button>)}
             </div>
           </div>
         </div>
         <div className="soi-main">
           <div className="d-flex justify-content-between align-items-center">
-            <div>
+            <div >
               <h5
                 style={{
                   letterSpacing: "1px",
                   textAlign: "end",
                 }}
               >
-                Status:<span className="active-color">Active</span>
+                Status:<span style={{color:'#14A384',marginLeft:'10px'}}>Active</span>
               </h5>
             </div>
             <button
