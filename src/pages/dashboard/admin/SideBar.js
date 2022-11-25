@@ -138,24 +138,33 @@ export default function VendorSideBar({ children }) {
             </NavLink>
           </h4>
           <h4 className="fs-5">
-            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+            <NavLink to="/inbox" className="vendor-link">
             <div className="vendor-inbox-link">
               {/* <img src={inbox} style={{ width: "8%", marginRight: "5px" }} /> */}
               <Inbox fill="white" width={15} />
               &nbsp; Messages
               <span className="count">3</span>
             </div>
-            {/* </NavLink> */}
+            </NavLink>
           </h4>
           <h4 className="fs-5">
-            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+            <NavLink to="/rating-reviews" className="vendor-link">
             <div className="vendor-inbox-link">
               {/* <img src={ratings} style={{ width: "8%", marginRight: "5px" }} /> */}
               <Ratings fill="white" width={15} />
               &nbsp; Ratings & Reviews
               <span className="count">2</span>
             </div>
-            {/* </NavLink> */}
+            </NavLink>
+          </h4>
+          <h4 className="fs-5">
+            <NavLink to="/managers" className="vendor-link">
+            <div className="vendor-inbox-link">
+
+              <Notifications  width={15} />
+              &nbsp; Managers
+            </div>
+            </NavLink>
           </h4>
           <h4 className="fs-5">
             {/* <NavLink to="/vendor-profile" className="vendor-link"> */}

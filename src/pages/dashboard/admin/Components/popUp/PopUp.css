@@ -29,4 +29,6 @@
     align-items: center;
     justify-content: space-between;
 }
-
+.ratingPopup::-webkit-scrollbar{
+    display: none;
+}

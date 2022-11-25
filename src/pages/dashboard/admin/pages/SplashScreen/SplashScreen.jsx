@@ -4,7 +4,7 @@ import AppButton from '../../Components/appButton/AppButton';
 import splashLogo from '../../assets/splashLogo.png';
 import logo from '../../assets/logo.png';
 import './SplashScreen.css'
-import PopUp from '../../Components/popUp/PopUp';
+import PopUp from '../../Components/popUp/CustomPopUp';
 import {useNavigate} from 'react-router-dom';
 import TextInput from '../../Components/TextInput/TextInput';
 function SplashScreen() {

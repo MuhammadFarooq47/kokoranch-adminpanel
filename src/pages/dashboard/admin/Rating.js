@@ -8,8 +8,8 @@ import Popup from "../../../components/popUp/popUp";
 import { TiTick } from "react-icons/ti";
 import { FaExclamation } from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
-
-function VendorProducts({ setSidebar, sidebar }) {
+import CustomPopup from './Components/popUp/CustomPopUp'
+function Rating({ setSidebar, sidebar }) {
   const navigate = useNavigate();
   const [tableHeadData, seTableHeadData] = useState([
     { id: "code", label: "code" },
@@ -70,16 +70,12 @@ function VendorProducts({ setSidebar, sidebar }) {
   ]);
 
   const [filterCard, setFilterCard] = useState([
-    { topText: "All Products", bottomText: tableRowData.length },
+    { topText: "Admin Products", bottomText: tableRowData.length },
     {
-      topText: "Active Products",
+      topText: "User Products\n/Services",
       bottomText: tableRowData.filter((item) => item.status == "Active").length,
     },
-    {
-      topText: "Inactive Products",
-      bottomText: tableRowData.filter((item) => item.status == "Inactive")
-        .length,
-    },
+    
   ]);
 
   const [activeCard, setActiveCard] = useState(filterCard[0].topText);
@@ -88,6 +84,7 @@ function VendorProducts({ setSidebar, sidebar }) {
   const [subCategory, setSubCategory] = useState("");
   const [subSubcategory, setSubSubCategory] = useState("");
   const [rowData, setRowData] = useState(tableRowData);
+  const [viewRatings,setViewRatings]=useState(false);
   const [sortData, setSortData] = useState("");
   const [category, setCategory] = useState("");
   const [options, setOptions] = useState([
@@ -100,16 +97,13 @@ function VendorProducts({ setSidebar, sidebar }) {
 
   useEffect(() => {
     let temp = [];
-    if (activeCard == "All Products") {
+    if (activeCard == "Admin Products") {
       temp = tableRowData;
       console.log("all");
-    } else if (activeCard == "Active Products") {
+    } else if (activeCard == "User Products\n/Services") {
       console.log("active");
       temp = tableRowData.filter((item) => item.status == "Active");
-    } else if (activeCard == "Inactive Products") {
-      console.log("inactive");
-      temp = tableRowData.filter((item) => item.status == "Inactive");
-    }
+    } 
     setRowData(temp);
   }, [activeCard]);
   useEffect(() => {
@@ -198,6 +192,7 @@ function VendorProducts({ setSidebar, sidebar }) {
           </button>
         </div>
       </Popup>
+      <CustomPopup open={viewRatings} setOpen={setViewRatings} rating={true} /> 
       <NavBar setSidebar={setSidebar} sidebar={sidebar} title="My Products" />
 
       <article className="vendor-profile-main">
@@ -224,7 +219,7 @@ function VendorProducts({ setSidebar, sidebar }) {
           <div className=" col-md-12">
             <div style={{ marginTop: "20px", color: "white" }}>
               <div style={{ marginLeft: "20px" }}>
-                <h4>Filter By Your Categories</h4>
+                <h4>Filter By Your Category</h4>
                 <FormControlAuth setCategory={setCategory} />
                 {category && (
                   <FormControlAuth
@@ -241,31 +236,7 @@ function VendorProducts({ setSidebar, sidebar }) {
               </div>
               <div className="row">
                 <div className="col-5">
-                  <h4 style={{ marginLeft: "20px" }}>Product List:</h4>
-                </div>
-                <div className="col-7 d-flex justify-content-end">
-                  <button
-                    onClick={()=>navigate('/add-product')}
-                    className="btn btn-solid btn-solid-primary table-btn"
-                    style={{
-                      marginRight: "20px",
-                      // paddingLeft: "20px",
-                      // paddingRight: "20px",
-                      width: "fit-content",
-                    }}
-                  >
-                    <div
-                      style={{
-                        // backgroundColor: "white",
-                        margin: "5px",
-                        display: "flex",
-                        justifyContent: "flex-start",
-                      }}
-                    >
-                      <PlusIcon fill="white" width={17} />
-                    </div>
-                    Add Product
-                  </button>
+                  <h4 style={{ marginLeft: "20px" }}>Rating and Reviews(Admin Products):</h4>
                 </div>
               </div>
               <TableComponent
@@ -275,7 +246,7 @@ function VendorProducts({ setSidebar, sidebar }) {
                 activeCard={"total"}
                 open={deletePopup}
                 setOpen={setDeletePopup}
-                onClick={()=>navigate('/product-details?admin')}
+                onClick={()=>setViewRatings(!viewRatings)}
               />
             </div>
           </div>
@@ -285,4 +256,4 @@ function VendorProducts({ setSidebar, sidebar }) {
   );
 }
 
-export default VendorProducts;
+export default Rating;

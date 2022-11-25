@@ -2,7 +2,6 @@
   &_inner-wrapper {
     padding: 2rem;
     background-color: $color-grey;
-
     & > * {
       margin-bottom: 4rem;
     }
@@ -63,4 +62,7 @@
       }
     }
   }
+}
+.chat-sidebar::-webkit-scrollbar{
+  display: none;
 }

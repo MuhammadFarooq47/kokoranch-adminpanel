@@ -31,6 +31,9 @@ const AdminProfile = React.lazy(() =>
 const VendorProducts = React.lazy(() =>
   import("../pages/dashboard/admin/Products")
 );
+const AddProduct = React.lazy(() =>
+  import("../pages/dashboard/admin/AddProduct")
+);
 const AdminProductDetails = React.lazy(() =>
   import("../pages/dashboard/admin/ProductDetails")
 );
@@ -42,6 +45,18 @@ const VendorServices = React.lazy(() =>
 );
 const VendorServiceOrders = React.lazy(() =>
   import("../pages/dashboard/admin/ServiceOrders")
+);
+const Messages = React.lazy(() =>
+  import("../pages/dashboard/admin/inbox/index")
+);
+const Managers = React.lazy(() =>
+  import("../pages/dashboard/admin/Managers")
+);
+const AddNewManager = React.lazy(() =>
+  import("../pages/dashboard/admin/AddNewManager")
+);
+const Rating = React.lazy(() =>
+  import("../pages/dashboard/admin/Rating")
 );
 const VendorProductOrders = React.lazy(() =>
   import("../pages/dashboard/admin/ProductOrders")
@@ -142,6 +157,16 @@ export default function Navigation() {
         }
       />
       <Route
+        path="/add-product"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <AddProduct />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
         path="/product-details"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -187,6 +212,46 @@ export default function Navigation() {
           <Suspense fallback={<FullScreenLoader />}>
             <VendorSideBar>
               <VendorProductShippingDetail />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/inbox"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <Messages />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+       <Route
+        path="/managers"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <Managers />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+       <Route
+        path="/add-new-manager"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <AddNewManager />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/rating-reviews"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <Rating />
             </VendorSideBar>
           </Suspense>
         }

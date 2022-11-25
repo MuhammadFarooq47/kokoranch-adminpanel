@@ -10,7 +10,7 @@ import {MdCancel} from "react-icons/md"
 import{ReactComponent as CameraInputIcon}  from '../../../assets/images/icons/camera-input-icon.svg';
 import {Grid} from "@mui/material";
 import {toast} from "react-toastify";
-function ProductDetailsEdit({ sidebar, setSidebar }) {
+function AddProduct({ sidebar, setSidebar }) {
   let navigate = useNavigate();
   const location = useLocation();
   const [popupOpen, setPopupOpen] = useState(false);
@@ -32,12 +32,12 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
       files.map(item=>{
         arr.push(URL.createObjectURL(item));
       });
-      if(arr.length>12){
+      if(arr.lengyth > 12){
         toast.error("only upload upto 12 images");
       }
       else{
-        setProductImages([...arr]);
-      }
+          setProductImages([...arr]);
+        }
     }
   }
   const handleProductDelete=(i)=>{
@@ -49,10 +49,10 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
  
   // Dynamic input
   const addDescriptionInput=()=>{
-    let arr=[...detailInputs];
-    arr.push(1);
-    setDetailsInputs(arr);
-    toast.success("one more description added!");
+      let arr=[...detailInputs];
+      arr.push(1);
+      setDetailsInputs(arr);
+      toast.success("one more description added!");
   };
 
   return (
@@ -63,7 +63,7 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
             <TiTick size={30} fill="black" />
           </div>
           <h3>
-            Product Details Updated
+            Product Details Uploaded
             <br />
             Successfully
           </h3>
@@ -421,7 +421,7 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
                   justifyContent: "flex-start",
                 }}
               ></div>
-              Update
+              Upload
             </button>
             <button
               onClick={() => {
@@ -453,4 +453,4 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
   );
 }
 
-export default ProductDetailsEdit;
+export default AddProduct;

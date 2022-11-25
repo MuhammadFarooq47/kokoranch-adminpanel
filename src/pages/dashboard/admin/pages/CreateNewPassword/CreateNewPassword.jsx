@@ -3,7 +3,7 @@ import './CreateNewPassword.css'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import TextInput from '../../Components/TextInput/TextInput';
 import AppButton from '../../Components/appButton/AppButton';
-import PopUp from '../../Components/popUp/PopUp';
+import PopUp from '../../Components/popUp/CustomPopUp';
 import { Link, useNavigate } from 'react-router-dom';
 const CreateNewPassword = () => {
     const [open,setOpen]=useState(false);

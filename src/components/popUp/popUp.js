@@ -4,7 +4,7 @@ import { FaRegTimesCircle } from "react-icons/fa";
 import { Modal } from "react-bootstrap";
 
 export default function Popup(props) {
-  const { children, open = false, setOpen, fullwidth = false } = props;
+  const { children, open = false, setOpen, fullwidth = false,height } = props;
   return (
     <>
       <Modal

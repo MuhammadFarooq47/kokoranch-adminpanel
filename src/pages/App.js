@@ -25,6 +25,7 @@ function App() {
           position="bottom-left"
           closeOnClick={true}
           pauseOnHover={false}
+          style={{fontSize:12}}
         />
         <Navigation />
       </Provider>
