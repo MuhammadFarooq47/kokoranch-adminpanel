@@ -67,12 +67,25 @@ const AllNotifications = ({sidebar,setSidebar}) => {
             <h3> <u> ALl Activity Notifications</u></h3>
         </div>
         <Grid className='chat-sidebar' container style={{height:'60vh',border:'0.5px solid #707070',borderRadius:'15px',overflowY:'scroll'}}>
-            <Grid item lg={8} md={8} sm={8} xs={8} style={{height:'100%'}}>
-                <div style={{height:'5vh',width:'100%',padding:'10px 0px 10px 0px',textAlign:'center',borderBottom:'0.5px solid #707070',borderRight:'0.5px solid #707070'}}>
-                    <h3>
-                        Activity
-                    </h3>
-                </div>
+            <Grid item lg={12} md={12} sm={12} xs={12} style={{height:'100%'}}>
+                {/* <div style={{height:'5vh',width:'100%',padding:'10px 0px 10px 0px',textAlign:'center',borderBottom:'0.5px solid #707070'}}> */}
+                    <Grid container alignItems='center' style={{height:'5vh',width:'100%',textAlign:'center',borderBottom:'0.5px solid #707070'}}>
+                        <Grid item lg={8} md={8} sm={8} xs={8}>
+                        <div style={{height:'5vh',width:'100%',display:'flex',alignItems:'center',justifyContent:'center',borderRight:'0.5px solid #707070'}}>
+                        <h3>
+                            Activity
+                        </h3>
+                        </div>
+                        </Grid>
+                        <Grid item lg={4} md={4} sm={4} xs={4}>
+                        <div>
+                        <h3 style={{height:'5vh',width:'100%',display:'flex',alignItems:'center',justifyContent:'center',borderRight:'0.5px solid #707070'}}>
+                            Date
+                        </h3>
+                        </div>
+                        </Grid>
+                    </Grid>
+                {/* </div> */}
                 <div style={{height:'55vh',display:'flex',flexDirection:'column',padding:'10px',gap:'30px'}}>
                     
                     {
@@ -85,7 +98,7 @@ const AllNotifications = ({sidebar,setSidebar}) => {
                 </div>
 
             </Grid>
-            <Grid item lg={4} md={4} sm={4} xs={4} style={{height:'100%'}}>
+            {/* <Grid item lg={4} md={4} sm={4} xs={4} style={{height:'100%'}}>
                 <div style={{height:'5vh',width:'100%',padding:'10px 0px 10px 0px',textAlign:'center',borderBottom:'0.5px solid #707070'}}>
                     <h3>
                         Date
@@ -99,7 +112,7 @@ const AllNotifications = ({sidebar,setSidebar}) => {
                 ))}
 
                 </div>
-            </Grid>
+            </Grid> */}
            
         </Grid>
         </div>
