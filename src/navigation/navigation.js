@@ -15,6 +15,7 @@ import VendorSideBar from "../pages/dashboard/admin/SideBar";
 // import { CHECK_TOKEN } from "../redux/actions/authentication";
 import ServiceOrderIndividual from "../pages/dashboard/admin/ServiceOrderIndividual";
 import SplashScreen from "../pages/dashboard/admin/pages/SplashScreen/SplashScreen";
+import AllNotifications from "../pages/dashboard/admin/AllNotifications";
 // SCREENS
 const VendorRegister = React.lazy(() => import("../pages/auth/vendorRegister"));
 const OtpScreen = React.lazy(() => import("../pages/dashboard/admin/pages/OtpScreen/OtpScreen"));
@@ -55,6 +56,9 @@ const Managers = React.lazy(() =>
 const AddNewManager = React.lazy(() =>
   import("../pages/dashboard/admin/AddNewManager")
 );
+const ManagerRoles = React.lazy(() =>
+  import("../pages/dashboard/admin/ManagerRoles")
+);
 const Rating = React.lazy(() =>
   import("../pages/dashboard/admin/Rating")
 );
@@ -75,6 +79,9 @@ const ViewFeaturedDetails = React.lazy(() =>
 );
 const AdminProductOrderDetails = React.lazy(() =>
   import("../pages/dashboard/admin/ProductOrderDetails")
+);
+const NotificationSettings = React.lazy(() =>
+  import("../pages/dashboard/admin/NotificationSettings")
 );
 const Home = React.lazy(() => import("../pages/screens/home"));
 export default function Navigation() {
@@ -242,6 +249,36 @@ export default function Navigation() {
           <Suspense fallback={<FullScreenLoader />}>
             <VendorSideBar>
               <AddNewManager />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+       <Route
+        path="/manager-roles"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <ManagerRoles />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/notification-settings"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <NotificationSettings />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/all-notifications"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <AllNotifications />
             </VendorSideBar>
           </Suspense>
         }

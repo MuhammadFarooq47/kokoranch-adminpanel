@@ -14,6 +14,7 @@ export default function Popup(props) {
         aria-labelledby="contained-modal-title-vcenter"
         centered
         contentClassName="modalClass"
+        // dialogClassName="modalClass"
         // style={{borderRadius:'10%'}}
       >
         <div className="close-icon">

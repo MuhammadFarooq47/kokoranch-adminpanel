@@ -6,36 +6,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Avatar, Grid } from "@mui/material";
 import {useDropzone} from 'react-dropzone'
 import { useEffect } from "react";
-import styled from 'styled-components';
-const getColor = (props) => {
-  if (props.isDragAccept) {
-    return '#00e676';
-  }
-  if (props.isDragReject) {
-    return '#ff1744';
-  }
-  if (props.isFocused) {
-    return '#2196f3';
-  }
-  return '#eeeeee';
-};
-const Container = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px;
-  border-width: 2px;
-  border-radius: 10px;
-  border-color: ${(props) => getColor(props)};
-  border-style: dashed;
-  background-color: #fafafa;
-  color: black;
-  font-weight: bold;
-  font-size: 1.4rem;
-  outline: none;
-  transition: border 0.24s ease-in-out;
-`;
+import {BsImage} from 'react-icons/bs'
+import AppButton from './Components/appButton/AppButton'
+
 const AddNewManager = ({ setSidebar, sidebar }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -75,6 +48,7 @@ const AddNewManager = ({ setSidebar, sidebar }) => {
 
   return (
     <div>
+       
       <NavBar
         setSidebar={setSidebar}
         sidebar={sidebar}
@@ -102,37 +76,84 @@ const AddNewManager = ({ setSidebar, sidebar }) => {
         </div>
         </div>
       <div style={{height:'80vh',border:'none'}}>
-        <div style={{height:'100%',widht:'100%',backgroundColor:'red',display:'flex'}}>
-            <Grid container>
-                <Grid item xl={3} lg={12} sm={12} md={12} xs={12} style={{backgroundColor:'green'}}>
-                    abcd
+        <div className='chat-sidebar' style={{height:'60vh',widht:'100%',display:'flex',overflowY:'scroll'}}>
+            <Grid container justifyContent={'space-between'} spacing={2}>
+                <Grid item xl={3} lg={12} sm={12} md={12} xs={12} flexDirection='column' style={{height:'fit-content'}}>
+                    <div style={{display:'flex',flexDirection:'column',justifyContent:'space-evenly',height:'100%',gap:'10px'}}>
+                    <label>First Name</label>
+                    <div style={{height:'40px',border:'none',color:'#EAF2FF',backgroundColor:'#1d2423',paddingLeft:'10px'}}>
+                    <input type='text'  style={{border:'none',height:'100%',width:'100%',backgroundColor:'#1d2423',color:'#EAF2FF'}}/>
+                    </div>
+                    </div>
                 </Grid>
-                <Grid item xl={3} lg={12} sm={12} md={12} xs={12} style={{backgroundColor:'yellow'}}>
-                    abcd
+                <Grid item xl={3} lg={12} sm={12} md={12} xs={12} flexDirection='column' style={{height:'fit-content'}}>
+                    <div style={{display:'flex',flexDirection:'column',justifyContent:'space-evenly',height:'100%',gap:'10px'}}>
+                    <label>Last Name</label>
+                    <div style={{height:'40px',border:'none',color:'#EAF2FF',backgroundColor:'#1d2423',paddingLeft:'10px'}}>
+                    <input type='text'  style={{border:'none',height:'100%',width:'100%',backgroundColor:'#1d2423',color:'#EAF2FF'}}/>
+                    </div>
+                    </div>
                 </Grid>
-                <Grid item xl={3} lg={12} sm={12} md={12} xs={12} style={{backgroundColor:'blue'}}>
-                    abcd 
+                <Grid item xl={3} lg={12} sm={12} md={12} xs={12} flexDirection='column' style={{height:'fit-content'}}>
+                    <div style={{display:'flex',flexDirection:'column',justifyContent:'space-evenly',height:'100%',gap:'10px'}}>
+                    <label>Email Address</label>
+                    <div style={{height:'40px',border:'none',color:'#EAF2FF',backgroundColor:'#1d2423',paddingLeft:'10px'}}>
+                    <input type='text'  style={{border:'none',height:'100%',width:'100%',backgroundColor:'#1d2423',color:'#EAF2FF'}}/>
+                    </div>
+                    </div>
                 </Grid>
-                <Grid item xl={3} lg={12} sm={12} md={12} xs={12} style={{backgroundColor:'blueviolet'}}>
-                    abcd
+                <Grid item xl={3} lg={12} sm={12} md={12} xs={12} flexDirection='column' style={{height:'fit-content'}}>
+                    <div style={{display:'flex',flexDirection:'column',justifyContent:'space-evenly',height:'100%',gap:'10px'}}>
+                    <label>Phone Number</label>
+                    <div style={{height:'40px',border:'none',color:'#EAF2FF',backgroundColor:'#1d2423',paddingLeft:'10px'}}>
+                    <input type='text'  style={{border:'none',height:'100%',width:'100%',backgroundColor:'#1d2423',color:'#EAF2FF'}}/>
+                    </div>
+                    </div>
                 </Grid>
+                <Grid item xl={3} lg={12} sm={12} md={12} xs={12} style={{height:'fit-content'}}>
+                    <div style={{display:'flex',flexDirection:'column',justifyContent:'space-evenly',height:'100%',gap:'10px'}}>
+                    <label>Password</label>
+                    <div style={{height:'40px',border:'none',color:'#EAF2FF',backgroundColor:'#1d2423',paddingLeft:'10px'}}>
+                    <input type='text'  style={{border:'none',height:'100%',width:'100%',backgroundColor:'#1d2423',color:'#EAF2FF'}}/>
+                    </div>
+                    </div>
+                    <label style={{color:'#1492E6',cursor:'pointer'}}><u>Generate new Password</u></label>
+                </Grid>
+                <Grid item xl={3} lg={12} sm={12} md={12} xs={12}  style={{height:'70px'}} alignItems={'center'} justifyContent='space-between'>
+                <div style={{height:'100%',width:'100%',display:'flex',alignItems:'center',justifyContent:'space-evenly'}}>
+                <AppButton buttonText={'Cancel'} height={'80%'} onClick={()=>navigate(-1)} width={'30%'} backgroundColor={'transparent'} color={'#14A384'} boxShadow={false} borderColor={'#52575D'}/>
+                <AppButton buttonText={'Next'} height={'80%'} width={'30%'} backgroundColor={'#14A384'} boxShadow={false} onClick={()=>navigate('/manager-roles')} />
+                </div>
+                </Grid>
+                
             </Grid>
-            <Grid container >
-                <Grid item lg={12}>
-                    213212
+            <Grid container  justifyContent={'flex-end'} p={2}>
+                <Grid item lg={8} display='flex' flexDirection={'column'} alignItems='center' gap={2} p={2} >
+                    <div 
+                    {...getRootProps({ isDragAccept, isFocused, isDragReject })}
+                    style={{width:'70%',display:'flex',flexDirection:'column',alignItems:'center',gap:'10px',justifyContent:'center',height:'200px',border:'0.1px solid #14A384',borderRadius:'10%',borderStyle:'dashed'}}>
+                    <BsImage fill={'#14A384'} size={50}/>
+                    <input {...getInputProps()} />
+                    <label style={{color:'#14A384',fontSize:'10px'}}>Upload Or drag Image Here</label>
+                    </div>
+                    <label style={{color:'#14A384',fontSize:'12px',cursor:'pointer'}} onClick={open}>Upload Picture</label>
+                    {/* <section className="dropbox">
+                      <Container
+                        className="dropbox"
+                        {...getRootProps({ isDragAccept, isFocused, isDragReject })}
+                      >
+                        <input {...getInputProps()} />
+                        <p>Drag 'n' drop some files here</p>
+                        <button type="button" className="btn" onClick={open}>
+                          Click to select file
+                        </button>
+                      </Container>
+                    </section> */}
+                    <aside>
+                      <p>{lists}</p>
+                    </aside>
                 </Grid>
-                <Grid item lg={12}>
-                    213212
-                </Grid>
-                <Grid item lg={12}>
-                    213212
-                </Grid>
-                <Grid item lg={12}>
-                    213212
-                </Grid>
-                <Grid item lg={12}>
-                    213212
-                </Grid>
+               
             </Grid>
         </div>
       </div>

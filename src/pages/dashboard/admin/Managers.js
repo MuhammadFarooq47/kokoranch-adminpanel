@@ -10,6 +10,7 @@ import Manager4 from '../../../assets/images/manager4.png';
 import Manager5 from '../../../assets/images/manager5.png';
 import Manager6 from '../../../assets/images/manager6.png';
 import Manager7 from '../../../assets/images/manager7.png';
+
 const Managers = ({ setSidebar, sidebar }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -52,6 +53,7 @@ const Managers = ({ setSidebar, sidebar }) => {
         active:false,
     },
   ]);
+  
   return (
     <div>
       <NavBar

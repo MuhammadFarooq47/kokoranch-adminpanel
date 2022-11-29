@@ -167,21 +167,23 @@ export default function VendorSideBar({ children }) {
             </NavLink>
           </h4>
           <h4 className="fs-5">
-            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+            <NavLink to="/all-notifications" className="vendor-link">
             <div className="vendor-inbox-link">
 
               <Notifications  width={15} />
               &nbsp; All Notifications
             </div>
+            </NavLink>
       
           </h4>
           <h4 className="fs-5">
-            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+            <NavLink to="/notification-settings" className="vendor-link">
             <div className="vendor-inbox-link">
 
               <Settings fill="white" width={15} />
               &nbsp; Admin Notification Settings
             </div>
+            </NavLink>
           </h4>
               {/* second Heading */}
               <div
