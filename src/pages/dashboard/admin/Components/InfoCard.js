@@ -9,8 +9,9 @@ const InfoCard = ({
   return (
     <div
       className={`vendor-infocard ${active && "border-primary"}`}
+      // style={{ width: "fit-content" }}
       onClick={() => {
-        console.log(active, topText);
+        // console.log(active, topText);
         return !active ? setActiveCard(topText) : null;
       }}
     >

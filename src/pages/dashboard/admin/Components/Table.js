@@ -68,7 +68,13 @@ const rows = [
   createData("Nigeria", "NG", 200962417, 923768),
   createData("Brazil", "BR", 210147125, 8515767),
 ];
-const TableComponent = ({ tHeadData, tRowData, activeCard,delete1,onClick}) => {
+const TableComponent = ({
+  tHeadData,
+  tRowData,
+  activeCard,
+  delete1,
+  onClick,
+}) => {
   // console.log("activeCard", activeCard);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -84,23 +90,35 @@ const TableComponent = ({ tHeadData, tRowData, activeCard,delete1,onClick}) => {
   return (
     <Paper
       sx={{
-        width: "100%",
-        overflow: "hidden",
+        margin: "20px",
+        // border: "1px solid white",
+        // borderColor: "white",
+        // minHeight: 50,
+        borderRadius: "20px",
+        backgroundColor: "#1e1e1e",
+        // zIndex: 10,
       }}
-      elevation={24}
+      // elevation={24}
     >
-      <TableContainer>
+      <TableContainer
+        className="scroll-bar-hide"
+        sx={{
+          maxHeight: "360px",
+          maxWidth: "80vw",
+          // minHeight: "100px",
+          border: "1px solid white",
+          borderRadius: "20px 20px 0 0",
+          backgroundColor: "white",
+        }}
+      >
         <Table
           size="medium"
           stickyHeader
-          // aria-label="sticky table"
+          aria-label="sticky table"
           sx={{
-            backgroundColor: "#1e1e1e",
             color: "white",
-            // width: "100%",
-            overflow: "auto",
-            marginRight: "auto",
-            marginLeft: "auto",
+            overflowX: "scroll",
+            backgroundColor: "white",
           }}
         >
           <TableHead>
@@ -147,20 +165,20 @@ const TableComponent = ({ tHeadData, tRowData, activeCard,delete1,onClick}) => {
                                 justifyContent: "center",
                               }}
                             >
-                              <button 
-                              className="btn btn-solid btn-solid-primary table-btn"
-                              onClick={onClick}
+                              <button
+                                className="btn btn-solid btn-solid-primary table-btn"
+                                onClick={onClick}
                               >
                                 View
                               </button>
-                             {delete1 ==true && ( <button
-                                className="btn btn-solid btn-solid-danger table-btn"
-                                style={{ marginLeft: "10px" }}
-                              >
-                                Delete
-                              </button>
-                             )  
-                            }
+                              {delete1 == true && (
+                                <button
+                                  className="btn btn-solid btn-solid-danger table-btn"
+                                  style={{ marginLeft: "10px" }}
+                                >
+                                  Delete
+                                </button>
+                              )}
                             </div>
                           ) : column.format && typeof value === "number" ? (
                             column.format(value)
@@ -177,7 +195,12 @@ const TableComponent = ({ tHeadData, tRowData, activeCard,delete1,onClick}) => {
         </Table>
       </TableContainer>
       <TablePagination
-        sx={{ backgroundColor: "#1e1e1e", color: "white" }}
+        sx={{
+          backgroundColor: "#1e1e1e",
+          color: "white",
+          border: "1px solid white",
+          borderRadius: "0 0 20px 20px",
+        }}
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
         count={tRowData.length}

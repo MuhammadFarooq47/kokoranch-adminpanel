@@ -57,3 +57,10 @@
 .border-primary {
   border: 1px solid $color-primary !important;
 }
+
+.cursor-pointer{
+  cursor: pointer;
+}
+.scroll-bar-hide::-webkit-scrollbar{
+  display: none;
+}

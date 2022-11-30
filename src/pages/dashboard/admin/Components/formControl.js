@@ -32,10 +32,7 @@ const FormControlAuth = ({
   };
   if (!isSelectInput) {
     return (
-      <FormControl
-        sx={{ marginTop: 2, marginBottom: 5, width: "20%" }}
-        size={"small"}
-      >
+      <FormControl sx={{ marginBottom: 5, width: "50%" }} size={"small"}>
         <InputLabel
           id="demo-simple-select-helper-label"
           sx={{
@@ -67,6 +64,7 @@ const FormControlAuth = ({
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
           value={age}
+          placeholder={"age"}
           label="select category"
           onChange={handleChange}
         >
@@ -94,7 +92,7 @@ const FormControlAuth = ({
       <option value="saab">Saab</option>
       <option value="fiat">Fiat</option>
       <option value="audi">Audi</option> */}
-        {options.map((op, index) => (
+        {options?.map((op, index) => (
           <option value={op} key={`${op}-${index}`}>
             {`${op.slice(0, 1).toUpperCase()}${op.slice(1)}`}
           </option>

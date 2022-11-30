@@ -111,3 +111,32 @@
 .productDetailEdit-main::-webkit-scrollbar{
   display: none;
 }
+
+.search-btn {
+  background-color: $color-primary;
+  border:none;
+  width: 50px;
+  cursor: pointer;
+  // margin-left: -10px;
+  border-radius: 10px;
+  // padding: 3px;
+}
+.search-btn-icon {
+  color:white
+}
+
+.cursor-pointer {
+  cursor:pointer
+}
+.filter-option-selector-wrapper-active{
+  p{
+    color:$color-primary;
+    font-weight: bold;
+  }
+}
+.filter-option-selector-wrapper{
+  p:hover {
+    color:$color-primary;
+    cursor: pointer;
+  }
+}

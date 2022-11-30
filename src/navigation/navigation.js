@@ -18,9 +18,12 @@ import SplashScreen from "../pages/dashboard/admin/pages/SplashScreen/SplashScre
 import AllNotifications from "../pages/dashboard/admin/AllNotifications";
 // SCREENS
 const VendorRegister = React.lazy(() => import("../pages/auth/vendorRegister"));
-const OtpScreen = React.lazy(() => import("../pages/dashboard/admin/pages/OtpScreen/OtpScreen"));
-const CreateNewPassword = React.lazy(() => import("../pages/dashboard/admin/pages/CreateNewPassword/CreateNewPassword"));
-
+const OtpScreen = React.lazy(() =>
+  import("../pages/dashboard/admin/pages/OtpScreen/OtpScreen")
+);
+const CreateNewPassword = React.lazy(() =>
+  import("../pages/dashboard/admin/pages/CreateNewPassword/CreateNewPassword")
+);
 
 const VendorSignupSuccess = React.lazy(() =>
   import("../pages/screens/vendorSignupSuccess")
@@ -29,8 +32,11 @@ const VendorSignupSuccess = React.lazy(() =>
 const AdminProfile = React.lazy(() =>
   import("../pages/dashboard/admin/profile")
 );
-const VendorProducts = React.lazy(() =>
+const MyProducts = React.lazy(() =>
   import("../pages/dashboard/admin/Products")
+);
+const VendorProducts = React.lazy(() =>
+  import("../pages/dashboard/admin/VendorProducts")
 );
 const AddProduct = React.lazy(() =>
   import("../pages/dashboard/admin/AddProduct")
@@ -50,18 +56,14 @@ const VendorServiceOrders = React.lazy(() =>
 const Messages = React.lazy(() =>
   import("../pages/dashboard/admin/inbox/index")
 );
-const Managers = React.lazy(() =>
-  import("../pages/dashboard/admin/Managers")
-);
+const Managers = React.lazy(() => import("../pages/dashboard/admin/Managers"));
 const AddNewManager = React.lazy(() =>
   import("../pages/dashboard/admin/AddNewManager")
 );
 const ManagerRoles = React.lazy(() =>
   import("../pages/dashboard/admin/ManagerRoles")
 );
-const Rating = React.lazy(() =>
-  import("../pages/dashboard/admin/Rating")
-);
+const Rating = React.lazy(() => import("../pages/dashboard/admin/Rating"));
 const VendorProductOrders = React.lazy(() =>
   import("../pages/dashboard/admin/ProductOrders")
 );
@@ -83,6 +85,7 @@ const AdminProductOrderDetails = React.lazy(() =>
 const NotificationSettings = React.lazy(() =>
   import("../pages/dashboard/admin/NotificationSettings")
 );
+const AllUsers = React.lazy(() => import("../pages/dashboard/admin/AllUsers"));
 const Home = React.lazy(() => import("../pages/screens/home"));
 export default function Navigation() {
   // INITIZING STORAGES
@@ -101,17 +104,12 @@ export default function Navigation() {
 
   return (
     <Routes>
-       <Route
-        path="/"
-        element={
-        <SplashScreen/>
-        }
-      />
+      <Route path="/" element={<SplashScreen />} />
       <Route
         path="/otp-screen"
         element={
           <Suspense fallback={<FullScreenLoader />}>
-              <OtpScreen />
+            <OtpScreen />
           </Suspense>
         }
       />
@@ -119,7 +117,7 @@ export default function Navigation() {
         path="/create-new-password"
         element={
           <Suspense fallback={<FullScreenLoader />}>
-              <CreateNewPassword />
+            <CreateNewPassword />
           </Suspense>
         }
       />
@@ -158,7 +156,7 @@ export default function Navigation() {
         element={
           <Suspense fallback={<FullScreenLoader />}>
             <VendorSideBar>
-              <VendorProducts />
+              <MyProducts />
             </VendorSideBar>
           </Suspense>
         }
@@ -233,7 +231,7 @@ export default function Navigation() {
           </Suspense>
         }
       />
-       <Route
+      <Route
         path="/managers"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -243,7 +241,7 @@ export default function Navigation() {
           </Suspense>
         }
       />
-       <Route
+      <Route
         path="/add-new-manager"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -253,7 +251,7 @@ export default function Navigation() {
           </Suspense>
         }
       />
-       <Route
+      <Route
         path="/manager-roles"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -349,6 +347,26 @@ export default function Navigation() {
           <Suspense fallback={<FullScreenLoader />}>
             <VendorSideBar>
               <ServiceOrderIndividual />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/all-users"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <AllUsers />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/vendor-products"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <VendorProducts />
             </VendorSideBar>
           </Suspense>
         }

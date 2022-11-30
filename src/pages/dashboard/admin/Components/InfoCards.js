@@ -15,7 +15,39 @@ const InfoCards = ({
 
   return (
     <>
-      <div
+      <div className="row">
+        <div className="col-12 d-flex justify-content-end">
+          <FilterIcon
+            width={20}
+            onClick={() => setShowFilterProp(!showFilterProp)}
+          />
+        </div>
+        {/* <div className="infocard-container col-12 col-sm-4 col-md-4 col-lg-4"> */}
+        {data.map((data, index) => {
+          return activeCard === data.topText ? (
+            <div className="col-6 col-sm-4 col-md-2 col-lg-2 mt-2  ">
+              <InfoCard
+                key={index}
+                topText={data.topText}
+                bottomText={data.bottomText}
+                active
+                setActiveCard={setActiveCard}
+              />
+            </div>
+          ) : (
+            <div className="col-6 col-sm-4 col-md-2 col-lg-2 mt-2 ">
+              <InfoCard
+                key={index}
+                topText={data.topText}
+                bottomText={data.bottomText}
+                setActiveCard={setActiveCard}
+              />
+            </div>
+          );
+        })}
+        {/* </div> */}
+      </div>
+      {/* <div
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -50,7 +82,7 @@ const InfoCards = ({
       <div
         className="so-top-filtericon"
         onClick={() => setShowFilterProp(!showFilterProp)}
-      ></div>
+      ></div> */}
       {showFilterProp && (
         <FilterProp
           featured1={featured1}

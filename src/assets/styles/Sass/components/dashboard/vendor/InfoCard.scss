@@ -1,25 +1,26 @@
 .infocard-container {
-  display: flex;
-  height: fit-content;
-  flex-grow: 1;
+  // display: flex;
+  // height: fit-content;
+  // flex-grow: 1;
   margin-top: 1.5rem;
 }
 
 .vendor-infocard {
   border: 0.1px solid rgba($color-primary, 0.3);
-  width: fit-content;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  // width: fit-content;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
   padding: 1.5rem 0.5rem;
-  width: 13%;
+  // width: 13%;
+  // height: 120px;
   text-align: center;
   border-radius: 1rem;
   box-shadow: -1px 3px 20px -10px rgb(20 163 132 / 80%);
   -webkit-box-shadow: -1px 3px 20px -10px rgb(20 163 132 / 80%);
   -moz-box-shadow: -1px 3px 20px -10px rgb(20 163 132 / 80%);
-  margin-right: 2rem;
+  // margin-right: 2rem;
   cursor: pointer;
   h5 {
     padding-bottom: 2rem;

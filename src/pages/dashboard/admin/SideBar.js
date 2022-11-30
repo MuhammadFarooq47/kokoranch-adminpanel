@@ -29,19 +29,17 @@ import { ReactComponent as Categories } from "../../../assets/images/icons/categ
 import { ReactComponent as Mobile } from "../../../assets/images/icons/mobile.svg";
 import { ReactComponent as ContactIcon } from "../../../assets/images/icons/contacts-icon.svg";
 
-
-
 import Images from "../../../constants/images";
 import { LOGOUT } from "../../../redux/actions/authentication";
 
 export default function VendorSideBar({ children }) {
   const [sidebar, setSidebar] = useState(true);
-  const [state,setState]=useState({
-    userManagement:true,
-    userOrders:true,
-    specialServices:true,
-    WebAndApp:true,
-  })
+  const [state, setState] = useState({
+    userManagement: true,
+    userOrders: true,
+    specialServices: true,
+    WebAndApp: true,
+  });
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const childrenWithProps = React.Children.map(children, (child) => {
@@ -92,268 +90,285 @@ export default function VendorSideBar({ children }) {
             </div>
           </div>
           <div className="sidebar-content">
-          <h4 className="fs-5">
-            <NavLink to="/admin-profile" className="vendor-link" end>
-              <div>
-                <FaRegUser fill="white" />
-                &nbsp; Admin Profile
-              </div>
-            </NavLink>
-          </h4>
-          <h4 className="fs-5">
-            <NavLink to="/my-products" className="vendor-link">
-              <div>
-                <WineBottle  fill="white" width={15} />
-                &nbsp; Admin Products
-              </div>
-            </NavLink>
-          </h4>
-          <h4 className="fs-5">
-            <NavLink
-              to="/vendor-productshippingdetails"
-              className="vendor-link"
-            >
-              <div className="vendor-inbox-link">
-                {/* <img src={shipping} style={{ width: "8%", marginRight: "5px" }} /> */}
-                <Shipping fill="white" width={15} />
-                &nbsp; Admin Shipping Details
-              </div>
-            </NavLink>
-          </h4>
-          <h4 className="fs-5">
-            <NavLink to="/featured-productandservices" className="vendor-link">
-            <div className="vendor-inbox-link">
-              {/* <img src={medal} style={{ width: "8%", marginRight: "5px" }} /> */}
-              <Medal fill="white" width={15} />
-              &nbsp; Featured Products And Services
-            </div>
-            </NavLink>
-          </h4>
-          <h4 className="fs-5">
-            <NavLink to="/vendor-productorders" className="vendor-link">
-              <div className="vendor-inbox-link">
-                <FeatherList fill="white" width={15} />
-                &nbsp; Admin Product Orders
-              </div>
-            </NavLink>
-          </h4>
-          <h4 className="fs-5">
-            <NavLink to="/inbox" className="vendor-link">
-            <div className="vendor-inbox-link">
-              {/* <img src={inbox} style={{ width: "8%", marginRight: "5px" }} /> */}
-              <Inbox fill="white" width={15} />
-              &nbsp; Messages
-              <span className="count">3</span>
-            </div>
-            </NavLink>
-          </h4>
-          <h4 className="fs-5">
-            <NavLink to="/rating-reviews" className="vendor-link">
-            <div className="vendor-inbox-link">
-              {/* <img src={ratings} style={{ width: "8%", marginRight: "5px" }} /> */}
-              <Ratings fill="white" width={15} />
-              &nbsp; Ratings & Reviews
-              <span className="count">2</span>
-            </div>
-            </NavLink>
-          </h4>
-          <h4 className="fs-5">
-            <NavLink to="/managers" className="vendor-link">
-            <div className="vendor-inbox-link">
-
-              <Notifications  width={15} />
-              &nbsp; Managers
-            </div>
-            </NavLink>
-          </h4>
-          <h4 className="fs-5">
-            <NavLink to="/all-notifications" className="vendor-link">
-            <div className="vendor-inbox-link">
-
-              <Notifications  width={15} />
-              &nbsp; All Notifications
-            </div>
-            </NavLink>
-      
-          </h4>
-          <h4 className="fs-5">
-            <NavLink to="/notification-settings" className="vendor-link">
-            <div className="vendor-inbox-link">
-
-              <Settings fill="white" width={15} />
-              &nbsp; Admin Notification Settings
-            </div>
-            </NavLink>
-          </h4>
-              {/* second Heading */}
-              <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
-          <h4 className="fs-4 title-color">User Management</h4>  
-          <div style={{cursor:'pointer'}}>
-          <DownArrow fill={'#14A384'} width={15} onClick={()=>setState({...state,userManagement:!state.userManagement})} />
-          </div>
-          </div>
-          {state.userManagement == true && (
-            <>
             <h4 className="fs-5">
-            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-            <div className="vendor-inbox-link">
-
-              <PeoplesGroup fill="white" width={15} />
-              &nbsp; All Users
+              <NavLink to="/admin-profile" className="vendor-link" end>
+                <div>
+                  <FaRegUser fill="white" />
+                  &nbsp; Admin Profile
+                </div>
+              </NavLink>
+            </h4>
+            <h4 className="fs-5">
+              <NavLink to="/my-products" className="vendor-link">
+                <div>
+                  <WineBottle fill="white" width={15} />
+                  &nbsp; Admin Products
+                </div>
+              </NavLink>
+            </h4>
+            <h4 className="fs-5">
+              <NavLink
+                to="/vendor-productshippingdetails"
+                className="vendor-link"
+              >
+                <div className="vendor-inbox-link">
+                  {/* <img src={shipping} style={{ width: "8%", marginRight: "5px" }} /> */}
+                  <Shipping fill="white" width={15} />
+                  &nbsp; Admin Shipping Details
+                </div>
+              </NavLink>
+            </h4>
+            <h4 className="fs-5">
+              <NavLink
+                to="/featured-productandservices"
+                className="vendor-link"
+              >
+                <div className="vendor-inbox-link">
+                  {/* <img src={medal} style={{ width: "8%", marginRight: "5px" }} /> */}
+                  <Medal fill="white" width={15} />
+                  &nbsp; Featured Products And Services
+                </div>
+              </NavLink>
+            </h4>
+            <h4 className="fs-5">
+              <NavLink to="/vendor-productorders" className="vendor-link">
+                <div className="vendor-inbox-link">
+                  <FeatherList fill="white" width={15} />
+                  &nbsp; Admin Product Orders
+                </div>
+              </NavLink>
+            </h4>
+            <h4 className="fs-5">
+              <NavLink to="/inbox" className="vendor-link">
+                <div className="vendor-inbox-link">
+                  {/* <img src={inbox} style={{ width: "8%", marginRight: "5px" }} /> */}
+                  <Inbox fill="white" width={15} />
+                  &nbsp; Messages
+                  <span className="count">3</span>
+                </div>
+              </NavLink>
+            </h4>
+            <h4 className="fs-5">
+              <NavLink to="/rating-reviews" className="vendor-link">
+                <div className="vendor-inbox-link">
+                  {/* <img src={ratings} style={{ width: "8%", marginRight: "5px" }} /> */}
+                  <Ratings fill="white" width={15} />
+                  &nbsp; Ratings & Reviews
+                  <span className="count">2</span>
+                </div>
+              </NavLink>
+            </h4>
+            <h4 className="fs-5">
+              <NavLink to="/managers" className="vendor-link">
+                <div className="vendor-inbox-link">
+                  <Notifications width={15} />
+                  &nbsp; Managers
+                </div>
+              </NavLink>
+            </h4>
+            <h4 className="fs-5">
+              <NavLink to="/all-notifications" className="vendor-link">
+                <div className="vendor-inbox-link">
+                  <Notifications width={15} />
+                  &nbsp; All Notifications
+                </div>
+              </NavLink>
+            </h4>
+            <h4 className="fs-5">
+              <NavLink to="/notification-settings" className="vendor-link">
+                <div className="vendor-inbox-link">
+                  <Settings fill="white" width={15} />
+                  &nbsp; Admin Notification Settings
+                </div>
+              </NavLink>
+            </h4>
+            {/* second Heading */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
+            >
+              <h4 className="fs-4 title-color">User Management</h4>
+              <div style={{ cursor: "pointer" }}>
+                <DownArrow
+                  fill={"#14A384"}
+                  width={15}
+                  onClick={() =>
+                    setState({
+                      ...state,
+                      userManagement: !state.userManagement,
+                    })
+                  }
+                />
+              </div>
             </div>
-          </h4>
-          <h4 className="fs-5">
-            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-            <div className="vendor-inbox-link">
-
-              <FeatherList fill="white" width={15} />
-              &nbsp; Vendor Products
-            </div>
-          </h4>
-          <h4 className="fs-5">
-            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-            <div className="vendor-inbox-link">
-
-              <Agriculture fill="white" width={15} />
-              &nbsp; Vendor Agricultural Service
-            </div>
-          </h4>
-          <h4 className="fs-5">
-            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-            <div className="vendor-inbox-link">
-
-              <UserTrades fill="white" width={15} />
-              &nbsp; User Trades
-            </div>
-          </h4>
-          </>
-
+            {state.userManagement == true && (
+              <>
+                <h4 className="fs-5">
+                  <NavLink to="/all-users" className="vendor-link">
+                    <div className="vendor-inbox-link">
+                      <PeoplesGroup fill="white" width={15} />
+                      &nbsp; All Users
+                    </div>
+                  </NavLink>
+                </h4>
+                <h4 className="fs-5">
+                  <NavLink to="/vendor-products" className="vendor-link">
+                    <div className="vendor-inbox-link">
+                      <FeatherList fill="white" width={15} />
+                      &nbsp; Vendor Products
+                    </div>
+                  </NavLink>
+                </h4>
+                <h4 className="fs-5">
+                  {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+                  <div className="vendor-inbox-link">
+                    <Agriculture fill="white" width={15} />
+                    &nbsp; Vendor Agricultural Service
+                  </div>
+                  {/* </NavLink> */}
+                </h4>
+                <h4 className="fs-5">
+                  {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+                  <div className="vendor-inbox-link">
+                    <UserTrades fill="white" width={15} />
+                    &nbsp; User Trades
+                  </div>
+                  {/* </NavLink */}
+                </h4>
+              </>
             )}
 
-          {/* third Heading */}
-          <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-          }}
-          >
-          <h4 className="fs-4 title-color">User Orders</h4>  
-          <div style={{cursor:'pointer'}}>
-          <DownArrow fill={'#14A384'} width={15} onClick={()=>setState({...state,userOrders:!state.userOrders})} />
-          </div>
-          </div>
-          {state.userOrders ==true &&
-           ( 
-            <>
-           <h4 className="fs-5">
-            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-            <div className="vendor-inbox-link">
-
-              <FeatherList fill="white" width={15} />
-              &nbsp; Vendor Product Orders
+            {/* third Heading */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
+            >
+              <h4 className="fs-4 title-color">User Orders</h4>
+              <div style={{ cursor: "pointer" }}>
+                <DownArrow
+                  fill={"#14A384"}
+                  width={15}
+                  onClick={() =>
+                    setState({ ...state, userOrders: !state.userOrders })
+                  }
+                />
+              </div>
             </div>
-          </h4>
-          <h4 className="fs-5">
-            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-            <div className="vendor-inbox-link">
-
-              <FeatherList fill="white" width={15} />
-              &nbsp; Agricultural Services Orders
-            </div>
-          </h4>
-          <h4 className="fs-5">
-            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-            <div className="vendor-inbox-link">
-
-              <UserTrades fill="white" width={15} />
-              &nbsp; Trade Requests
-            </div>
-          </h4>
-          </>
-          
-          )
-          }
+            {state.userOrders == true && (
+              <>
+                <h4 className="fs-5">
+                  {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+                  <div className="vendor-inbox-link">
+                    <FeatherList fill="white" width={15} />
+                    &nbsp; Vendor Product Orders
+                  </div>
+                </h4>
+                <h4 className="fs-5">
+                  {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+                  <div className="vendor-inbox-link">
+                    <FeatherList fill="white" width={15} />
+                    &nbsp; Agricultural Services Orders
+                  </div>
+                </h4>
+                <h4 className="fs-5">
+                  {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+                  <div className="vendor-inbox-link">
+                    <UserTrades fill="white" width={15} />
+                    &nbsp; Trade Requests
+                  </div>
+                </h4>
+              </>
+            )}
             {/* Fourth Heading */}
             <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
-          <h4 className="fs-4 title-color">Special Services</h4> 
-          <div style={{cursor:'pointer'}}>
-          <DownArrow fill={'#14A384'} width={15} onClick={()=>setState({...state,specialServices:!state.specialServices})} />
-            </div> 
-          </div>
-          { state.specialServices ==true &&
-           ( <h4 className="fs-5">
-            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-            <div className="vendor-inbox-link">
-
-              <AdsIcon fill="white" width={15} />
-              &nbsp; Medical Merijuana Ads
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
+            >
+              <h4 className="fs-4 title-color">Special Services</h4>
+              <div style={{ cursor: "pointer" }}>
+                <DownArrow
+                  fill={"#14A384"}
+                  width={15}
+                  onClick={() =>
+                    setState({
+                      ...state,
+                      specialServices: !state.specialServices,
+                    })
+                  }
+                />
+              </div>
             </div>
-          </h4>)
-          }
+            {state.specialServices == true && (
+              <h4 className="fs-5">
+                {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+                <div className="vendor-inbox-link">
+                  <AdsIcon fill="white" width={15} />
+                  &nbsp; Medical Merijuana Ads
+                </div>
+              </h4>
+            )}
             {/* fifth Heading */}
             <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
-          <h4 className="fs-4 title-color">Web and App Management &nbsp; </h4>  
-          <div style={{cursor:'pointer'}}>
-          <DownArrow fill={'#14A384'} width={15} onClick={()=>setState({...state,WebAndApp:!state.WebAndApp})} />
-          </div>
-          </div>
-         { state.WebAndApp ==true && (
-         <>
-         <h4 className="fs-5">
-            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-            <div className="vendor-inbox-link">
-
-              <Categories fill="white" width={15} />
-              &nbsp; Categories
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
+            >
+              <h4 className="fs-4 title-color">
+                Web and App Management &nbsp;{" "}
+              </h4>
+              <div style={{ cursor: "pointer" }}>
+                <DownArrow
+                  fill={"#14A384"}
+                  width={15}
+                  onClick={() =>
+                    setState({ ...state, WebAndApp: !state.WebAndApp })
+                  }
+                />
+              </div>
             </div>
-          </h4>
-          <h4 className="fs-5">
-            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-            <div className="vendor-inbox-link">
-
-              <Agriculture fill="white" width={15} />
-              &nbsp; Web Banners
-            </div>
-          </h4>
-          <h4 className="fs-5">
-            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-            <div className="vendor-inbox-link">
-
-              <Mobile fill="white" width={15} />
-              &nbsp; App Banners
-            </div>
-          </h4>
-          <h4 className="fs-5">
-            {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-            <div className="vendor-inbox-link">
-
-              <ContactIcon fill="white" width={15} />
-              &nbsp; Contact Details
-            </div>
-          </h4>
-         </>
-          
-          )
-          }
+            {state.WebAndApp == true && (
+              <>
+                <h4 className="fs-5">
+                  {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+                  <div className="vendor-inbox-link">
+                    <Categories fill="white" width={15} />
+                    &nbsp; Categories
+                  </div>
+                </h4>
+                <h4 className="fs-5">
+                  {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+                  <div className="vendor-inbox-link">
+                    <Agriculture fill="white" width={15} />
+                    &nbsp; Web Banners
+                  </div>
+                </h4>
+                <h4 className="fs-5">
+                  {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+                  <div className="vendor-inbox-link">
+                    <Mobile fill="white" width={15} />
+                    &nbsp; App Banners
+                  </div>
+                </h4>
+                <h4 className="fs-5">
+                  {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+                  <div className="vendor-inbox-link">
+                    <ContactIcon fill="white" width={15} />
+                    &nbsp; Contact Details
+                  </div>
+                </h4>
+              </>
+            )}
           </div>
           {/* <h4>
             <NavLink to="/vendor-settings" className="vendor-link">
@@ -377,7 +392,6 @@ export default function VendorSideBar({ children }) {
               {/* </Link> */}
           {/* </h4>
           </div> */}
-
 
           {/* <h4 className="fs-5 ">
             Switch To <span className="title-color">Buyer</span>
