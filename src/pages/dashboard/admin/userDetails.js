@@ -2,24 +2,77 @@ import React, { useState } from "react";
 import NavBar from "./NavBar";
 import Popup from "../../../components/popUp/popUp";
 import { TiTick } from "react-icons/ti";
-import { FaExclamation } from "react-icons/fa";
-import { useNavigate, useLocation } from "react-router-dom";
+import { FaExclamation, FaRegEdit } from "react-icons/fa";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import Category1 from "../../../assets/images/category1.png";
-const ProductDetails = ({ setSidebar, sidebar }) => {
+import Images from "../../../constants/images";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import TableComponent from "./Components/Table";
+
+const UserDetails = ({ setSidebar, sidebar }) => {
   const navigate = useNavigate();
   const location = useLocation();
+
   // console.log('query>>>>>>>>',req.query);
   console.log("query>>>>>>>>", location.search);
   const arr = location.search.split("?");
   const admin = arr[1] == "admin" ? true : false;
-  const checkUser = arr[1] == "user" ? true : false;
-  const vendorProduct = arr[1] == "vendorProduct" ? true : false;
-
   const [popupOpen, setPopupOpen] = useState(false);
   const [deletePopup, setDeletePopup] = useState(false);
   const [successfulPopup, setSuccessfulPopup] = useState(false);
   const [deleteSuccessfulPopup, setDeleteSuccessfulPopup] = useState(false);
   const [orderStatus, setOrderStatus] = useState("completed");
+  const [tableHeadData, seTableHeadData] = useState([
+    { id: "userId", label: "User ID" },
+    { id: "signUpDate", label: "Signup Date" },
+    { id: "userName", label: "User Name" },
+    { id: "category", label: "Category" },
+    { id: "status", label: "Status" },
+    { id: "action", label: "Action" },
+  ]);
+
+  const [tableRowData, setTableRowData] = useState([
+    {
+      userId: "01",
+      signUpDate: "2022-01-22",
+      userName: "product1",
+      category: "Main Category",
+      status: "Active",
+      action: "Action",
+    },
+    {
+      userId: "01",
+      signUpDate: "2022-01-23",
+      userName: "product1",
+      category: "Main Category",
+      status: "Active",
+      action: "Action",
+    },
+    {
+      userId: "01",
+      signUpDate: "2022-01-24",
+      userName: "product1",
+      category: "Main Category",
+      status: "Featured",
+      action: "Action",
+    },
+    {
+      userId: "01",
+      signUpDate: "2022-01-25",
+      userName: "product1",
+      category: "Main Category",
+      status: "Inactive",
+      action: "Action",
+    },
+    {
+      userId: "01",
+      signUpDate: "2022-01-26",
+      userName: "product1",
+      category: "Main Category",
+      status: "Inactive",
+      action: "Action",
+    },
+  ]);
   return (
     <div>
       <Popup open={popupOpen} setOpen={setPopupOpen}>
@@ -167,19 +220,11 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
       <NavBar
         setSidebar={setSidebar}
         sidebar={sidebar}
-        title={
-          admin
-            ? "Admin Product Details"
-            : checkUser
-            ? "User Product Details"
-            : vendorProduct
-            ? "Vendor Product Details"
-            : "Product Details"
-        }
+        title={"User Details"}
       />
 
-      <div className="row">
-        {!admin && !checkUser && (
+      {/* <div className="row">
+        {!admin && (
           <div
             className="col-12 col-sm-12 col-md-12 col-lg-6"
             style={{
@@ -203,7 +248,7 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
           </div>
         )}
         <div className="col-12 col-sm-12 col-md-12 col-lg-12  d-flex justify-content-end align-items-center">
-          {!admin && !checkUser && (
+          {!admin && (
             <button
               onClick={() => {
                 setPopupOpen(true);
@@ -224,35 +269,103 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
             <span className="vtext-primary mx-2">&#10229;</span>Back
           </h3>
         </div>
-      </div>
-      <div
-        className="bg-black-pad my-5 "
-        style={{ height: admin ? "75vh" : "69vh" }}
-      >
-        <div className="soi-top">
-          <div className="row">
-            <div className="col-6 col-sm-12 col-md-6 col-lg-6 soi-orderNo">
-              {checkUser ? (
-                <div className="d-flex align-items-end">
-                  <h2 style={{ marginRight: "10px" }}>
-                    Sara Miller's Product:
-                  </h2>
-                  <p className="color-primary-dark">Product Code. 21385</p>
-                </div>
-              ) : (
-                <>
-                  <h2>Product Code. 21385</h2>
-                  {vendorProduct && (
-                    <h4 style={{ marginTop: "10px" }}>
-                      Featured: <span style={{ color: "#14A384" }}>Yes</span>
-                    </h4>
-                  )}
-                </>
-              )}
+      </div> */}
+      <div className="bg-black-pad my-5 " style={{ height: "81vh" }}>
+        <div className="soi-top ">
+          <Link to="/all-users">
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-end",
+                alignItems: "center",
+                marginBottom: 5,
+              }}
+            >
+              <ArrowBackIcon style={{ color: "#14A384", cursor: "pointer" }} />
+              <span
+                style={{
+                  color: "#F5F5F5",
+                  fontSize: "18px",
+                  fontFamily: "var(--font-style)",
+                }}
+              >
+                Back
+              </span>
             </div>
-            {/* <div className="col-2 col-sm-12 col-md-6 col-lg-2 soi-orderNo"></div> */}
-            <div className="col-6 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-end align-items-center">
-              {(admin || checkUser) && (
+          </Link>
+          <div className="row">
+            <div className="col-12 col-sm-12 col-md-4 col-lg-4 soi-orderNo">
+              <div className="row mb-5">
+                <div className="col-5">
+                  <div className="vendor-profile-main_form_image-input-wrapper">
+                    <img
+                      src={Images.Pictures.profile}
+                      className="vendor-profile-main_form_image-input-wrapper_preview"
+                      alt="vendor-preview"
+                      style={{ width: "7rem", height: "7rem" }}
+                    />
+                  </div>
+                </div>
+                <div className="col-6  d-flex flex-column justify-content-center vendor-profile-info">
+                  <label htmlFor="firstName" className="form-label">
+                    Sara Miller
+                  </label>
+                  <p>User ID:2356</p>
+                  <p>
+                    status:<span style={{ color: "#14A384" }}>Active</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-2 col-sm-12 col-md-2 col-lg-2 soi-orderNo"></div>
+            <div className="col-6 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-end">
+              <div className="row">
+                <div className="col-6">
+                  <button
+                    onClick={() => {
+                      navigate("/product-details/edit");
+                    }}
+                    className="btn btn-solid btn-outline-blue-rounded soi-btn mx-2"
+                    style={{ width: "100%" }}
+                  >
+                    View User Dashboard
+                  </button>
+                </div>
+                <div className="col-6">
+                  <button
+                    onClick={() => {
+                      navigate("/product-details/edit");
+                    }}
+                    className="btn btn-solid  btn-solid-blue-rounded soi-btn mx-2"
+                    style={{ width: "100%" }}
+                  >
+                    Delete User
+                  </button>
+                </div>
+                <div className="col-6">
+                  <button
+                    onClick={() => {
+                      navigate("/product-details/edit");
+                    }}
+                    className="btn btn-solid btn-solid-process-rounded soi-btn mx-2"
+                    style={{ width: "100%" }}
+                  >
+                    Send Email
+                  </button>
+                </div>
+                <div className="col-6">
+                  <button
+                    onClick={() => {
+                      navigate("/product-details/edit");
+                    }}
+                    className="btn btn-solid btn-solid-primary-rounded soi-btn mx-2"
+                    style={{ width: "100%" }}
+                  >
+                    Update Status
+                  </button>
+                </div>
+              </div>
+              {/* {admin && (
                 <button
                   onClick={() => {
                     navigate("/product-details/edit");
@@ -262,15 +375,15 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
                 >
                   Edit
                 </button>
-              )}
-              <button
+              )} */}
+              {/* <button
                 className="btn btn-solid btn-solid-danger soi-btn mx-3"
                 onClick={() => setDeletePopup(true)}
                 style={{ width: "fit-content" }}
               >
                 Delete
-              </button>
-              {(admin || checkUser) && (
+              </button> */}
+              {/* {admin && (
                 <button
                   className="btn btn-solid btn-solid-process soi-btn "
                   onClick={() => navigate("/make-it-featured")}
@@ -278,182 +391,112 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
                 >
                   Make it Featured
                 </button>
-              )}
+              )} */}
             </div>
           </div>
         </div>
-        <div className="d-flex justify-content-between align-items-center mb-3">
-          <div>
-            <h5
-              style={{
-                letterSpacing: "1px",
-                textAlign: "end",
-              }}
-            >
-              Status:
-              <span style={{ color: "#14A384" }}>Active</span>
-            </h5>
+        <div className="soi-main1">
+          <div className="d-flex justify-content-between align-items-center">
+            <div>
+              <h3 className="soi-main1-label-wrapper">Personal Information:</h3>
+            </div>
+            <div></div>
           </div>
-          <button
-            onClick={() => {
-              setPopupOpen(true);
-            }}
-            className="btn btn-solid btn-solid-primary soi-btn mx-2"
-            style={{ width: "fit-content" }}
-          >
-            Update Status
-          </button>
-        </div>
-        <div className="soi-main">
-          {/* <hr className="hr-rule" /> */}
-          <div className="row ">
+          <div className="row mt-5">
             <div className="col-4 ">
-              <h3 className="mb-4">Product Name:</h3>
+              <label className="mb-4">First Name</label>
             </div>
             <div className="col-8 d-flex justify-content-end">
-              <h5 className="mb-4 ">Product Name</h5>
+              <p className="mb-4 ">Sara</p>
             </div>
-            <hr className="hr-rule" />
             <div className="col-4 ">
-              <h3 className="mb-4">Category:</h3>
+              <label className="mb-4">Last Name</label>
             </div>
             <div className="col-8 d-flex justify-content-end">
-              <h5 className="mb-4 ">Plant</h5>
+              <p className="mb-4 ">Miller</p>
             </div>
-            <hr className="hr-rule" />
             <div className="col-4 ">
-              <h3 className="mb-4">Sub Category:</h3>
+              <label className="mb-4">Category</label>
             </div>
             <div className="col-8 d-flex justify-content-end">
-              <h5 className="mb-4 ">flowering plant</h5>
+              <p className="mb-4 ">Vendors</p>
             </div>
-            <hr className="hr-rule" />
             <div className="col-4 ">
-              <h3 className="mb-4">Sub Sub Category:</h3>
+              <label className="mb-4">Email Address</label>
             </div>
             <div className="col-8 d-flex justify-content-end">
-              <h5 className="mb-4 ">hoya</h5>
+              <p className="mb-4 ">sara@gmail.com</p>
             </div>
-            <hr className="hr-rule" />
             <div className="col-4 ">
-              <h3 className="mb-4">Price:</h3>
+              <label className="mb-4">Phone Number</label>
             </div>
             <div className="col-8 d-flex justify-content-end">
-              <h5 className="mb-4 ">$122</h5>
+              <p className="mb-4 ">1234567897</p>
             </div>
-            <hr className="hr-rule" />
-            <div className="col-2 ">
-              <h3 className="mb-4">Description 1:</h3>
-            </div>
-            <div className="col-10 d-flex justify-content-end">
-              <p className="mb-4 ">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                porttitor lacinia ex, sit amet eleifend enim ultrices non.
-                Praesent tincidunt leo enim, et eleifend metus efficitur id.
-                Praesent mollis risus elit, nec sagittis sem cursus in. Cras in
-                augue ut augue suscipit interdum. Ut gravida odio sagittis arcu
-                dictum tincidunt nec eu mauris. Maecenas dolor augue, consequat
-                ut risus lacinia, blandit congue velit. Vivamus sit amet viverra
-                est. Nullam a semper est. Fusce ac arcu sodales, molestie lectus
-                in, gravida dolor. Morbi ut augue faucibus, blandit dui quis,
-                congue mauris. Etiam mattis urna sagittis, blandit est a,
-                elementum purus. Sed in arcu sed est sollicitudin suscipit.
-                Donec scelerisque mi blandit lacus condimentum interdum
-              </p>
-            </div>
-            <hr className="hr-rule" />
-            <div className="col-2 ">
-              <h3 className="mb-4">Description 2:</h3>
-            </div>
-            <div className="col-10 d-flex justify-content-end">
-              <p className="mb-4 ">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                porttitor lacinia ex, sit amet eleifend enim ultrices non.
-                Praesent tincidunt leo enim, et eleifend metus efficitur id.
-                Praesent mollis risus elit, nec sagittis sem cursus in. Cras in
-                augue ut augue suscipit interdum. Ut gravida odio sagittis arcu
-                dictum tincidunt nec eu mauris. Maecenas dolor augue, consequat
-                ut risus lacinia, blandit congue velit. Vivamus sit amet viverra
-                est. Nullam a semper est. Fusce ac arcu sodales, molestie lectus
-                in, gravida dolor. Morbi ut augue faucibus, blandit dui quis,
-                congue mauris. Etiam mattis urna sagittis, blandit est a,
-                elementum purus. Sed in arcu sed est sollicitudin suscipit.
-                Donec scelerisque mi blandit lacus condimentum interdum
-              </p>
-            </div>
-            <hr className="hr-rule" />
-            <div className="col-2 ">
-              <h3 className="mb-4">Description 3:</h3>
-            </div>
-            <div className="col-10 d-flex justify-content-end">
-              <p className="mb-4 ">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                porttitor lacinia ex, sit amet eleifend enim ultrices non.
-                Praesent tincidunt leo enim, et eleifend metus efficitur id.
-                Praesent mollis risus elit, nec sagittis sem cursus in. Cras in
-                augue ut augue suscipit interdum. Ut gravida odio sagittis arcu
-                dictum tincidunt nec eu mauris. Maecenas dolor augue, consequat
-                ut risus lacinia, blandit congue velit. Vivamus sit amet viverra
-                est. Nullam a semper est. Fusce ac arcu sodales, molestie lectus
-                in, gravida dolor. Morbi ut augue faucibus, blandit dui quis,
-                congue mauris. Etiam mattis urna sagittis, blandit est a,
-                elementum purus. Sed in arcu sed est sollicitudin suscipit.
-                Donec scelerisque mi blandit lacus condimentum interdum
-              </p>
-            </div>
-            <hr className="hr-rule" />
             <div className="col-4 ">
-              <h3 className="mb-4">In Stock:</h3>
+              <label className="mb-4">Password</label>
             </div>
             <div className="col-8 d-flex justify-content-end">
-              <h5 className="mb-4 active-color" style={{ color: "blueviolet" }}>
-                500
-              </h5>
+              <p className="mb-4 ">ksjdfljsdlfjdjf45464</p>
             </div>
             <hr className="hr-rule" />
-            <div className="col-4">
-              <h3 className="mb-4">Uploaded Picture:</h3>
+            <div className="d-flex justify-content-between align-items-center mb-5">
+              <div>
+                <h3 className="soi-main1-label-wrapper">
+                  Bank Account Details
+                </h3>
+              </div>
+              <div></div>
             </div>
-            <div className="col-8 d-flex justify-content-end">
-              <img style={{ height: "80px", width: "80px" }} src={Category1} />
-              <img style={{ height: "80px", width: "80px" }} src={Category1} />
-              <img style={{ height: "80px", width: "80px" }} src={Category1} />
-            </div>
-            <hr className="hr-rule" />
             <div className="col-4 ">
-              <h3 className="mb-4">New Location:</h3>
+              <label className="mb-4">Bank Name</label>
             </div>
             <div className="col-8 d-flex justify-content-end">
-              <h5 className="mb-4 ">Wisconsin</h5>
+              <p className="mb-4 ">Bank Of America</p>
+            </div>
+            <div className="col-4 ">
+              <label className="mb-4">Bank Account Number </label>
+            </div>
+            <div className="col-8 d-flex justify-content-end">
+              <p className="mb-4 ">51247856321678</p>
+            </div>
+            <div className="col-4 ">
+              <label className="mb-4">Routing Number</label>
+            </div>
+            <div className="col-8 d-flex justify-content-end">
+              <p className="mb-4 ">ksjdfljsdlfjdjf45464</p>
+            </div>
+            <div className="col-4 ">
+              <label className="mb-4">Bank Account Title</label>
+            </div>
+            <div className="col-8 d-flex justify-content-end">
+              <p className="mb-4 ">Sara Miller</p>
             </div>
             <hr className="hr-rule" />
-
-            <div className="col-4 ">
-              <h3 className="mb-4">Shipping To:</h3>
+            <div className="d-flex justify-content-between align-items-center">
+              <div>
+                <h3 className="soi-main1-label-wrapper">User Orders</h3>
+              </div>
+              <button
+                onClick={() => {
+                  //   setPopupOpen(true);
+                }}
+                className="btn btn-solid btn-solid-primary soi-btn mx-2"
+                style={{ width: "fit-content" }}
+              >
+                View All Products
+              </button>
             </div>
-            <div className="col-8 d-flex justify-content-end">
-              <h5 className="mb-4 ">Globally</h5>
-            </div>
-            <hr className="hr-rule" />
-            <div className="col-4 ">
-              <h3 className="mb-4">Delivery:</h3>
-            </div>
-            <div className="col-8 d-flex justify-content-end">
-              <h5 className="mb-4 ">locally 123 sdjkhfkjh</h5>
-            </div>
-            <hr className="hr-rule" />
-            <div className="col-4 ">
-              <h3 className="mb-4">Return :</h3>
-            </div>
-            <div className="col-8 d-flex justify-content-end">
-              <h5 className="mb-4 ">30 days return poslicy</h5>
-            </div>
-            <hr className="hr-rule" />
-            <div className="col-4 ">
-              <h3 className="mb-4">Shipping And Handling:</h3>
-            </div>
-            <div className="col-8 d-flex justify-content-end">
-              <h5 className="mb-4 ">Free shipping</h5>
+            <div className="col-12">
+              <TableComponent
+                tHeadData={tableHeadData}
+                tRowData={tableRowData}
+                edit={"allUsers"}
+                activeCard={"total"}
+                open={deletePopup}
+                setOpen={setDeletePopup}
+                onClick={() => navigate("/product-details?user")}
+              />
             </div>
           </div>
         </div>
@@ -462,4 +505,4 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
   );
 };
 
-export default ProductDetails;
+export default UserDetails;

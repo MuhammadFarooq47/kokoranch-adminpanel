@@ -74,6 +74,9 @@ const TableComponent = ({
   activeCard,
   delete1,
   onClick,
+  setView,
+  edit,
+  setOpen,
 }) => {
   // console.log("activeCard", activeCard);
   const [page, setPage] = React.useState(0);
@@ -173,6 +176,9 @@ const TableComponent = ({
                               </button>
                               {delete1 == true && (
                                 <button
+                                  onClick={() => {
+                                    setOpen(true);
+                                  }}
                                   className="btn btn-solid btn-solid-danger table-btn"
                                   style={{ marginLeft: "10px" }}
                                 >

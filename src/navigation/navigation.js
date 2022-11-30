@@ -85,6 +85,13 @@ const AdminProductOrderDetails = React.lazy(() =>
 const NotificationSettings = React.lazy(() =>
   import("../pages/dashboard/admin/NotificationSettings")
 );
+const VendorAgricultuiralServices = React.lazy(() =>
+  import("../pages/dashboard/admin/VendorAgriculturalServices")
+);
+const UserDetails = React.lazy(() =>
+  import("../pages/dashboard/admin/userDetails")
+);
+
 const AllUsers = React.lazy(() => import("../pages/dashboard/admin/AllUsers"));
 const Home = React.lazy(() => import("../pages/screens/home"));
 export default function Navigation() {
@@ -362,11 +369,31 @@ export default function Navigation() {
         }
       />
       <Route
+        path="/all-user-UserDetails"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <UserDetails />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
         path="/vendor-products"
         element={
           <Suspense fallback={<FullScreenLoader />}>
             <VendorSideBar>
               <VendorProducts />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/vendor-agricultural-services"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <VendorAgricultuiralServices />
             </VendorSideBar>
           </Suspense>
         }

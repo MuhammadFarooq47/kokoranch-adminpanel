@@ -223,12 +223,15 @@ export default function VendorSideBar({ children }) {
                   </NavLink>
                 </h4>
                 <h4 className="fs-5">
-                  {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-                  <div className="vendor-inbox-link">
-                    <Agriculture fill="white" width={15} />
-                    &nbsp; Vendor Agricultural Service
-                  </div>
-                  {/* </NavLink> */}
+                  <NavLink
+                    to="/vendor-agricultural-services"
+                    className="vendor-link"
+                  >
+                    <div className="vendor-inbox-link">
+                      <Agriculture fill="white" width={15} />
+                      &nbsp; Vendor Agricultural Service
+                    </div>
+                  </NavLink>
                 </h4>
                 <h4 className="fs-5">
                   {/* <NavLink to="/vendor-profile" className="vendor-link"> */}

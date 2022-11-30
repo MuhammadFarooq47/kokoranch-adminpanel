@@ -288,9 +288,7 @@ function AllUsers({ setSidebar, sidebar }) {
                 >
                   Active Users (135)
                 </p>
-                <div>
-                  <div className="vr "></div>
-                </div>
+                <div></div>
               </div>
             </div>
 
@@ -372,7 +370,7 @@ function AllUsers({ setSidebar, sidebar }) {
                 activeCard={"total"}
                 open={deletePopup}
                 setOpen={setDeletePopup}
-                onClick={() => navigate("/product-details?admin")}
+                onClick={() => navigate("/all-user-UserDetails")}
               />
             </div>
           </div>
