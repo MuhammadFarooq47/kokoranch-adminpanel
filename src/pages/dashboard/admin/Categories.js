@@ -47,7 +47,7 @@ const Categories = ({setSidebar,sidebar}) => {
                 style={{backgroundColor:'#14A384',width:'100%'}}
                 onClick={() => {
                 //   setDeleteSuccessfulPopup(false);
-                //   navigate(-1);
+                  navigate('/add-category');
                 }}
                 >
                 Add New Category

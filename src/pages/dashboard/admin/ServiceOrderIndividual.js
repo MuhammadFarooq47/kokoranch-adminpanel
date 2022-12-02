@@ -126,7 +126,7 @@ const ServiceOrderIndividual = ({ setSidebar, sidebar }) => {
         title="Service Order Details"
       />
 
-      <div className="bg-black-pad my-5 ">
+      <div className="bg-black-pad my-5" style={{height:'80vh'}}>
         <div className="soi-top ">
           <div className="row">
             <div className="col-4 soi-orderNo">
@@ -153,7 +153,7 @@ const ServiceOrderIndividual = ({ setSidebar, sidebar }) => {
             </div>
           </div>
         </div>
-        <div className="soi-main">
+        <div className="soi-main" style={{height:'90%'}}>
           <div className="soi-main-sd">
             <p>Service Date: 02-22-2022</p>
           </div>
