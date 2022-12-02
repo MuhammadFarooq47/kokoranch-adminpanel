@@ -14,8 +14,10 @@ import Table from "./Components/Table";
 import FormControlAuth from "./Components/formControl";
 import TableComponent from "./Components/Table";
 import SearchBar from "./Components/SearchBar";
+import { useNavigate } from "react-router-dom";
 
 function VendorServiceOrders({ setSidebar, sidebar }) {
+  const navigate = useNavigate();
   const [tableHeadData, seTableHeadData] = useState([
     { id: "orderNo", label: "Order No" },
     { id: "userId", label: "User Id" },
@@ -148,6 +150,7 @@ function VendorServiceOrders({ setSidebar, sidebar }) {
                   tHeadData={tableHeadData}
                   tRowData={tableRowData}
                   activeCard={"total"}
+                  onClick={() => navigate("/vendor-serviceorder-details")}
                 />
               </div>
             </div>

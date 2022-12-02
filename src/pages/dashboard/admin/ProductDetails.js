@@ -9,9 +9,13 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
   const navigate = useNavigate();
   const location = useLocation();
   // console.log('query>>>>>>>>',req.query);
-  console.log('query>>>>>>>>',location.search);
-  const arr= location.search.split('?');
-  const admin= arr[1] == 'admin'? true:false;
+  console.log("query>>>>>>>>", location.search);
+  const arr = location.search.split("?");
+  const admin = arr[1] == "admin" ? true : false;
+  const checkUser = arr[1] == "user" ? true : false;
+  const vendorProduct = arr[1] == "vendorProduct" ? true : false;
+  const vendorService = arr[1] == "vendorService" ? true : false;
+
   const [popupOpen, setPopupOpen] = useState(false);
   const [deletePopup, setDeletePopup] = useState(false);
   const [successfulPopup, setSuccessfulPopup] = useState(false);
@@ -94,7 +98,7 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
             <h3>
               Are You Sure You Want To
               <br />
-              Delete This Product?
+              Delete This {vendorService ? "Service" : "Product"}?
             </h3>
           </div>
           <div className="soi-popup-btns d-flex">
@@ -146,7 +150,7 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
           </div>
 
           <h3>
-            Product Deleted <br />
+            Deleted <br />
             Successfully
           </h3>
 
@@ -164,23 +168,50 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
       <NavBar
         setSidebar={setSidebar}
         sidebar={sidebar}
-        title={admin ? "Admin Product Details": "Product Details"}
+        title={
+          admin
+            ? "Admin Product Details"
+            : checkUser
+            ? "User Product Details"
+            : vendorProduct
+            ? "Vendor Product Details"
+            : vendorService
+            ? "Vendor Agricultural Service Details"
+            : "Product Details"
+        }
       />
-  
+
       <div className="row">
-        {!admin && (<div className="col-12 col-sm-12 col-md-12 col-lg-6" style={{display:'flex',flexDirection:'column',gap:'10px',padding:'10px 0px 0px 20px',justifyContent:'space-between'}}  >
-            <div style={{display:'flex',alignItems:'center',gap:'10px'}}>
-              <h4 style={{fontWeight:'bold'}}>Product Owner:</h4>
-              <h4 style={{color:'#14A384',fontWeight:'bold'}}>Sara Miller</h4>
+        {!admin && !checkUser && (
+          <div
+            className="col-12 col-sm-12 col-md-12 col-lg-6"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "10px",
+              padding: "10px 0px 0px 20px",
+              justifyContent: "space-between",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <h4 style={{ fontWeight: "bold" }}>
+                {vendorProduct
+                  ? "Product Owner"
+                  : vendorService && "Service Provider"}
+              </h4>
+              <h4 style={{ color: "#14A384", fontWeight: "bold" }}>
+                Sara Miller
+              </h4>
             </div>
-            <div style={{display:'flex',alignItems:'center',gap:'10px'}}>
-              <h4 style={{fontWeight:'bold'}}>Owner UserId:</h4>
-              <h4 style={{color:'#14A384',fontWeight:'bold'}}>1234</h4>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <h4 style={{ fontWeight: "bold" }}>Owner UserId:</h4>
+              <h4 style={{ color: "#14A384", fontWeight: "bold" }}>1234</h4>
             </div>
-          
-        </div>)}
+          </div>
+        )}
         <div className="col-12 col-sm-12 col-md-12 col-lg-12  d-flex justify-content-end align-items-center">
-        {!admin && ( <button
+          {!admin && !checkUser && (
+            <button
               onClick={() => {
                 setPopupOpen(true);
               }}
@@ -188,7 +219,8 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
               style={{ width: "fit-content" }}
             >
               View Product Page
-          </button>)}
+            </button>
+          )}
           <h3
             className="mx-3"
             style={{ cursor: "pointer" }}
@@ -200,23 +232,46 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
           </h3>
         </div>
       </div>
-      <div className="bg-black-pad my-5 " style={{ height:admin?"75vh":"65vh" }}>
-        <div className="soi-top ">
+      <div
+        className="bg-black-pad my-5 "
+        style={{ height: admin ? "75vh" : "69vh" }}
+      >
+        <div className="soi-top">
           <div className="row">
-            <div className="col-4 col-sm-12 col-md-4 col-lg-4 soi-orderNo">
-              <h2>Product Code. 21385</h2>
+            <div className="col-6 col-sm-12 col-md-6 col-lg-6 soi-orderNo">
+              {checkUser ? (
+                <div className="d-flex align-items-end">
+                  <h2 style={{ marginRight: "10px" }}>
+                    Sara Miller's Product:
+                  </h2>
+                  <p className="color-primary-dark">Product Code. 21385</p>
+                </div>
+              ) : (
+                <>
+                  <h2 style={{ color: vendorService ? "#14A384" : "white" }}>
+                    {vendorProduct ? "Product" : "Service"} Code. 21385
+                  </h2>
+                  {(vendorProduct || vendorService) && (
+                    <h4 style={{ marginTop: "10px" }}>
+                      Featured: <span style={{ color: "#14A384" }}>Yes</span>
+                    </h4>
+                  )}
+                </>
+              )}
             </div>
-            <div className="col-2 col-sm-12 col-md-2 col-lg-2 soi-orderNo"></div>
+            {/* <div className="col-2 col-sm-12 col-md-6 col-lg-2 soi-orderNo"></div> */}
             <div className="col-6 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-end align-items-center">
-              {admin && (<button
-                onClick={() => {
-                  navigate("/product-details/edit");
-                }}
-                className="btn btn-solid btn-solid-primary soi-btn mx-2"
-                style={{ width: "fit-content" }}
-              >
-                Edit
-              </button>)}
+              {(admin || checkUser) && (
+                <button
+                  onClick={() => {
+                    navigate("/product-details/edit");
+                  }}
+                  className="btn btn-solid btn-solid-primary soi-btn mx-2"
+                  style={{ width: "fit-content" }}
+                >
+                  Edit
+                </button>
+              )}
               <button
                 className="btn btn-solid btn-solid-danger soi-btn mx-3"
                 onClick={() => setDeletePopup(true)}
@@ -224,28 +279,31 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
               >
                 Delete
               </button>
-             {admin && ( <button
-                className="btn btn-solid btn-solid-process soi-btn "
-                onClick={() => navigate("/make-it-featured")}
-                style={{ width: "fit-content" }}
-              >
-                Make it Featured
-              </button>)}
+              {(admin || checkUser) && (
+                <button
+                  className="btn btn-solid btn-solid-process soi-btn "
+                  onClick={() => navigate("/make-it-featured")}
+                  style={{ width: "fit-content" }}
+                >
+                  Make it Featured
+                </button>
+              )}
             </div>
           </div>
         </div>
-        <div className="soi-main">
-          <div className="d-flex justify-content-between align-items-center">
-            <div >
-              <h5
-                style={{
-                  letterSpacing: "1px",
-                  textAlign: "end",
-                }}
-              >
-                Status:<span style={{color:'#14A384',marginLeft:'10px'}}>Active</span>
-              </h5>
-            </div>
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <h5
+              style={{
+                letterSpacing: "1px",
+                textAlign: "end",
+              }}
+            >
+              Status:
+              <span style={{ color: "#14A384" }}>Active</span>
+            </h5>
+          </div>
+          {!vendorProduct && !vendorService && (
             <button
               onClick={() => {
                 setPopupOpen(true);
@@ -255,14 +313,18 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
             >
               Update Status
             </button>
-          </div>
-          <hr className="hr-rule" />
+          )}
+        </div>
+        <div className="soi-main">
+          {/* <hr className="hr-rule" /> */}
           <div className="row ">
             <div className="col-4 ">
-              <h3 className="mb-4">Product Name:</h3>
+              <h3 className="mb-4">
+                {vendorService ? "Service" : "Product"} Name:
+              </h3>
             </div>
             <div className="col-8 d-flex justify-content-end">
-              <h5 className="mb-4 ">Product Name</h5>
+              <h5 className="mb-4 ">{vendorService ? "Service" : "Product"}</h5>
             </div>
             <hr className="hr-rule" />
             <div className="col-4 ">
@@ -279,13 +341,17 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
               <h5 className="mb-4 ">flowering plant</h5>
             </div>
             <hr className="hr-rule" />
-            <div className="col-4 ">
-              <h3 className="mb-4">Sub Sub Category:</h3>
-            </div>
-            <div className="col-8 d-flex justify-content-end">
-              <h5 className="mb-4 ">hoya</h5>
-            </div>
-            <hr className="hr-rule" />
+            {!vendorService && (
+              <>
+                <div className="col-4 ">
+                  <h3 className="mb-4">Sub Sub Category:</h3>
+                </div>
+                <div className="col-8 d-flex justify-content-end">
+                  <h5 className="mb-4 ">hoya</h5>
+                </div>
+                <hr className="hr-rule" />
+              </>
+            )}
             <div className="col-4 ">
               <h3 className="mb-4">Price:</h3>
             </div>
@@ -294,7 +360,9 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
             </div>
             <hr className="hr-rule" />
             <div className="col-2 ">
-              <h3 className="mb-4">Description 1:</h3>
+              <h3 className="mb-4">
+                {vendorService ? "Pricing Details:" : "Description 1:"}:
+              </h3>
             </div>
             <div className="col-10 d-flex justify-content-end">
               <p className="mb-4 ">
@@ -314,7 +382,9 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
             </div>
             <hr className="hr-rule" />
             <div className="col-2 ">
-              <h3 className="mb-4">Description 2:</h3>
+              <h3 className="mb-4">
+                {vendorService ? "Service Description:" : "Description 2:"}
+              </h3>
             </div>
             <div className="col-10 d-flex justify-content-end">
               <p className="mb-4 ">
@@ -334,7 +404,9 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
             </div>
             <hr className="hr-rule" />
             <div className="col-2 ">
-              <h3 className="mb-4">Description 3:</h3>
+              <h3 className="mb-4">
+                {vendorService ? "Service Area:" : "Description 3:"}
+              </h3>
             </div>
             <div className="col-10 d-flex justify-content-end">
               <p className="mb-4 ">
@@ -353,57 +425,70 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
               </p>
             </div>
             <hr className="hr-rule" />
-            <div className="col-4 ">
-              <h3 className="mb-4">In Stock:</h3>
-            </div>
-            <div className="col-8 d-flex justify-content-end">
-              <h5 className="mb-4 active-color" style={{color:'blueviolet'}}>500</h5>
-            </div>
-            <hr className="hr-rule" />
+            {!vendorService && (
+              <>
+                <div className="col-4 ">
+                  <h3 className="mb-4">In Stock:</h3>
+                </div>
+                <div className="col-8 d-flex justify-content-end">
+                  <h5
+                    className="mb-4 active-color"
+                    style={{ color: "blueviolet" }}
+                  >
+                    500
+                  </h5>
+                </div>
+                <hr className="hr-rule" />
+              </>
+            )}
             <div className="col-4">
               <h3 className="mb-4">Uploaded Picture:</h3>
             </div>
             <div className="col-8 d-flex justify-content-end">
-            <img style={{height:'80px',width:'80px'}} src={Category1}/>
-              <img style={{height:'80px',width:'80px'}} src={Category1}/>
-              <img style={{height:'80px',width:'80px'}} src={Category1}/>
+              <img style={{ height: "80px", width: "80px" }} src={Category1} />
+              <img style={{ height: "80px", width: "80px" }} src={Category1} />
+              <img style={{ height: "80px", width: "80px" }} src={Category1} />
             </div>
-            <hr className="hr-rule" />
-            <div className="col-4 ">
-              <h3 className="mb-4">New Location:</h3>
-            </div>
-            <div className="col-8 d-flex justify-content-end">
-              <h5 className="mb-4 ">Wisconsin</h5>
-            </div>
-            <hr className="hr-rule" />
+            {!vendorService && (
+              <>
+                <hr className="hr-rule" />
+                <div className="col-4 ">
+                  <h3 className="mb-4">New Location:</h3>
+                </div>
+                <div className="col-8 d-flex justify-content-end">
+                  <h5 className="mb-4 ">Wisconsin</h5>
+                </div>
+                <hr className="hr-rule" />
 
-            <div className="col-4 ">
-              <h3 className="mb-4">Shipping To:</h3>
-            </div>
-            <div className="col-8 d-flex justify-content-end">
-              <h5 className="mb-4 ">Globally</h5>
-            </div>
-            <hr className="hr-rule" />
-            <div className="col-4 ">
-              <h3 className="mb-4">Delivery:</h3>
-            </div>
-            <div className="col-8 d-flex justify-content-end">
-              <h5 className="mb-4 ">locally 123 sdjkhfkjh</h5>
-            </div>
-            <hr className="hr-rule" />
-            <div className="col-4 ">
-              <h3 className="mb-4">Return :</h3>
-            </div>
-            <div className="col-8 d-flex justify-content-end">
-              <h5 className="mb-4 ">30 days return poslicy</h5>
-            </div>
-            <hr className="hr-rule" />
-            <div className="col-4 ">
-              <h3 className="mb-4">Shipping And Handling:</h3>
-            </div>
-            <div className="col-8 d-flex justify-content-end">
-              <h5 className="mb-4 ">Free shipping</h5>
-            </div>
+                <div className="col-4 ">
+                  <h3 className="mb-4">Shipping To:</h3>
+                </div>
+                <div className="col-8 d-flex justify-content-end">
+                  <h5 className="mb-4 ">Globally</h5>
+                </div>
+                <hr className="hr-rule" />
+                <div className="col-4 ">
+                  <h3 className="mb-4">Delivery:</h3>
+                </div>
+                <div className="col-8 d-flex justify-content-end">
+                  <h5 className="mb-4 ">locally 123 sdjkhfkjh</h5>
+                </div>
+                <hr className="hr-rule" />
+                <div className="col-4 ">
+                  <h3 className="mb-4">Return :</h3>
+                </div>
+                <div className="col-8 d-flex justify-content-end">
+                  <h5 className="mb-4 ">30 days return poslicy</h5>
+                </div>
+                <hr className="hr-rule" />
+                <div className="col-4 ">
+                  <h3 className="mb-4">Shipping And Handling:</h3>
+                </div>
+                <div className="col-8 d-flex justify-content-end">
+                  <h5 className="mb-4 ">Free shipping</h5>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

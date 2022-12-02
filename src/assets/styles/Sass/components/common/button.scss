@@ -84,20 +84,19 @@
 }
 .btn-solid-blue,
 .btn-solid-blue-rounded {
-  border: 0.05rem solid blue;
+  border: 0.05rem solid #1878E4;
   &-rounded {
     border-radius: 40rem !important;
   }
 }
-.btn-solid-blue::before,
-.btn-solid-blue-rounded::before {
-  background-color: blue;
+.btn-solid-process,
+.btn-solid-process-rounded {
+  border: 0.05rem solid $color-process;
+  &-rounded {
+    border-radius: 40rem !important;
+  }
 }
 
-.btn-solid-warning::before,
-.btn-solid-warning-rounded::before {
-  background-color: $color-warning;
-}
 
 .btn-solid-warning,
 .btn-solid-warning-rounded {
@@ -105,11 +104,6 @@
   &-rounded {
     border-radius: 40rem !important;
   }
-}
-
-.btn-solid-danger::before,
-.btn-solid-danger-rounded::before {
-  background-color: $color-danger;
 }
 
 .btn-solid-danger,
@@ -120,22 +114,26 @@
   }
 }
 
+.btn-solid-primary::before,
+.btn-solid-primary-rounded::before {
+  background-color: $color-primary;
+}
+.btn-solid-blue::before,
+.btn-solid-blue-rounded::before {
+  background-color: #1878E4;
+}
 .btn-solid-process::before,
 .btn-solid-process-rounded::before {
   background-color: $color-process;
 }
 
-.btn-solid-process,
-.btn-solid-process-rounded {
-  border: 0.05rem solid $color-process;
-  &-rounded {
-    border-radius: 40rem !important;
-  }
+.btn-solid-warning::before,
+.btn-solid-warning-rounded::before {
+  background-color: $color-warning;
 }
-
-.btn-solid-primary::before,
-.btn-solid-primary-rounded::before {
-  background-color: $color-primary;
+.btn-solid-danger::before,
+.btn-solid-danger-rounded::before {
+  background-color: $color-danger;
 }
 
 .btn-solid-dark {
@@ -181,9 +179,11 @@
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
+
 .btn-solid-primary:hover,
-.btn-solid-blue:hover,
 .btn-solid-primary-rounded:hover,
+.btn-solid-blue:hover,
+.btn-solid-blue-rounded:hover,
 .btn-solid-warning:hover,
 .btn-solid-warning-rounded:hover,
 .btn-solid-secondary:hover,
@@ -206,10 +206,21 @@
 }
 .btn-solid-blue:hover,
 .btn-solid-blue-rounded:hover {
-  color: blue;
+  color: #1878E4;
 }
+.btn-solid-process:hover,
+.btn-solid-process-rounded:hover {
+  color: $color-process;
+}
+.btn-solid-danger:hover,
+.btn-solid-danger-rounded:hover {
+  color: $color-danger;
+}
+
 .btn-solid-primary:hover::before,
 .btn-solid-primary-rounded:hover::before,
+.btn-solid-blue:hover::before,
+.btn-solid-blue-rounded:hover::before,
 .btn-solid-warning:hover::before,
 .btn-solid-warning-rounded:hover::before,
 .btn-solid-secondary:hover::before,
@@ -232,6 +243,9 @@
   color: #efefef;
 }
 .btn-solid-primary-rounded::before,
+.btn-solid-blue-rounded::before,
+.btn-solid-process-rounded::before,
+.btn-solid-warning-rounded:hover::before,
 .btn-solid-light-rounded::before,
 .btn-solid-dark-rounded::before {
   border-radius: 40rem !important;
@@ -239,6 +253,16 @@
 /* btn outline start */
 .btn-outline-primary,
 .btn-outline-primary-rounded {
+  color: #fff;
+  background-color: unset;
+  border: none;
+  outline: none;
+  &-rounded {
+    border-radius: 40rem !important;
+  }
+}
+.btn-outline-blue,
+.btn-outline-blue-rounded {
   color: #fff;
   background-color: unset;
   border: none;
@@ -263,14 +287,37 @@
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
+.btn-outline-blue::before,
+.btn-outline-blue-rounded::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  color: #1878E4;
+  border: 0.1rem solid #1878E4;
+  border-radius: 3px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.btn-outline-blue-rounded::before ,
 .btn-outline-primary-rounded::before {
   border-radius: 4rem !important;
+}
+.btn-outline-blue:hover,
+.btn-outline-blue-rounded:hover {
+  color: #efefef;
+  background-color: #1878E4;
 }
 .btn-outline-primary:hover,
 .btn-outline-primary-rounded:hover {
   color: #efefef;
   background-color: $color-primary;
 }
+.btn-outline-blue:hover::before,
+.btn-outline-blue-rounded:hover::before,
 .btn-outline-primary:hover::before,
 .btn-outline-primary-rounded:hover::before {
   opacity: 0;
@@ -278,6 +325,8 @@
   transform: scale(0.5, 0.5);
 }
 
+.btn-outline-blue,
+.btn-outline-blue-rounded, 
 .btn-outline-primary,
 .btn-outline-primary-rounded {
   color: #fff;

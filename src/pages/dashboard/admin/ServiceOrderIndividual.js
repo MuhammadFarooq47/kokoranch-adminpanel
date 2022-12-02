@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import NavBar from "./NavBar";
 import Popup from "../../../components/popUp/popUp";
 import { TiTick } from "react-icons/ti";
-
+import { useNavigate } from "react-router-dom";
 const ServiceOrderIndividual = ({ setSidebar, sidebar }) => {
   const [popupOpen, setPopupOpen] = useState(false);
-  const [successfulPopup, setSuccessfulPopup] = useState(true);
+  const [successfulPopup, setSuccessfulPopup] = useState(false);
   const [orderStatus, setOrderStatus] = useState("completed");
+  const navigate = useNavigate();
   return (
     <div>
       <Popup open={popupOpen} setOpen={setPopupOpen}>
@@ -141,8 +142,13 @@ const ServiceOrderIndividual = ({ setSidebar, sidebar }) => {
               >
                 Update Status
               </button>
-              <h3 className="mx-3">
-                <span className="vtext-primary mx-2">&#10229;</span>Back
+              <h3
+                className="mx-3 cursor-pointer"
+                onClick={() => {
+                  navigate(-1);
+                }}
+              >
+                <span className="vtext-primary mx-2 ">&#10229;</span>Back
               </h3>
             </div>
           </div>

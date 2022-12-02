@@ -12,7 +12,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import FilterProp from "./Components/FilterProp";
 import { FiSearch } from "react-icons/fi";
 
-function VendorProducts({ setSidebar, sidebar }) {
+function VendorAgriculturalServices({ setSidebar, sidebar }) {
   const navigate = useNavigate();
   const [tableHeadData, seTableHeadData] = useState([
     { id: "code", label: "code" },
@@ -150,7 +150,7 @@ function VendorProducts({ setSidebar, sidebar }) {
             <h3>
               Are You Sure You Want To
               <br />
-              Delete This Product?
+              Delete This Service?
             </h3>
           </div>
           <div className="soi-popup-btns d-flex">
@@ -181,7 +181,7 @@ function VendorProducts({ setSidebar, sidebar }) {
           </div>
 
           <h3>
-            Product Deleted <br />
+            Deleted <br />
             Successfully
           </h3>
 
@@ -189,7 +189,7 @@ function VendorProducts({ setSidebar, sidebar }) {
             className="btn btn-solid btn-solid-primary soi-success-btn"
             onClick={() => {
               setDeleteSuccessfulPopup(false);
-              // navigate("/my-products");
+              navigate("/my-products");
             }}
           >
             Continue
@@ -199,7 +199,7 @@ function VendorProducts({ setSidebar, sidebar }) {
       <NavBar
         setSidebar={setSidebar}
         sidebar={sidebar}
-        title="Vendor Products"
+        title="Vendor Agricultural Services"
       />
 
       <article className="vendor-profile-main">
@@ -213,7 +213,7 @@ function VendorProducts({ setSidebar, sidebar }) {
                     type="text"
                     id="form1"
                     className="form-control"
-                    placeholder="Search by Product Name or Code"
+                    placeholder="Search by Service Name or Code"
                   />
                 </div>
                 <button type="button" className="search-btn  ">
@@ -249,7 +249,7 @@ function VendorProducts({ setSidebar, sidebar }) {
           </div>
 
           <label className="label-style">
-            NOTE: Only active products are listed below.
+            NOTE: Only active Agricultural Services are listed below.
           </label>
         </div>
         <div
@@ -265,81 +265,21 @@ function VendorProducts({ setSidebar, sidebar }) {
         >
           <div className=" col-md-12">
             <div style={{ marginTop: "20px", color: "white" }}>
-              <div className="row">
-                <div className="col-12 col-sm-3 col-md-3 col-lg-3"></div>
-                <div className="col-12 col-sm-5 col-md-5 col-lg-5">
-                  <div className="row">
-                    <div className="col-12 col-sm-4 col-md-4 col-lg-4">
-                      <div
-                        className={`d-flex justify-content-between ${
-                          options === "all"
-                            ? "filter-option-selector-wrapper-active"
-                            : "filter-option-selector-wrapper"
-                        }`}
-                      >
-                        <p
-                          style={{ margin: "0 auto" }}
-                          onClick={() => {
-                            setOptions("all");
-                          }}
-                        >
-                          All
-                        </p>
-                        <div>
-                          <div className="vr "></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-12 col-sm-4 col-md-4 col-lg-4">
-                      <div
-                        className={`d-flex justify-content-between ${
-                          options === "active"
-                            ? "filter-option-selector-wrapper-active"
-                            : "filter-option-selector-wrapper"
-                        }`}
-                      >
-                        <p
-                          onClick={() => {
-                            setOptions("active");
-                          }}
-                        >
-                          Active Products
-                        </p>
-                        <div style={{ margin: "0 auto" }}>
-                          <div className="vr "></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-12 col-sm-4 col-md-4 col-lg-4">
-                      <div
-                        className={`d-flex justify-content-between ${
-                          options === "inactive"
-                            ? "filter-option-selector-wrapper-active"
-                            : "filter-option-selector-wrapper"
-                        }`}
-                      >
-                        <p
-                          style={{ margin: "0 auto" }}
-                          onClick={() => {
-                            setOptions("inactive");
-                          }}
-                        >
-                          Inactive Products
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="col-12">
+                <h3 style={{ marginLeft: "20px" }}>
+                  Total Active Services in Selected Category : 2300
+                </h3>
               </div>
+
               <TableComponent
                 tHeadData={tableHeadData}
                 tRowData={rowData}
-                edit={"products"}
+                delete1
+                edit={"agriculturalServices"}
                 activeCard={"total"}
                 open={deletePopup}
-                delete1
                 setOpen={setDeletePopup}
-                onClick={() => navigate("/product-details?vendorProduct")}
+                onClick={() => navigate("/product-details?vendorService")}
               />
             </div>
           </div>
@@ -356,4 +296,4 @@ function VendorProducts({ setSidebar, sidebar }) {
   );
 }
 
-export default VendorProducts;
+export default VendorAgriculturalServices;

@@ -20,6 +20,11 @@ export default function NavBar({ setSidebar, sidebar, title }) {
         </div>
         <h2>{title}</h2>
       </div>
+      <div className="trader-profile-navbar_left">
+        <p style={{ marginRight: "5px" }}>Active Banner</p>
+        <div className="vr" style={{ marginRight: "5px" }}></div>
+        <p>InActive Banner</p>
+      </div>
       <div className="trader-profile-navbar_right">
         <div className="trader-profile-navbar_right_notification-wrapper">
           <FaBell className="trader-profile-navbar_right_notification-wrapper_icon" />
