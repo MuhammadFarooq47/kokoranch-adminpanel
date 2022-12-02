@@ -16,6 +16,9 @@ import VendorSideBar from "../pages/dashboard/admin/SideBar";
 import ServiceOrderIndividual from "../pages/dashboard/admin/ServiceOrderIndividual";
 import SplashScreen from "../pages/dashboard/admin/pages/SplashScreen/SplashScreen";
 import AllNotifications from "../pages/dashboard/admin/AllNotifications";
+import MerijuanaAds from "../pages/dashboard/admin/MerijuanaAds";
+import Categories from "../pages/dashboard/admin/Categories";
+import CategoryDetails from "../pages/dashboard/admin/CategoryDetails";
 // SCREENS
 const VendorRegister = React.lazy(() => import("../pages/auth/vendorRegister"));
 const OtpScreen = React.lazy(() =>
@@ -287,6 +290,36 @@ export default function Navigation() {
           <Suspense fallback={<FullScreenLoader />}>
             <VendorSideBar>
               <Rating />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/ads"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <MerijuanaAds />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/categories"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <Categories />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+       <Route
+        path="/category-details"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <CategoryDetails />
             </VendorSideBar>
           </Suspense>
         }

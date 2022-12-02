@@ -309,11 +309,12 @@ export default function VendorSideBar({ children }) {
             </div>
             {state.specialServices == true && (
               <h4 className="fs-5">
-                {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+                <NavLink to="/ads" className="vendor-link">
                 <div className="vendor-inbox-link">
                   <AdsIcon fill="white" width={15} />
                   &nbsp; Medical Merijuana Ads
                 </div>
+                </NavLink>
               </h4>
             )}
             {/* fifth Heading */}
@@ -340,11 +341,12 @@ export default function VendorSideBar({ children }) {
             {state.WebAndApp == true && (
               <>
                 <h4 className="fs-5">
-                  {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
+                  <NavLink to="/categories" className="vendor-link">
                   <div className="vendor-inbox-link">
                     <Categories fill="white" width={15} />
                     &nbsp; Categories
                   </div>
+                  </NavLink>
                 </h4>
                 <h4 className="fs-5">
                   {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
