@@ -53,6 +53,12 @@ const VendorServices = React.lazy(() =>
 const VendorServiceOrders = React.lazy(() =>
   import("../pages/dashboard/admin/ServiceOrders")
 );
+const VendorServiceOrderDetails = React.lazy(() =>
+  import("../pages/dashboard/admin/ServiceOrderIndividual")
+);
+const MedicalMerijuana = React.lazy(() =>
+  import("../pages/dashboard/admin/MedicalMerijouana")
+);
 const Messages = React.lazy(() =>
   import("../pages/dashboard/admin/inbox/index")
 );
@@ -91,6 +97,13 @@ const VendorAgricultuiralServices = React.lazy(() =>
 const UserDetails = React.lazy(() =>
   import("../pages/dashboard/admin/userDetails")
 );
+const UserTrades = React.lazy(() =>
+  import("../pages/dashboard/admin/userTrades")
+);
+const TradeRequest = React.lazy(() =>
+  import("../pages/dashboard/admin/tradeRequest")
+);
+const Banners = React.lazy(() => import("../pages/dashboard/admin/banners"));
 
 const AllUsers = React.lazy(() => import("../pages/dashboard/admin/AllUsers"));
 const Home = React.lazy(() => import("../pages/screens/home"));
@@ -309,7 +322,7 @@ export default function Navigation() {
         }
       />
       <Route
-        path="/vendor-productorders"
+        path="/admin-productorders"
         element={
           <Suspense fallback={<FullScreenLoader />}>
             <VendorSideBar>
@@ -324,6 +337,16 @@ export default function Navigation() {
           <Suspense fallback={<FullScreenLoader />}>
             <VendorSideBar>
               <VendorServiceOrders />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/vendor-serviceorder-details"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <VendorServiceOrderDetails />
             </VendorSideBar>
           </Suspense>
         }
@@ -394,6 +417,56 @@ export default function Navigation() {
           <Suspense fallback={<FullScreenLoader />}>
             <VendorSideBar>
               <VendorAgricultuiralServices />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/user-trades"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <UserTrades />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/trade-request"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <TradeRequest />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/vendor-productorders"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <VendorProductOrders />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/MedicalMerijuana"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <MedicalMerijuana />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/banners/:name"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <Banners />
             </VendorSideBar>
           </Suspense>
         }

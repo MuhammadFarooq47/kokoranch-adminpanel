@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaSearch, FaAngleDown, FaFilter } from "react-icons/fa";
+import { FaSearch, FaAngleDown, FaFilter, FaExclamation } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
@@ -7,6 +7,8 @@ import moment from "moment";
 import { GET_All_SELLER_TRADES } from "../../../../redux/actions/trades";
 import TradeRequestItem from "./TradeRequestItem";
 import TableComponent from "../Components/Table";
+import Popup from "../../../../components/popUp/popUp";
+import { TiTick } from "react-icons/ti";
 
 export default function TradeList({ setView, view }) {
   const dispatch = useDispatch();
@@ -68,6 +70,8 @@ export default function TradeList({ setView, view }) {
   ];
   const [sortType, setsortType] = useState("Ascending");
   const [search, setSearch] = useState("");
+  const [deletePopup, setDeletePopup] = useState(false);
+  const [deleteSuccessfulPopup, setDeleteSuccessfulPopup] = useState(false);
   const [dateSelectedFilter, setdateSelectedFilter] = useState({
     fromDate: "",
     toDate: "",
@@ -133,8 +137,64 @@ export default function TradeList({ setView, view }) {
 
   return (
     <>
-      <article className="trader-trade-requests-main">
+      <Popup open={deletePopup} setOpen={setDeletePopup}>
+        <div className="soi-update-status">
+          <div className="successful-popup">
+            <div className="sp-icon">
+              <FaExclamation size={30} fill="black" />
+            </div>
+            <h3>
+              Are You Sure You
+              <br />
+              Want To Delete Trade?
+            </h3>
+          </div>
+          <div className="soi-popup-btns d-flex">
+            <button
+              className="btn btn-solid btn-solid-cancel btn-outline-primary soi-popup-btn"
+              onClick={() => {
+                setDeletePopup(false);
+              }}
+            >
+              Cancel
+            </button>
+            <button
+              className="btn btn-solid btn-solid-primary  soi-popup-btn"
+              onClick={() => {
+                setDeletePopup(false);
+                setDeleteSuccessfulPopup(true);
+              }}
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+      </Popup>
+      <Popup open={deleteSuccessfulPopup} setOpen={setDeleteSuccessfulPopup}>
+        <div className="successful-popup">
+          <div className="sp-icon">
+            <TiTick size={30} fill="black" />
+          </div>
+
+          <h3>
+            Deleted <br />
+            Successfully
+          </h3>
+
+          <button
+            className="btn btn-solid btn-solid-primary soi-success-btn"
+            onClick={() => {
+              setDeleteSuccessfulPopup(false);
+              // navigate("/my-products");
+            }}
+          >
+            Continue
+          </button>
+        </div>
+      </Popup>
+      <article className="trader-trades-main">
         <header>
+          <h3>All User Trades: 3500</h3>
           <div className="right">
             <div className="right_inner-left">
               <div className="table-search-wrappper">
@@ -251,7 +311,9 @@ export default function TradeList({ setView, view }) {
           edit={"tradeDetail"}
           tHeadData={tableHeadData}
           tRowData={rowData}
-          setView={setView}
+          // setView={setView}
+          delete1
+          setOpen={setDeletePopup}
           onClick={() => {
             setView("User Trade Details");
           }}

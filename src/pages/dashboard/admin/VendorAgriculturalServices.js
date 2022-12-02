@@ -150,7 +150,7 @@ function VendorAgriculturalServices({ setSidebar, sidebar }) {
             <h3>
               Are You Sure You Want To
               <br />
-              Delete This Product?
+              Delete This Service?
             </h3>
           </div>
           <div className="soi-popup-btns d-flex">
@@ -181,7 +181,7 @@ function VendorAgriculturalServices({ setSidebar, sidebar }) {
           </div>
 
           <h3>
-            Product Deleted <br />
+            Deleted <br />
             Successfully
           </h3>
 
@@ -279,7 +279,7 @@ function VendorAgriculturalServices({ setSidebar, sidebar }) {
                 activeCard={"total"}
                 open={deletePopup}
                 setOpen={setDeletePopup}
-                onClick={() => navigate("/product-details?admin")}
+                onClick={() => navigate("/product-details?vendorService")}
               />
             </div>
           </div>

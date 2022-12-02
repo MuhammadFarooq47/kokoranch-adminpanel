@@ -131,7 +131,7 @@ export default function VendorSideBar({ children }) {
               </NavLink>
             </h4>
             <h4 className="fs-5">
-              <NavLink to="/vendor-productorders" className="vendor-link">
+              <NavLink to="/admin-productorders" className="vendor-link">
                 <div className="vendor-inbox-link">
                   <FeatherList fill="white" width={15} />
                   &nbsp; Admin Product Orders
@@ -234,12 +234,12 @@ export default function VendorSideBar({ children }) {
                   </NavLink>
                 </h4>
                 <h4 className="fs-5">
-                  {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-                  <div className="vendor-inbox-link">
-                    <UserTrades fill="white" width={15} />
-                    &nbsp; User Trades
-                  </div>
-                  {/* </NavLink */}
+                  <NavLink to="/user-trades" className="vendor-link">
+                    <div className="vendor-inbox-link">
+                      <UserTrades fill="white" width={15} />
+                      &nbsp; User Trades
+                    </div>
+                  </NavLink>
                 </h4>
               </>
             )}
@@ -266,25 +266,28 @@ export default function VendorSideBar({ children }) {
             {state.userOrders == true && (
               <>
                 <h4 className="fs-5">
-                  {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-                  <div className="vendor-inbox-link">
-                    <FeatherList fill="white" width={15} />
-                    &nbsp; Vendor Product Orders
-                  </div>
+                  <NavLink to="/vendor-productorders" className="vendor-link">
+                    <div className="vendor-inbox-link">
+                      <FeatherList fill="white" width={15} />
+                      &nbsp; Vendor Product Orders
+                    </div>
+                  </NavLink>
                 </h4>
                 <h4 className="fs-5">
-                  {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-                  <div className="vendor-inbox-link">
-                    <FeatherList fill="white" width={15} />
-                    &nbsp; Agricultural Services Orders
-                  </div>
+                  <NavLink to="/vendor-serviceorders" className="vendor-link">
+                    <div className="vendor-inbox-link">
+                      <FeatherList fill="white" width={15} />
+                      &nbsp; Agricultural Services Orders
+                    </div>
+                  </NavLink>
                 </h4>
                 <h4 className="fs-5">
-                  {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-                  <div className="vendor-inbox-link">
-                    <UserTrades fill="white" width={15} />
-                    &nbsp; Trade Requests
-                  </div>
+                  <NavLink to="/trade-request" className="vendor-link">
+                    <div className="vendor-inbox-link">
+                      <UserTrades fill="white" width={15} />
+                      &nbsp; Trade Requests
+                    </div>
+                  </NavLink>
                 </h4>
               </>
             )}
@@ -312,11 +315,12 @@ export default function VendorSideBar({ children }) {
             </div>
             {state.specialServices == true && (
               <h4 className="fs-5">
-                {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-                <div className="vendor-inbox-link">
-                  <AdsIcon fill="white" width={15} />
-                  &nbsp; Medical Merijuana Ads
-                </div>
+                <NavLink to="/MedicalMerijuana" className="vendor-link">
+                  <div className="vendor-inbox-link">
+                    <AdsIcon fill="white" width={15} />
+                    &nbsp; Medical Merijuana Ads
+                  </div>
+                </NavLink>
               </h4>
             )}
             {/* fifth Heading */}
@@ -350,18 +354,20 @@ export default function VendorSideBar({ children }) {
                   </div>
                 </h4>
                 <h4 className="fs-5">
-                  {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-                  <div className="vendor-inbox-link">
-                    <Agriculture fill="white" width={15} />
-                    &nbsp; Web Banners
-                  </div>
+                  <NavLink to="/banners/web" className="vendor-link">
+                    <div className="vendor-inbox-link">
+                      <Agriculture fill="white" width={15} />
+                      &nbsp; Web Banners
+                    </div>
+                  </NavLink>
                 </h4>
                 <h4 className="fs-5">
-                  {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-                  <div className="vendor-inbox-link">
-                    <Mobile fill="white" width={15} />
-                    &nbsp; App Banners
-                  </div>
+                  <NavLink to="/banners/app" className="vendor-link">
+                    <div className="vendor-inbox-link">
+                      <Mobile fill="white" width={15} />
+                      &nbsp; App Banners
+                    </div>
+                  </NavLink>
                 </h4>
                 <h4 className="fs-5">
                   {/* <NavLink to="/vendor-profile" className="vendor-link"> */}

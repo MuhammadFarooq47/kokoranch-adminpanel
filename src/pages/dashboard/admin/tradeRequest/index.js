@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import TradeList from "./tradeList";
+import TradeRequestList from "./tradeRequestList";
 
-import TradeDetails from "./tradeDetails";
 import NavBar from "../NavBar";
+import TradeRequest from "./tradeRequest";
 
 export default function Profile({ setSidebar, sidebar }) {
   const [view, setView] = useState(null);
@@ -18,18 +18,16 @@ export default function Profile({ setSidebar, sidebar }) {
       <NavBar
         setSidebar={setSidebar}
         sidebar={sidebar}
-        title={
-          view === "User Trade Details" ? "User Trade Details" : "User Trades"
-        }
+        title={"Trade Request"}
       />
-      {view === "User Trade Details" ? (
-        <TradeDetails
+      {view === "Trade Details" ? (
+        <TradeRequest
           setView={setView}
           setSingleTrade={setSingleTrade}
           singleTrade={singleTrade}
         />
       ) : (
-        <TradeList setView={setView} />
+        <TradeRequestList setView={setView} />
       )}
     </>
   );

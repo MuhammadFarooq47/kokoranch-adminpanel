@@ -21,7 +21,7 @@ const UserDetails = ({ setSidebar, sidebar }) => {
   const [deletePopup, setDeletePopup] = useState(false);
   const [successfulPopup, setSuccessfulPopup] = useState(false);
   const [deleteSuccessfulPopup, setDeleteSuccessfulPopup] = useState(false);
-  const [orderStatus, setOrderStatus] = useState("completed");
+  const [orderStatus, setOrderStatus] = useState("active");
   const [tableHeadData, seTableHeadData] = useState([
     { id: "userId", label: "User ID" },
     { id: "signUpDate", label: "Signup Date" },
@@ -101,24 +101,51 @@ const UserDetails = ({ setSidebar, sidebar }) => {
               </label>
             </div>
             <div className="soi-checkbox my-4">
-              {orderStatus === "inactive" ? (
+              {orderStatus === "blockUser" ? (
                 <input
                   type="radio"
-                  id="inactive"
+                  id="blockUser"
                   name="order-status"
                   checked
-                  onClick={() => setOrderStatus("inactive")}
+                  onClick={() => setOrderStatus("blockUser")}
                 />
               ) : (
                 <input
                   type="radio"
-                  id="inactive"
+                  id="blockUser"
                   name="order-status"
-                  onClick={() => setOrderStatus("inactive")}
+                  onClick={() => setOrderStatus("blockUser")}
                 />
               )}
-              <label for="inactive" onClick={() => setOrderStatus("inactive")}>
-                Inactive
+              <label
+                for="blockUser"
+                onClick={() => setOrderStatus("blockUser")}
+              >
+                Block User
+              </label>
+            </div>
+            <div className="soi-checkbox my-4">
+              {orderStatus === "disableUser" ? (
+                <input
+                  type="radio"
+                  id="disableUser"
+                  name="order-status"
+                  checked
+                  onClick={() => setOrderStatus("disableUser")}
+                />
+              ) : (
+                <input
+                  type="radio"
+                  id="disableUser"
+                  name="order-status"
+                  onClick={() => setOrderStatus("disableUser")}
+                />
+              )}
+              <label
+                for="disableUser"
+                onClick={() => setOrderStatus("disableUser")}
+              >
+                Disabled User
               </label>
             </div>
           </div>
@@ -133,7 +160,8 @@ const UserDetails = ({ setSidebar, sidebar }) => {
               className="btn btn-solid btn-solid-primary  soi-popup-btn"
               onClick={() => {
                 setPopupOpen(false);
-                setSuccessfulPopup(true);
+                setDeletePopup(true);
+                // setSuccessfulPopup(true);
               }}
             >
               Update
@@ -150,7 +178,7 @@ const UserDetails = ({ setSidebar, sidebar }) => {
             <h3>
               Are You Sure You Want To
               <br />
-              Delete This Product?
+              Update User Status?
             </h3>
           </div>
           <div className="soi-popup-btns d-flex">
@@ -166,7 +194,8 @@ const UserDetails = ({ setSidebar, sidebar }) => {
               className="btn btn-solid btn-solid-primary  soi-popup-btn"
               onClick={() => {
                 setDeletePopup(false);
-                setDeleteSuccessfulPopup(true);
+                // setDeleteSuccessfulPopup(true);
+                setSuccessfulPopup(true);
               }}
             >
               Confirm
@@ -181,7 +210,7 @@ const UserDetails = ({ setSidebar, sidebar }) => {
           </div>
 
           <h3>
-            Status Updated <br />
+            User Status Updated <br />
             Successfully
           </h3>
 
@@ -323,7 +352,7 @@ const UserDetails = ({ setSidebar, sidebar }) => {
                 <div className="col-6">
                   <button
                     onClick={() => {
-                      navigate("/product-details/edit");
+                      // navigate("/product-details/edit");
                     }}
                     className="btn btn-solid btn-outline-blue-rounded soi-btn mx-2"
                     style={{ width: "100%" }}
@@ -334,7 +363,7 @@ const UserDetails = ({ setSidebar, sidebar }) => {
                 <div className="col-6">
                   <button
                     onClick={() => {
-                      navigate("/product-details/edit");
+                      // navigate("/product-details/edit");
                     }}
                     className="btn btn-solid  btn-solid-blue-rounded soi-btn mx-2"
                     style={{ width: "100%" }}
@@ -345,7 +374,7 @@ const UserDetails = ({ setSidebar, sidebar }) => {
                 <div className="col-6">
                   <button
                     onClick={() => {
-                      navigate("/product-details/edit");
+                      // navigate("/product-details/edit");
                     }}
                     className="btn btn-solid btn-solid-process-rounded soi-btn mx-2"
                     style={{ width: "100%" }}
@@ -356,7 +385,8 @@ const UserDetails = ({ setSidebar, sidebar }) => {
                 <div className="col-6">
                   <button
                     onClick={() => {
-                      navigate("/product-details/edit");
+                      // navigate("/product-details/edit");
+                      setPopupOpen(true);
                     }}
                     className="btn btn-solid btn-solid-primary-rounded soi-btn mx-2"
                     style={{ width: "100%" }}
