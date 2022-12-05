@@ -12,6 +12,23 @@ function SplashScreen() {
     const [scale,setScale]=useState(false);
     const [openModal,setOpenModal]=useState(false);
     const navigate= useNavigate();
+    const [windowSize, setWindowSize] = useState(getWindowSize());
+    function getWindowSize() {
+      const {innerWidth, innerHeight} = window;
+      return {innerWidth, innerHeight};
+    }
+    useEffect(() => {
+      function handleWindowResize() {
+        console.log(windowSize.innerWidth)
+        setWindowSize(getWindowSize());
+      }
+  
+      window.addEventListener('resize', handleWindowResize);
+  
+      return () => {
+        window.removeEventListener('resize', handleWindowResize);
+      };
+    }, []);
     useEffect(()=>{
         setTimeout(()=>{
            setState(!state);
@@ -39,46 +56,49 @@ function SplashScreen() {
       // repeatDelay: 1
     }}
   >
-    <img src={splashLogo} style={{'height':'700px',"width":"700px"}} />
+    <img src={splashLogo} style={{'height':'100%',"width":"100%"}} />
     </motion.div>
     </div>
     <div style={{position:'absolute',zIndex:10}}>
-
-    <motion.div
-    // style={{x}}
-    animate={
-      !state?{
-        x:  0 ,
-        y: 0 ,
+      <motion.div
+      // style={{x}}
+      animate={
+        !state?{
+          x:  0 ,
+          y: 0 ,
+          // top:[-50,0],
+          // left:[-50,0],
+          scale:[0,0.7,0.4,0.6,0.4],
+          rotate: 0,
+        }
+        :
+        {
+        // x:  [0,-550],
+        // y:  [0,-280],
+        x:  [0,windowSize.innerWidth >1200 ?-550:windowSize.innerWidth >992 ? -400: windowSize.innerWidth >=768 ? -0:windowSize.innerWidth >600 ? -200:-0],
+        y:  [0,windowSize.innerWidth >1200 ?-260:windowSize.innerWidth >=1024 ?-220:windowSize.innerHeight >=1200 ?-480:windowSize.innerHeight >=1000 ?-400:windowSize.innerHeight >=915 ?-340:windowSize.innerHeight >=840 ?-300:windowSize.innerHeight >=800 ?-300:windowSize.innerHeight >=740 ?-300:windowSize.innerHeight >=600 ? -260:-220],
         // top:[-50,0],
         // left:[-50,0],
-        scale:[0,0.7,0.4,0.6,0.4],
+        scale:  [0,0.7,0.4,0.6,0.4] ,
+        // scale:  [0,0.7,0.7,0.6,0.7,0.4] ,
         rotate: 0,
       }
-      :
-      {
-      x:  [0,-550],
-      y:  [0,-280],
-      // top:[-50,0],
-      // left:[-50,0],
-      scale:  [0,0.7,0.4,0.6,0.4] ,
-      // scale:  [0,0.7,0.7,0.6,0.7,0.4] ,
-      rotate: 0,
     }
-  }
-    transition={
-      {
-      duration: 1,
-      delay:2,
-      ease: "easeInOut",
-      times: [0, 0.3, 0.5, 0.8, 1]
-      // repeat: Infinity,
-      // repeatDelay: 1
-    }
-  }>
-    <img src={logo}/>
-    </motion.div>
-      </div>
+      transition={
+        {
+        duration: 1,
+        delay:2,
+        ease: "easeInOut",
+        times: [0, 0.3, 0.5, 0.8, 1]
+        // repeat: Infinity,
+        // repeatDelay: 1
+      }
+    }>
+      <img src={logo}/>
+      </motion.div>
+    </div>
+
+
       {/* loginform */}
       <div style={{position: 'absolute',zIndex: 50}}>
       <motion.div
