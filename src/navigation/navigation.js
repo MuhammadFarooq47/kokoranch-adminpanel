@@ -19,6 +19,7 @@ import AllNotifications from "../pages/dashboard/admin/AllNotifications";
 import Categories from "../pages/dashboard/admin/Categories";
 import CategoryDetails from "../pages/dashboard/admin/CategoryDetails";
 import AddNewCategory from "../pages/dashboard/admin/AddNewCategory";
+import CategoryPositioning from "../pages/dashboard/admin/CategoryPositioning";
 // SCREENS
 const VendorRegister = React.lazy(() => import("../pages/auth/vendorRegister"));
 const OtpScreen = React.lazy(() =>
@@ -345,11 +346,21 @@ export default function Navigation() {
         }
       />
       <Route
-        path="/add-category"
+        path="/:route/category"
         element={
           <Suspense fallback={<FullScreenLoader />}>
             <VendorSideBar>
               <AddNewCategory />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/category-positioning"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <CategoryPositioning />
             </VendorSideBar>
           </Suspense>
         }

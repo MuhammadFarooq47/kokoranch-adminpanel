@@ -2,32 +2,84 @@ import { Grid } from '@mui/material'
 import React from 'react'
 import { useState } from 'react'
 import NavBar from './NavBar'
+import { useNavigate,useLocation } from 'react-router-dom'
 
 const AddNewCategory = ({setSidebar,sidebar}) => {
-    const [data,setData]=useState({
-        subCategory:[
-
-        ],
+    const navigate=useNavigate();
+    const location=useLocation();
+    const condition=location.pathname.split('/')[1];
+    const [data,setData]=useState(
+        condition == 'add'?{
+            label:'',
+            subCategory:[
+              
+            ],
+            
+    }:
+    {  label:'plants',
+      subCategory:[
+        {label:'flowers',
         subSubCategory:[
-
-        ]
-    });
-    console.log('result>>>>>>',data)
+          {label:'a'},
+          {label:'cc'},
+          {label:'dd'}
+          ]
+        },
+          {label:'b',subSubCategory:[
+            {label:'a'},
+            {label:'cc'},
+            {label:'dd'}
+            ]},
+          {label:'c',subSubCategory:[
+            {label:'a'},
+            {label:'cc'},
+            {label:'dd'}
+            ]},
+          {label:'d',subSubCategory:[
+            {label:'a'},
+            {label:'cc'},
+            {label:'dd'}
+            ]},
+           {label:'sunflowers',subSubCategory:[
+            {label:'a'},
+            {label:'cc'},
+            {label:'dd'}
+            ]},
+          {label:'abcd',subSubCategory:[
+            {label:'a'},
+            {label:'cc'},
+            {label:'dd'}
+            ]},
+          {label:'efgh',subSubCategory:[
+            {label:'a'},
+            {label:'cc'},
+            {label:'dd'}
+            ]},
+          {label:'ijklmnop',
+          subSubCategory:[
+            {label:'a'},
+            {label:'cc'},
+            {label:'dd'}
+            ]}
+          
+      
+      ]}
+    );
   return (
     <div>
-        <NavBar setSidebar={setSidebar} sidebar={sidebar} title="Settings" />
+        <NavBar setSidebar={setSidebar} sidebar={sidebar} title={condition == 'add'?'Add New Category':'Edit Category'} />
         <div className="bg-black-pad my-5 " style={{height:'80vh',padding:'30px'}} >
             <div className='soi-main' style={{height:'100%'}}>
                 <div className="soi-top ">
                     <div className="row">
                             <div className="col-4 soi-orderNo">
-                            <h3>Main Category:</h3>
+                            <h3>{condition == 'add'?'Main':''} Category:</h3>
                             </div>
                             <div className="col-8 d-flex justify-content-end align-items-center">      
                             <h3
                                 className="mx-3 cursor-pointer"
                                 onClick={() => {
-                                //   navigate(-1);
+                                  navigate(-1);
                                 }}
                             >
                                 <span className="vtext-primary mx-2 ">&#10229;</span>Back
@@ -35,26 +87,32 @@ const AddNewCategory = ({setSidebar,sidebar}) => {
                             </div>
                     </div>
                 </div>
-                <Grid container direction={'column'}  style={{height:'60vh'}}>
+                <div className='chat-sidebar' style={{height:'60vh',overflowY:'scroll'}}>
                         <div style={{height:'fit-content',display:'flex',alignItems:'center',justifyContent:'space-between',width:'100%'}}>                        
-                            <Grid item lg={8}  style={{height:'fit-content'}}>
-                            <div style={{backgroundColor:'#3c3c3c',height:'50px',width:'250px',borderRadius:'5px',display:'flex',alignItems:'center',padding:'10px'}}>
-                            <input placeholder='Enter Main Category' style={{height:'100%',width:'90%',border:'none',backgroundColor:'#3c3c3c',color:'gray'}} />
+                            <div style={{height:'fit-content',width:'60%'}}>
+                            <div style={{backgroundColor:condition == 'add'?'#3c3c3c':'#FFFFFF',height:'50px',width:'250px',borderRadius:'5px',display:'flex',alignItems:'center',padding:'10px'}}>
+                            <input placeholder='Enter Main Category' value={data.label} style={{height:'100%',width:'90%',border:'none',backgroundColor:condition == 'add'?'#3c3c3c':'#FFFFFF',color:condition == 'add'?'gray':'black'}} />
                             </div>
-                            </Grid>
-                            <Grid item lg={4} display={'flex'} alignItems='center' justifyContent={'space-evenly'} >
+                            </div>
+                            <div style={{display:'flex',aligntItems:'center',justifyContent:'space-evenly',width:'30%'}}>
                                     <button
                                     className="btn btn-solid btn-solid soi-success-btn"
                                     style={{backgroundColor:'#FFFFFF',color:'gray',borderRadius:'5px',width:'60%'}}
                                     onClick={() => {
                                     //   setDeleteSuccessfulPopup(false);
                                     // navigate('/add-category');
-                                    console.log('press')
-                                    let arr=[...data.subCategory];
-                                    arr.push('1');
+                            
+                                    let obj1={
+                                        label:'',
+                                        subSubCategory:[
+                                        
+                                        ]
+                                    };
+                                    let obj = data;
+                                    obj.subCategory.push(obj1);
+                                    // arr.push('1');
                                     setData({
-                                        ...data,
-                                        subCategory:arr
+                                        ...obj,
                                     });
                                     }}
                                     >
@@ -71,49 +129,133 @@ const AddNewCategory = ({setSidebar,sidebar}) => {
                                     >
                                     Delete
                                     </button> 
-                            </Grid>
+                            </div>
                         </div>
 
-                        {data.subCategory.length > 0  && data.subCategory.map(item=>(<div  style={{height:'fit-content',display:'flex',alignItems:'center',justifyContent:'space-between',width:'100%'}}>
-                            <Grid item lg={8}  style={{height:'fit-content'}}>
-                                <div style={{display:'flex',alignItems:'end'}} >
-                                <div className='vr' style={{height:'60px',position:'absolute',marginLeft:60}} ></div>           
-                                    {/* <div className='vr' style={{height:'60px',marginLeft:'60px'}} ></div> */}
-                                    <div className='vr' style={{height:'30px',marginLeft:'60px',position:'relative' }} ></div>
+                        {data.subCategory.length > 0  && data.subCategory.map((item,index)=>(
+                        <>
+                        <div  style={{height:'fit-content',display:'flex',alignItems:'center',justifyContent:'space-between',width:'100%'}}>
+                        <div style={{height:'fit-content',width:'60%'}}>
+                                {/* <div style={{display:'flex',alignItems:'end'}} >
+                                {data.subCategory.length>1 && (<div className='vr' style={{height:index == data.subCategory.length-1 ? '30px':'60px',position:'absolute',marginLeft:30}} ></div> )}          
+                                    <div className='vr' style={{height:'30px',marginLeft:'30px',position:'relative' }} ></div>
                                     <div style={{height:'60px',display:'flex',alignItems:'center',justifyContent:'center'}}>
                                     <hr style={{width:'70px'}} />
                                     <div style={{border:'1px solid white', backgroundColor:'#FFFFFF',width:'7px',height:'7px',borderRadius:'50%'}}></div>
                                     </div>
-                                    <div style={{backgroundColor:'#3c3c3c',height:'50px',width:'100px',borderRadius:'5px',display:'flex',alignItems:'center',padding:'10px'}}>
+                                    <div style={{backgroundColor:'#3c3c3c',height:'50px',width:'150px',borderRadius:'5px',display:'flex',alignItems:'center',padding:'10px'}}>
                                     <input placeholder={item} style={{height:'100%',width:'90%',border:'none',backgroundColor:'#3c3c3c',color:'gray'}} />
                                     </div>
-                                </div>
+                                </div> */}
+
+                   <div style={{display:'flex',alignItems:'end',position:'relative'}} >
+                    {/* <div className='vr' style={{height:'60px',position:'absolute',left:30}} ></div> */}
+                 
                     
-                    
-                            {/* <div style={{backgroundColor:'#3c3c3c',height:'50px',width:'250px',borderRadius:'5px',display:'flex',alignItems:'center',padding:'10px'}}>
-                            <input placeholder='Enter Main Category' style={{height:'100%',width:'90%',border:'none',backgroundColor:'#3c3c3c',color:'gray'}} />
-                            </div> */}
-                            </Grid>
-                            <Grid item lg={4} display={'flex'} alignItems='center' justifyContent={'space-evenly'} >
+                    <div className='vr' style={{height:index == data.subCategory.length -1 ? '30px':'60px',marginLeft:'30px' }} ></div>
+                    {/* <div className='vr' style={{height:'30px'}} ></div> */}
+                    <div style={{height:'60px',display:'flex',alignItems:'center',justifyContent:'center'}}>
+                    <hr style={{width:'70px'}} />
+                    <div style={{border:'1px solid white', backgroundColor:'#FFFFFF',width:'7px',height:'7px',borderRadius:'50%'}}></div>
+                    </div>
+                    <div style={{backgroundColor:condition == 'add'?'#3c3c3c':'#FFFFFF',height:'50px',width:'150px',borderRadius:'5px',display:'flex',alignItems:'center',padding:'10px'}}>
+                                    <input 
+                                    placeholder={item.label} 
+                                    onChange={(e)=>{
+                                        let obj = data;
+                                        console.log('index>>>>>>>>',index)
+                                        obj.subCategory[index].label=e.target.value;
+                                        setData({...obj});
+                                    }} 
+                                    value={item.label} 
+                                    style={{height:'100%',width:'90%',border:'none',backgroundColor:condition == 'add'?'#3c3c3c':'#FFFFFF',color:condition == 'add'?'gray':'black'}} />
+                                    </div>
+                    </div>
+                            </div>
+                            <div style={{width:'30%',display:'flex',aligntItems:'center',justifyContent:'space-evenly'}}>
                                     <button
                                     className="btn btn-solid btn-solid soi-success-btn"
                                     style={{backgroundColor:'#FFFFFF',color:'gray',borderRadius:'5px',width:'60%'}}
                                     onClick={() => {
+                                        let obj1={
+                                            label:'',
+                                        };
+                                        let obj = data;
+                                      
+                                        obj.subCategory[index].subSubCategory.push(obj1);
+                                        setData({
+                                            ...obj,
+                                        });
                                     }}
                                     >
-                                    Add Sub Category
+                                    Add Sub Sub Category
                                     </button>   
                                     <button
                                     className="btn btn-solid btn-solid soi-success-btn"
                                     style={{backgroundColor:'#CE0000',color:'#FFFFFF',borderRadius:'5px',width:'30%'}}
                                     onClick={() => {
+                                        let obj = data;
+                                        console.log('index>>>>>>>>',index)
+                                        obj.subCategory.splice(index,1);
+                                        setData({...obj});
                                     }}
                                     >
                                     Delete
                                     </button> 
-                            </Grid>
-                        </div> ))}           
-                </Grid>
+                            </div>
+                        </div> 
+                        {data.subCategory[index].subSubCategory.length>0 && ( 
+                        
+                           data.subCategory[index].subSubCategory.map((subSubCategory,i)=>(
+
+                                <div style={{display:'flex'}}>
+                            <div style={{height:'fit-content',width:'69%'}}>
+                                 <div style={{display:'flex',alignItems:'end',position:'relative'}} >
+                                 {data.subCategory.length -1 !=index && (<div className='vr' style={{height:'60px',marginLeft:'30px' }} ></div>)}
+                                         <div className='vr' style={{height:i == data.subCategory[index].subSubCategory.length -1 ? '30px':'60px',marginLeft:'150px' }} ></div>
+                                         {/* <div className='vr' style={{height:'30px'}} ></div> */}
+                                         <div style={{height:'60px',display:'flex',alignItems:'center',justifyContent:'center'}}>
+                                         <hr style={{width:'70px'}} />
+                                         <div style={{border:'1px solid white', backgroundColor:'#FFFFFF',width:'7px',height:'7px',borderRadius:'50%'}}></div>
+                                         </div>
+                                         <div style={{backgroundColor:condition == 'add'?'#3c3c3c':'#FFFFFF',height:'50px',width:'150px',borderRadius:'5px',display:'flex',alignItems:'center',padding:'10px'}}>
+                                         <input
+                                          placeholder={subSubCategory.label} 
+                                          value={subSubCategory.label}
+                                         onChange={(e)=>{
+                                        let obj = data;
+                                        obj.subCategory[index].subSubCategory[i].label=e.target.value;
+                                        setData({...obj});
+                                        }} 
+                                        style={{height:'100%',width:'90%',border:'none',backgroundColor:condition == 'add'?'#3c3c3c':'#FFFFFF',color:condition == 'add'?'gray':'black'}} />
+                                         </div>
+                                     </div>
+                             </div>
+                             <div style={{width:'30%',display:'flex',aligntItems:'center',justifyContent:'flex-end'}}>                              
+                                         <button
+                                         className="btn btn-solid btn-solid soi-success-btn"
+                                         style={{backgroundColor:'#CE0000',color:'#FFFFFF',borderRadius:'5px',width:'30%'}}
+                                         onClick={() => {
+                                            console.log('pres')
+                                            let obj = data;
+                                            obj.subCategory[index].subSubCategory.splice(i,1);
+                                            setData({...obj});
+                                         }}
+                                         >
+                                         Delete
+                                         </button> 
+                             </div>
+                             </div>
+                             ))
+
+                             )}
+
+                        </>
+                        ))
+                        } 
+                     
+                                 
+                </div>
             </div>
         </div>
         </div>

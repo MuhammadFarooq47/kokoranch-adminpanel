@@ -11,12 +11,13 @@ import ReactFlow, {
   } from 'reactflow';
   
 import 'reactflow/dist/style.css';
+import { Data } from '../../../helpers/headerData';
 import NavBar from './NavBar'
 
 
 const CategoryDetails = ({setSidebar,sidebar}) => {
     const navigate=useNavigate();
-    const data=[
+    const data=
     {  label:'plants',
       children:[
         {label:'flowers',
@@ -64,9 +65,9 @@ const CategoryDetails = ({setSidebar,sidebar}) => {
             ]}
           
       
-      ]},
+      ]}
        
-    ]
+    
     const ChildComponent=({children,marginLeft,index1,checkWidth,lastItem,lastOuterItem})=>{
       console.log('result>>>>>>>>>>>>>>>>>>>>>',lastItem,children,lastOuterItem)
 
@@ -105,7 +106,7 @@ const CategoryDetails = ({setSidebar,sidebar}) => {
 
   return (
     <div>
-        <NavBar setSidebar={setSidebar} sidebar={sidebar} title="Settings" />
+        <NavBar setSidebar={setSidebar} sidebar={sidebar} title="Category Details" />
         <div className="bg-black-pad my-5 " style={{height:'80vh',padding:'30px'}} >
             <div className='soi-main' style={{height:'70vh',borderRadius:'10px'}}>
                 <div style={{display:'flex',alignItems:'center',width:'100%',justifyContent:'space-between',marginBottom:'2rem'}}>
@@ -119,7 +120,7 @@ const CategoryDetails = ({setSidebar,sidebar}) => {
                         style={{backgroundColor:'#14A384',width:'80px'}}
                         onClick={() => {
                         //   setDeleteSuccessfulPopup(false);
-                        //   navigate(-1);
+                          navigate('/edit/category');
                         }}
                         >
                         Edit
@@ -136,23 +137,24 @@ const CategoryDetails = ({setSidebar,sidebar}) => {
                     </div>
                 </div>
                 {/* <div className="d-flex" style={{gap:'10px'}}> */}
-            { data.map(item=> (  
+             
               <>
               <div style={{backgroundColor:'#3c3c3c',display:'flex',alignItems:'center',justifyContent:'center',width:'150px',borderRadius:'5px',height:'fit-content',padding:'10px'}}>
-                    <label >{item.label}</label>
+                    <label >{data.label}</label>
                     </div> 
               {/* <label style={{marginBottom:'5px'}}>{item.label}</label> */}
                   {/* <div style={{border:'1px solid #3c3c3c ',borderRadius:'50%',width:'8px',height:'8px',backgroundColor:'white'}}></div> */}
-                  { item.children && (
+                  { data.children && (
+                    // data.children.map(item=> (  
                     <>
                     <div style={{border:'1px solid white', backgroundColor:'#FFFFFF', width:'7px',height:'7px',borderRadius:'50%',marginLeft:'58px'}}></div>
-                    <ChildComponent children={item.children} height={item.children.length } index1={0} checkWidth={1} lastOuterItem={item.children} lastItem={item.children[item.children.length-1]?.children}/>
+                    <ChildComponent children={data.children} height={data.children.length } index1={0} checkWidth={1} lastOuterItem={data.children} lastItem={data.children[data.children.length-1]?.children}/>
                     </>
                     
+                    // ))
                   )}
                   </>
-                ))
-                }
+              
                 
 
                   {/* <div className='d-flex flex-column'>
