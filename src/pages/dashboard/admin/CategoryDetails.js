@@ -21,72 +21,79 @@ const CategoryDetails = ({setSidebar,sidebar}) => {
       children:[
         {label:'flowers',
         children:[
-          {label:'a',
-          children:[
-            {label:'bb',
-            children:[
-              {label:'bbb'},
-              {label:'ccc'},
-              {label:'ddd'}
-            ]},
-            {label:'cc',
-            children:[
-              {label:'bbb'},
-              {label:'ccc'},
-              {label:'ddd'}
-            ]},
-            {label:'dd',
-            children:[
-              {label:'bbb'},
-              {label:'ccc'},
-              {label:'ddd'}
-            ]}
-          ]
-        },
-          {label:'b',
-          children:[
-            {label:'bbb'},
-            {label:'ccc'},
-            {label:'ddd'}
-          ]},
-          {label:'c'},
-          {label:'d'}
-          
-        ]
-        },
-        {label:'sunflowers'},
-        {label:'abcd'},
-        {label:'efgh'
-        ,
-        children:[
-          {label:'bb'},
+          {label:'a'},
           {label:'cc'},
           {label:'dd'}
-        ]},
-        {label:'ijklmnop'}
-      ]
-    }
+          ]
+        },
+          {label:'b',children:[
+            {label:'a'},
+            {label:'cc'},
+            {label:'dd'}
+            ]},
+          {label:'c',children:[
+            {label:'a'},
+            {label:'cc'},
+            {label:'dd'}
+            ]},
+          {label:'d',children:[
+            {label:'a'},
+            {label:'cc'},
+            {label:'dd'}
+            ]},
+           {label:'sunflowers',children:[
+            {label:'a'},
+            {label:'cc'},
+            {label:'dd'}
+            ]},
+          {label:'abcd',children:[
+            {label:'a'},
+            {label:'cc'},
+            {label:'dd'}
+            ]},
+          {label:'efgh',children:[
+            {label:'a'},
+            {label:'cc'},
+            {label:'dd'}
+            ]},
+          {label:'ijklmnop',
+          children:[
+            {label:'a'},
+            {label:'cc'},
+            {label:'dd'}
+            ]}
+          
+      
+      ]},
+       
     ]
-    const ChildComponent=({children,marginLeft,index1,checkWidth})=>{
-      // console.log('result>>>>>>>>>>>>>>>>>>>>>',children,children?.children)
+    const ChildComponent=({children,marginLeft,index1,checkWidth,lastItem,lastOuterItem})=>{
+      console.log('result>>>>>>>>>>>>>>>>>>>>>',lastItem,children,lastOuterItem)
 
       return(
         <>
                    {children?.map((child,index)=>( <>
                     
                     {/* <div style={{border:'1px solid white', width:'7px',height:'7px',borderRadius:'50%'}}></div> */}
+                    
                    <div style={{display:'flex',alignItems:'end',paddingLeft:marginLeft?marginLeft:0,position:'relative'}} >
-                   <div className='vr' style={{height:'60px',position:'absolute',left:0}} ></div>
-                   {checkWidth>1 &&<div className='vr' style={{height:'60px',position:'absolute',left:90}} ></div>}
-                   {checkWidth>2  &&<div className='vr' style={{height:'60px',position:'absolute',left:180}} ></div>}
-                    <div className='vr' style={{height:'60px'}} ></div>
+                   {(children != lastItem )&& (children != lastOuterItem) && ( <div className='vr' style={{height:'60px',position:'absolute',left:60}} ></div>)}
+                   {/* {checkWidth>1 &&<div className='vr' style={{height:'60px',position:'absolute',left:90}} ></div>} */}
+                   {/* {checkWidth>2  &&<div className='vr' style={{height:'60px',position:'absolute',left:180}} ></div>} */}
+                    
+                    { index!= children.length-1 && <div className='vr' style={{height:'60px',marginLeft:'60px' }} ></div>}
+                    { index== children.length-1 && <div className='vr' style={{height:'30px',marginLeft:'60px' }} ></div>}
+                    <div style={{height:'60px',display:'flex',alignItems:'center',justifyContent:'center'}}>
                     <hr style={{width:'70px'}} />
-                    <div style={{border:'1px solid white', width:'7px',height:'7px',borderRadius:'50%',marginTop:'20px',marginLeft:'5px'}}></div>
-                    <label style={{marginLeft:'10px',paddingBottom:'-50px'}}>{child.label}</label>
+                    <div style={{border:'1px solid white', backgroundColor:'#FFFFFF',width:'7px',height:'7px',borderRadius:'50%'}}></div>
+                    </div>
+                      <div style={{backgroundColor:'#3c3c3c',width:'150px',paddingTop:'40px',display:'flex',alignItems:'center',justifyContent:'center',borderRadius:'5px',height:'fit-content',padding:'10px'}}>
+                        <label >{child.label}</label>
+                      </div>
                     </div>
                      {child?.children &&(
                       // <div style={{position:'absolute',top:0,Left:0}}>
-                      <ChildComponent children={child.children} marginLeft={`${90*checkWidth}px`} checkWidth={checkWidth+1} />
+                      <ChildComponent children={child.children} lastItem={lastItem} lastOuterItem={lastOuterItem} marginLeft={`${150*checkWidth}px`} checkWidth={checkWidth+1} />
                       // </div>
                     )}
                     </>
@@ -131,12 +138,17 @@ const CategoryDetails = ({setSidebar,sidebar}) => {
                 {/* <div className="d-flex" style={{gap:'10px'}}> */}
             { data.map(item=> (  
               <>
-              
-              <label >{item.label}</label>
+              <div style={{backgroundColor:'#3c3c3c',display:'flex',alignItems:'center',justifyContent:'center',width:'150px',borderRadius:'5px',height:'fit-content',padding:'10px'}}>
+                    <label >{item.label}</label>
+                    </div> 
+              {/* <label style={{marginBottom:'5px'}}>{item.label}</label> */}
                   {/* <div style={{border:'1px solid #3c3c3c ',borderRadius:'50%',width:'8px',height:'8px',backgroundColor:'white'}}></div> */}
                   { item.children && (
-
-                    <ChildComponent children={item.children} height={item.children.length } index1={0} checkWidth={1}/>
+                    <>
+                    <div style={{border:'1px solid white', backgroundColor:'#FFFFFF', width:'7px',height:'7px',borderRadius:'50%',marginLeft:'58px'}}></div>
+                    <ChildComponent children={item.children} height={item.children.length } index1={0} checkWidth={1} lastOuterItem={item.children} lastItem={item.children[item.children.length-1]?.children}/>
+                    </>
+                    
                   )}
                   </>
                 ))

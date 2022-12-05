@@ -18,6 +18,7 @@ import SplashScreen from "../pages/dashboard/admin/pages/SplashScreen/SplashScre
 import AllNotifications from "../pages/dashboard/admin/AllNotifications";
 import Categories from "../pages/dashboard/admin/Categories";
 import CategoryDetails from "../pages/dashboard/admin/CategoryDetails";
+import AddNewCategory from "../pages/dashboard/admin/AddNewCategory";
 // SCREENS
 const VendorRegister = React.lazy(() => import("../pages/auth/vendorRegister"));
 const OtpScreen = React.lazy(() =>
@@ -339,6 +340,16 @@ export default function Navigation() {
           <Suspense fallback={<FullScreenLoader />}>
             <VendorSideBar>
               <CategoryDetails />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/add-category"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <AddNewCategory />
             </VendorSideBar>
           </Suspense>
         }
