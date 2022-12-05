@@ -68,3 +68,11 @@
 .label-style{
   color:$color-warning
 }
+
+.checkBox-style{
+  background-color: white;
+}
+input[type=checkbox] {
+  // visibility: hidden;
+  background-color: white;
+}

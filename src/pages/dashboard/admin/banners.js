@@ -1,12 +1,14 @@
 import { Paper } from "@mui/material";
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ReactComponent as PlusIcon } from "../../../assets/images/icons/icons8-plus.svg";
 import TableComponent from "./Components/Table";
 import NavBar from "./NavBar";
 
 function Banners({ sidebar, setSidebar }) {
-  const [state, setState] = useState("COMMING SOON");
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location.pathname);
   const [tableHeadData, seTableHeadData] = useState([
     { id: "sequence", label: "Sequence" },
     { id: "BannerId", label: "Banner ID" },
@@ -59,7 +61,14 @@ function Banners({ sidebar, setSidebar }) {
   ]);
   return (
     <>
-      <NavBar setSidebar={setSidebar} sidebar={sidebar} title="Web Banners" />
+      <NavBar
+        setSidebar={setSidebar}
+        sidebar={sidebar}
+        banner
+        title={
+          location.pathname == "/banners/app" ? "App Banners" : "Web Banners"
+        }
+      />
       <Paper
         sx={{
           backgroundColor: "#1e1e1e",
@@ -80,7 +89,11 @@ function Banners({ sidebar, setSidebar }) {
           <div className="col-7 d-flex justify-content-end">
             <button
               onClick={() => {
-                // navigate("/add-product")
+                navigate(
+                  `/banners/${
+                    location.pathname == "/banners/app" ? "app" : "web"
+                  }/add/banner-details`
+                );
               }}
               className="btn btn-solid btn-solid-primary table-btn"
               style={{
@@ -99,7 +112,7 @@ function Banners({ sidebar, setSidebar }) {
               >
                 <PlusIcon fill="white" width={17} />
               </div>
-              Add Product
+              Add Banner
             </button>
           </div>
           <div className="col-12">
@@ -109,7 +122,11 @@ function Banners({ sidebar, setSidebar }) {
               activeCard={"total"}
               delete1
               onClick={() => {
-                // navigate("/vendor-serviceorder-details")
+                navigate(
+                  `/banners/${
+                    location.pathname == "/banners/app" ? "app" : "web"
+                  }/details`
+                );
               }}
             />
           </div>
@@ -122,7 +139,11 @@ function Banners({ sidebar, setSidebar }) {
           <div className="col-7 d-flex justify-content-end">
             <button
               onClick={() => {
-                // navigate("/add-product")
+                navigate(
+                  `/banners/${
+                    location.pathname == "/banners/app" ? "app" : "web"
+                  }/add/banner-details`
+                );
               }}
               className="btn btn-solid btn-solid-primary table-btn"
               style={{
@@ -141,7 +162,7 @@ function Banners({ sidebar, setSidebar }) {
               >
                 <PlusIcon fill="white" width={17} />
               </div>
-              Add Product
+              Add Banner
             </button>
           </div>
           <div className="col-12">
@@ -151,7 +172,11 @@ function Banners({ sidebar, setSidebar }) {
               activeCard={"total"}
               delete1
               onClick={() => {
-                // navigate("/vendor-serviceorder-details")
+                navigate(
+                  `/banners/${
+                    location.pathname == "/banners/app" ? "app" : "web"
+                  }/details`
+                );
               }}
             />
           </div>

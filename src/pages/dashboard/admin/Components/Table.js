@@ -148,7 +148,7 @@ const TableComponent = ({
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                     {tHeadData.map((column) => {
-                      console.log(column.id, row[column.id]);
+                      // console.log(column.id, row[column.id]);
                       const value = row[column.id];
                       return (
                         <TableCell

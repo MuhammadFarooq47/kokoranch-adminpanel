@@ -348,14 +348,19 @@ export default function VendorSideBar({ children }) {
               <>
                 <h4 className="fs-5">
                   <NavLink to="/categories" className="vendor-link">
-                  <div className="vendor-inbox-link">
-                    <Categories fill="white" width={15} />
-                    &nbsp; Categories
-                  </div>
+                    <div className="vendor-inbox-link">
+                      <Categories fill="white" width={15} />
+                      &nbsp; Categories
+                    </div>
                   </NavLink>
                 </h4>
                 <h4 className="fs-5">
-                  <NavLink to="/banners/web" className="vendor-link">
+                  <NavLink
+                    to={{
+                      pathname: "/banners/web",
+                    }}
+                    className="vendor-link"
+                  >
                     <div className="vendor-inbox-link">
                       <Agriculture fill="white" width={15} />
                       &nbsp; Web Banners
@@ -363,7 +368,12 @@ export default function VendorSideBar({ children }) {
                   </NavLink>
                 </h4>
                 <h4 className="fs-5">
-                  <NavLink to="/banners/app" className="vendor-link">
+                  <NavLink
+                    to={{
+                      pathname: "/banners/app",
+                    }}
+                    className="vendor-link"
+                  >
                     <div className="vendor-inbox-link">
                       <Mobile fill="white" width={15} />
                       &nbsp; App Banners
@@ -371,11 +381,12 @@ export default function VendorSideBar({ children }) {
                   </NavLink>
                 </h4>
                 <h4 className="fs-5">
-                  {/* <NavLink to="/vendor-profile" className="vendor-link"> */}
-                  <div className="vendor-inbox-link">
-                    <ContactIcon fill="white" width={15} />
-                    &nbsp; Contact Details
-                  </div>
+                  <NavLink to="/contact-details" className="vendor-link">
+                    <div className="vendor-inbox-link">
+                      <ContactIcon fill="white" width={15} />
+                      &nbsp; Contact Details
+                    </div>
+                  </NavLink>
                 </h4>
               </>
             )}

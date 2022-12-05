@@ -16,7 +16,6 @@ import VendorSideBar from "../pages/dashboard/admin/SideBar";
 import ServiceOrderIndividual from "../pages/dashboard/admin/ServiceOrderIndividual";
 import SplashScreen from "../pages/dashboard/admin/pages/SplashScreen/SplashScreen";
 import AllNotifications from "../pages/dashboard/admin/AllNotifications";
-import MerijuanaAds from "../pages/dashboard/admin/MerijuanaAds";
 import Categories from "../pages/dashboard/admin/Categories";
 import CategoryDetails from "../pages/dashboard/admin/CategoryDetails";
 // SCREENS
@@ -107,6 +106,15 @@ const TradeRequest = React.lazy(() =>
   import("../pages/dashboard/admin/tradeRequest")
 );
 const Banners = React.lazy(() => import("../pages/dashboard/admin/banners"));
+const BannerDetails = React.lazy(() =>
+  import("../pages/dashboard/admin/bannerDetails")
+);
+const EditBannerDetails = React.lazy(() =>
+  import("../pages/dashboard/admin/editBannerDetails")
+);
+const ContactDetails = React.lazy(() =>
+  import("../pages/dashboard/admin/contactDetails")
+);
 
 const AllUsers = React.lazy(() => import("../pages/dashboard/admin/AllUsers"));
 const Home = React.lazy(() => import("../pages/screens/home"));
@@ -314,16 +322,7 @@ export default function Navigation() {
           </Suspense>
         }
       />
-      <Route
-        path="/ads"
-        element={
-          <Suspense fallback={<FullScreenLoader />}>
-            <VendorSideBar>
-              <MerijuanaAds />
-            </VendorSideBar>
-          </Suspense>
-        }
-      />
+
       <Route
         path="/categories"
         element={
@@ -334,7 +333,7 @@ export default function Navigation() {
           </Suspense>
         }
       />
-       <Route
+      <Route
         path="/category-details"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -500,6 +499,36 @@ export default function Navigation() {
           <Suspense fallback={<FullScreenLoader />}>
             <VendorSideBar>
               <Banners />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/banners/:name/details"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <BannerDetails />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/banners/:name/:change/banner-details"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <EditBannerDetails />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/contact-details"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <ContactDetails />
             </VendorSideBar>
           </Suspense>
         }
