@@ -117,7 +117,7 @@ const ContactDetails = ({ setSidebar, sidebar, setView }) => {
                 </h3>
               </div>
             )}
-            <label style={{ fontWeight: "bold", marginBottom: "20px" }}>
+            <label style={{ fontWeight: "bold", marginBottom: "20px"}}>
               Contact No:
             </label>
             {edit ? (
@@ -137,7 +137,7 @@ const ContactDetails = ({ setSidebar, sidebar, setView }) => {
               </p>
             )}
 
-            <label style={{ fontWeight: "bold", marginBottom: "20px" }}>
+            <label style={{ fontWeight: "bold", marginBottom: "20px",marginTop:'10px'  }}>
               Email:
             </label>
             {edit ? (
@@ -156,7 +156,7 @@ const ContactDetails = ({ setSidebar, sidebar, setView }) => {
                 info@kokoranch.com
               </p>
             )}
-            <label style={{ fontWeight: "bold", marginBottom: "20px" }}>
+            <label style={{ fontWeight: "bold", marginBottom: "20px",marginTop:'10px'  }}>
               Address Line 1:
             </label>
             {edit ? (
@@ -173,7 +173,7 @@ const ContactDetails = ({ setSidebar, sidebar, setView }) => {
             ) : (
               <p style={{ color: "#14A384", marginBottom: "20px" }}>ABC</p>
             )}
-            <label style={{ fontWeight: "bold", marginBottom: "20px" }}>
+            <label style={{ fontWeight: "bold", marginBottom: "20px",marginTop:'10px'  }}>
               Address Line 2:
             </label>
             {edit ? (

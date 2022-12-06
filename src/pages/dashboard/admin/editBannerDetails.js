@@ -15,8 +15,8 @@ const EditBannerDetails = ({ setSidebar, sidebar, setView }) => {
 
   console.log("query>>>>>>>>", location.search);
   const [popupOpen, setPopupOpen] = useState(false);
-  const [deletePopup, setDeletePopup] = useState(false);
   const [successfulPopup, setSuccessfulPopup] = useState(false);
+  const [deletePopup, setDeletePopup] = useState(false);
   const [deleteSuccessfulPopup, setDeleteSuccessfulPopup] = useState(false);
   const [orderStatus, setOrderStatus] = useState("active");
   return (
