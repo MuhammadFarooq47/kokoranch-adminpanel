@@ -39,9 +39,10 @@ function SplashScreen() {
         },[2200])
     },[])
   return (
-    <div style={{'backgroundColor':'#1E1E1E',display:'flex',alignItems:'center',justifyContent:'center',height:'100vh',width:'100vw',margin:0,padding:0}}>
-    <div style={{position:'relative'}}>
+    <div  style={{'backgroundColor':'#1E1E1E',display:'flex',alignItems:'center',justifyContent:'center',height:'100vh',width:'100vw',margin:0,padding:0}}>
+    <div className='chat-sidebar' style={{position:'relative'}}>
     <motion.div
+    style={{overflow:'none'}}
     animate={{
       // scale: [1, 2, 2, 1, 1],
       rotate: 360
@@ -51,15 +52,15 @@ function SplashScreen() {
       duration: 2,
       ease: "easeInOut",
       times: [0, 0.2, 0.5, 0.8, 1],
-      bounce:2,
+      // bounce:2,
       // repeat: Infinity,
       // repeatDelay: 1
     }}
   >
-    <img src={splashLogo} style={{'height':'100%',"width":"100%"}} />
+    <img className='chat-sidebar' src={splashLogo} style={{'height':'100%',"width":"35vw"}} />
     </motion.div>
     </div>
-    <div style={{position:'absolute',zIndex:10}}>
+    <div className='chat-sidebar' style={{position:'absolute',zIndex:10}}>
       <motion.div
       // style={{x}}
       animate={
@@ -100,7 +101,7 @@ function SplashScreen() {
 
 
       {/* loginform */}
-      <div style={{position: 'absolute',zIndex: 50}}>
+      <div className='chat-sidebar' style={{position: 'absolute',zIndex: 50}}>
       <motion.div
       className="box"
       initial={{ opacity: 0, scale: 0 }}

@@ -1,9 +1,5 @@
 import React, { Suspense, useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-// layout
-import Layout from "../components/layout";
-// //  traderSideBar
-// import TraderSideBar from "../components/traderSideBar";
 // Full Screen Loader
 import FullScreenLoader from "../components/FullScreenLoader";
 // VendorSideBar
@@ -21,7 +17,7 @@ import CategoryDetails from "../pages/dashboard/admin/CategoryDetails";
 import AddNewCategory from "../pages/dashboard/admin/AddNewCategory";
 import CategoryPositioning from "../pages/dashboard/admin/CategoryPositioning";
 // SCREENS
-const VendorRegister = React.lazy(() => import("../pages/auth/vendorRegister"));
+
 const OtpScreen = React.lazy(() =>
   import("../pages/dashboard/admin/pages/OtpScreen/OtpScreen")
 );
@@ -29,9 +25,7 @@ const CreateNewPassword = React.lazy(() =>
   import("../pages/dashboard/admin/pages/CreateNewPassword/CreateNewPassword")
 );
 
-const VendorSignupSuccess = React.lazy(() =>
-  import("../pages/screens/vendorSignupSuccess")
-);
+
 // VENDOR STUFF
 const AdminProfile = React.lazy(() =>
   import("../pages/dashboard/admin/profile")
@@ -119,22 +113,8 @@ const ContactDetails = React.lazy(() =>
 );
 
 const AllUsers = React.lazy(() => import("../pages/dashboard/admin/AllUsers"));
-const Home = React.lazy(() => import("../pages/screens/home"));
+
 export default function Navigation() {
-  // INITIZING STORAGES
-  // const { isAuthenticated, userType } = useSelector(
-  //   (state) => state.authReducer
-  // );
-  // const tokenStorage = localStorage.getItem("token");
-
-  // const dispatch = useDispatch();
-  // CHECKING FOR AUTHENTICATION
-  // useEffect(() => {
-  //   if (tokenStorage && !isAuthenticated) {
-  //     dispatch(CHECK_TOKEN(tokenStorage));
-  //   }
-  // }, [tokenStorage, isAuthenticated]); // eslint-disable-line react-hooks/exhaustive-deps
-
   return (
     <Routes>
       <Route path="/" element={<SplashScreen />} />
@@ -161,26 +141,6 @@ export default function Navigation() {
             <VendorSideBar>
               <AdminProfile />
             </VendorSideBar>
-          </Suspense>
-        }
-      />
-      <Route
-        path="/vendor-signup-success"
-        element={
-          <Suspense fallback={<FullScreenLoader />}>
-            <Layout>
-              <VendorSignupSuccess />
-            </Layout>
-          </Suspense>
-        }
-      />
-      <Route
-        path="/vendor-register"
-        element={
-          <Suspense fallback={<FullScreenLoader />}>
-            <Layout>
-              <VendorRegister />
-            </Layout>
           </Suspense>
         }
       />

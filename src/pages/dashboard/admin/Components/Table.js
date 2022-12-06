@@ -1,8 +1,4 @@
 import React from "react";
-import {
-  vendorServiceOrders,
-  VendorProductsDetails,
-} from "../../../../DummyData/vendorData";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";

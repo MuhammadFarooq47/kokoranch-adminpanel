@@ -3,10 +3,15 @@ import React from 'react'
 import { useState } from 'react'
 import NavBar from './NavBar'
 import { useNavigate,useLocation } from 'react-router-dom'
+import Popup from '../../../components/popUp/popUp'
+import { TiTick } from 'react-icons/ti'
+import { FaExclamation } from 'react-icons/fa'
 
 const AddNewCategory = ({setSidebar,sidebar}) => {
     const navigate=useNavigate();
     const location=useLocation();
+    const [popupOpen, setPopupOpen] = useState(false);
+    const [successfulPopup, setSuccessfulPopup] = useState(false);
     const condition=location.pathname.split('/')[1];
     const [data,setData]=useState(
         condition == 'add'?{
@@ -67,6 +72,62 @@ const AddNewCategory = ({setSidebar,sidebar}) => {
     );
   return (
     <div>
+      <Popup open={popupOpen} setOpen={setPopupOpen}>
+        <div className="soi-update-status">
+          <div className="successful-popup">
+            <div className="sp-icon">
+              <FaExclamation size={30} fill="black" />
+            </div>
+            <h3>
+              Are You Sure You Want To Add
+              <br />
+               This New Category?
+            </h3>
+          </div>
+          <div className="soi-popup-btns d-flex">
+            <button
+              className="btn btn-solid btn-solid-cancel btn-outline-primary soi-popup-btn"
+              onClick={() => {
+                setPopupOpen(false);
+              }}
+            >
+              Cancel
+            </button>
+            <button
+              className="btn btn-solid btn-solid-primary  soi-popup-btn"
+              onClick={() => {
+                setPopupOpen(false);
+                setSuccessfulPopup(true);
+              }}
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+      </Popup>
+      <Popup open={successfulPopup} setOpen={setSuccessfulPopup}>
+        <div className="successful-popup">
+          <div className="sp-icon">
+            <TiTick size={30} fill="black" />
+          </div>
+
+          <h3>
+            Category Added <br />
+            Successfully
+          </h3>
+
+          <button
+            className="btn btn-solid btn-solid-primary soi-success-btn"
+            onClick={() => {
+              setSuccessfulPopup(false);
+              // navigate("/user-trades");
+              // setView(null);
+            }}
+          >
+            Close
+          </button>
+        </div>
+      </Popup>
         <NavBar setSidebar={setSidebar} sidebar={sidebar} title={condition == 'add'?'Add New Category':'Edit Category'} />
         <div className="bg-black-pad my-5 " style={{height:'80vh',padding:'30px'}} >
             <div className='soi-main' style={{height:'100%'}}>
@@ -87,7 +148,7 @@ const AddNewCategory = ({setSidebar,sidebar}) => {
                             </div>
                     </div>
                 </div>
-                <div className='chat-sidebar' style={{height:'60vh',overflowY:'scroll'}}>
+                <div className='chat-sidebar' style={{height:'55vh',overflowY:'scroll'}}>
                         <div style={{height:'fit-content',display:'flex',alignItems:'center',justifyContent:'space-between',width:'100%'}}>                        
                             <div style={{height:'fit-content',width:'60%'}}>
                             <div style={{backgroundColor:condition == 'add'?'#3c3c3c':'#FFFFFF',height:'50px',width:'250px',borderRadius:'5px',display:'flex',alignItems:'center',padding:'10px'}}>
@@ -254,8 +315,28 @@ const AddNewCategory = ({setSidebar,sidebar}) => {
                         ))
                         } 
                      
-                                 
+                               
                 </div>
+                <div className='row'>
+                        <div className="col-12 col-sm-8 col-md-5 col-lg-5 mt-4 d-flex justify-content-end align-items-center">
+                          <button
+                            onClick={() => {
+                              setPopupOpen(true);
+                            }}
+                            className="btn btn-solid btn-solid-primary-rounded soi-btn mx-2"
+                            style={{ width: "50%" }}
+                          >
+                            Save
+                          </button>
+                          <button
+                            className="btn  btn-solid-primary-rounded soi-btn mx-2"
+                            // onClick={() => setDeletePopup(true)}
+                            style={{ width: "50%" }}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                    </div>
             </div>
         </div>
         </div>
