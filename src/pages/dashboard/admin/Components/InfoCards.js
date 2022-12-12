@@ -23,66 +23,37 @@ const InfoCards = ({
           />
         </div>
         {/* <div className="infocard-container col-12 col-sm-4 col-md-4 col-lg-4"> */}
-        {data.map((data, index) => {
-          return activeCard === data.topText ? (
-            <div className="col-6 col-sm-4 col-md-2 col-lg-2 mt-2  ">
-              <InfoCard
-                key={index}
-                topText={data.topText}
-                bottomText={data.bottomText}
-                active
-                setActiveCard={setActiveCard}
-              />
-            </div>
-          ) : (
-            <div className="col-6 col-sm-4 col-md-2 col-lg-2 mt-2 ">
-              <InfoCard
-                key={index}
-                topText={data.topText}
-                bottomText={data.bottomText}
-                setActiveCard={setActiveCard}
-              />
-            </div>
-          );
-        })}
-        {/* </div> */}
-      </div>
-      {/* <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          width: "100%",
-        }}
-      >
-        <div className="infocard-container">
-          {data.map((data, index) => {
-            return activeCard === data.topText ? (
-              <InfoCard
-                key={index}
-                topText={data.topText}
-                bottomText={data.bottomText}
-                active
-                setActiveCard={setActiveCard}
-              />
-            ) : (
-              <InfoCard
-                key={index}
-                topText={data.topText}
-                bottomText={data.bottomText}
-                setActiveCard={setActiveCard}
-              />
-            );
-          })}
+        <div className="col-10">
+          <div class="row">
+            {data.map((data, index) => {
+              return activeCard === data.topText ? (
+                <div
+                  key={data.topText}
+                  className="col-6 col-sm-4 col-md-2 col-lg-2 mt-2  "
+                >
+                  <InfoCard
+                    topText={data.topText}
+                    bottomText={data.bottomText}
+                    active
+                    setActiveCard={setActiveCard}
+                  />
+                </div>
+              ) : (
+                <div
+                  key={data.topText}
+                  className="col-6 col-sm-4 col-md-2 col-lg-2 mt-2 "
+                >
+                  <InfoCard
+                    topText={data.topText}
+                    bottomText={data.bottomText}
+                    setActiveCard={setActiveCard}
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
-        <FilterIcon
-          width={20}
-          onClick={() => setShowFilterProp(!showFilterProp)}
-        />
       </div>
-      <div
-        className="so-top-filtericon"
-        onClick={() => setShowFilterProp(!showFilterProp)}
-      ></div> */}
       {showFilterProp && (
         <FilterProp
           featured1={featured1}

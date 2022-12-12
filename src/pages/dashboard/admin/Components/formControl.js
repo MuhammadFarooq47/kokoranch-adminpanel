@@ -32,7 +32,7 @@ const FormControlAuth = ({
   };
   if (!isSelectInput) {
     return (
-      <FormControl sx={{ marginBottom: 5, width: "50%" }} size={"small"}>
+      <FormControl sx={{ marginBottom: 5, width: "30%" }} size={"small"}>
         <InputLabel
           id="demo-simple-select-helper-label"
           sx={{
@@ -68,12 +68,19 @@ const FormControlAuth = ({
           label="select category"
           onChange={handleChange}
         >
-          <MenuItem value="">
+          {/* <MenuItem value="">
             <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
+          </MenuItem> */}
+          {options.map((item, index) => {
+            return (
+              <MenuItem key={index} value={item}>
+                {item}
+              </MenuItem>
+            );
+          })}
+          {/* <MenuItem value={10}>Ten</MenuItem>
           <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem> */}
         </Select>
       </FormControl>
     );
