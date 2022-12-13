@@ -152,7 +152,7 @@ export default function NotificationSettings({ setSidebar, sidebar }) {
                 ]
             },
             {
-                label:'User Prodile Deleted By Manager',
+                label:'User Profile Deleted By Manager',
                  toggle:[
                     {label:'Push Notifications',checked:false},
                     {label:'In App Notifications',checked:false},
@@ -256,7 +256,8 @@ export default function NotificationSettings({ setSidebar, sidebar }) {
                         <div style={{width:'50%'}}>
 
                         </div>
-                        <div style={{width:'50%',display:'flex',alignItems:'center',gap:'50px',justifyContent:'flex-end'}}>
+                        <div style={{width:'100%',paddingLeft:'40px',display:'flex',alignItems:'center',gap:'50px',justifyContent:'space-between'}}>
+
                             <label style={{fontSize:'12px'}}>Push Notifications</label>
                             <label style={{fontSize:'12px'}}>In App Notifications</label>
                             <label style={{fontSize:'12px'}}>Email Notifications</label>

@@ -52,7 +52,7 @@ const AddNewManager = ({ setSidebar, sidebar }) => {
       <NavBar
         setSidebar={setSidebar}
         sidebar={sidebar}
-        title="Managers"
+        title="Add New Manager"
       />
 
       <div className="bg-black-pad my-5 " style={{height:'80vh'}} >
@@ -134,7 +134,7 @@ const AddNewManager = ({ setSidebar, sidebar }) => {
                     style={{width:'70%',display:'flex',flexDirection:'column',alignItems:'center',gap:'10px',justifyContent:'center',height:'200px',border:'0.1px solid #14A384',borderRadius:'10%',borderStyle:'dashed'}}>
                     <BsImage fill={'#14A384'} size={50}/>
                     <input {...getInputProps()} />
-                    <label style={{color:'#14A384',fontSize:'10px'}}>Upload Or drag Image Here</label>
+                    <label style={{color:'#14A384',fontSize:'12px'}}>Upload Or drag Image Here</label>
                     </div>
                     <label style={{color:'#14A384',fontSize:'12px',cursor:'pointer'}} onClick={open}>Upload Picture</label>
                     {/* <section className="dropbox">

@@ -149,7 +149,7 @@ const AllNotifications = ({sidebar,setSidebar}) => {
             <AppButton buttonText={'Apply'} height={'40px'} width={'20%'} onClick={handleSort} />
             </div>
         </Popup>
-     <NavBar setSidebar={setSidebar} sidebar={sidebar} title="Settings" />
+     <NavBar setSidebar={setSidebar} sidebar={sidebar} title="All Notifications" />
         <div className="bg-black-pad my-5 " style={{height:'80vh'}} >
         <div style={{marginBottom:'2rem'}}>
             <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>

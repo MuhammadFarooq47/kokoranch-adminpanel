@@ -250,6 +250,7 @@ function AllUsers({ setSidebar, sidebar }) {
             setActiveCard={setActiveCard}
             sortData={sortData}
             setSortData={setSortData}
+            price={false}
           />
 
           <div className="row mt-3">
@@ -288,7 +289,9 @@ function AllUsers({ setSidebar, sidebar }) {
                 >
                   Active Users (135)
                 </p>
-                <div></div>
+                <div>
+                  <div className="vr "></div>
+                </div>
               </div>
             </div>
 

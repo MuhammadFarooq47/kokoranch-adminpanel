@@ -145,7 +145,7 @@ const ProductOrderDetails = ({ setSidebar, sidebar }) => {
       <NavBar
         setSidebar={setSidebar}
         sidebar={sidebar}
-        title="Service Order Details"
+        title="Admin Product Order Details"
       />
 
       <div className="bg-black-pad my-5 " style={{height:'80vh'}}>
@@ -189,10 +189,10 @@ const ProductOrderDetails = ({ setSidebar, sidebar }) => {
           <hr className="hr-rule" />
           <div className="row soi-main-services">
             <div className="col-6">
-              <h3 className="mb-4">Products</h3>
+              <h3 className="mb-4"><u>Products</u></h3>
             </div>
             <div className="col-4">
-              <h3 className="mb-4">Qty</h3>
+              <h3 className="mb-4"><u>Qty</u></h3>
             </div>
             <div className="col-2"></div>
 
@@ -234,13 +234,13 @@ const ProductOrderDetails = ({ setSidebar, sidebar }) => {
           </div>
           <hr className="hr-rule" />
           <div className="soi-row d-flex justify-content-between">
-            <h4>Card Used </h4>
+            <h4>Card Used: </h4>
             <p>**** **** **** 1234</p>
           </div>
           <hr className="hr-rule" />
           <div className="soi-row d-flex justify-content-between">
-            <h4>Total Amount Paid </h4>
-            <p>$153.40</p>
+            <h4>Total Amount Paid: </h4>
+            <h3>$153.40</h3>
           </div>
           <hr className="hr-rule" />
           <div className="soi-row d-flex justify-content-between">
@@ -250,6 +250,16 @@ const ProductOrderDetails = ({ setSidebar, sidebar }) => {
           <hr className="hr-rule" />
           <div className="soi-main-services">
             <h3 className="mb-4">Shipping Details</h3>
+          </div>
+          <hr className="hr-rule" />
+          <div className="soi-row d-flex justify-content-between">
+            <h4>First Name </h4>
+            <p>7033 Hand Crescent Suite 382</p>
+          </div>
+          <hr className="hr-rule" />
+          <div className="soi-row d-flex justify-content-between">
+            <h4>Last Name </h4>
+            <p>7033 Hand Crescent Suite 382</p>
           </div>
           <hr className="hr-rule" />
           <div className="soi-row d-flex justify-content-between">

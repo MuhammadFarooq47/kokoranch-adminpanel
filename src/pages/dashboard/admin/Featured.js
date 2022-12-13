@@ -10,53 +10,59 @@ function Featured({ setSidebar, sidebar }) {
   const [showFilterProp, setShowFilterProp] = useState(false);
   const navigate=useNavigate()
     const [tableHeadData, seTableHeadData] = useState([
-    { id: "orderNo", label: "Order No" },
+    { id: "Code", label: "Code" },
     { id: "userId", label: "User Id" },
-    { id: "date", label: "Date" },
-    { id: "amountPaid", label: "Amount Paid" },
-    { id: "status", label: "Status" },
+    { id: "Type", label: "Type" },
+    { id: "ItemName", label: "Item Name" },
+    { id: "SubscriptionDate", label: "Subscription Date" },
+    { id: "ExpiryDate", label: "Expiry Date" },
     { id: "action", label: "Action" },
   ]);
 
   const [tableRowData, setTableRowData] = useState([
     {
-      orderNo: "01",
-      date: "24-01-22",
+      Code: "01",
+      SubscriptionDate: "24-01-22",
+      ExpiryDate:"24-01-22",
       userId: "001",
-      amountPaid: "$21.00",
-      status: "Pending",
+      Type: "Agriculture Services",
+      ItemName:'Lorem ipsum',
       action: "Action",
     },
     {
-      orderNo: "01",
-      date: "24-01-22",
+      Code: "01",
+      SubscriptionDate: "24-01-22",
+      ExpiryDate:"24-01-22",
       userId: "001",
-      amountPaid: "$21.00",
-      status: "Pending",
+      Type: "Agriculture Services",
+      ItemName:'Lorem ipsum',
       action: "Action",
     },
     {
-      orderNo: "01",
-      date: "24-01-22",
+      Code: "01",
+      SubscriptionDate: "24-01-22",
+      ExpiryDate:"24-01-22",
       userId: "001",
-      amountPaid: "$21.00",
-      status: "Completed",
+      Type: "Agriculture Services",
+      ItemName:'Lorem ipsum',
       action: "Action",
     },
     {
-      orderNo: "01",
-      date: "24-01-22",
+      Code: "01",
+      SubscriptionDate: "24-01-22",
+      ExpiryDate:"24-01-22",
       userId: "001",
-      amountPaid: "$21.00",
-      status: "Pending",
+      Type: "Agriculture Services",
+      ItemName:'Lorem ipsum',
       action: "Action",
     },
     {
-      orderNo: "01",
-      date: "24-01-22",
+      Code: "01",
+      SubscriptionDate: "24-01-22",
+      ExpiryDate:"24-01-22",
       userId: "001",
-      amountPaid: "$21.00",
-      status: "Booked",
+      Type: "Agriculture Services",
+      ItemName:'Lorem ipsum',
       action: "Action",
     },
   ]);
@@ -72,7 +78,9 @@ function Featured({ setSidebar, sidebar }) {
         sidebar={sidebar}
         title="Featured Products and Details"
       />
-
+      <div style={{width:'fit-content',backgroundImage: 'linear-gradient(#BEDC7C, #14A384)',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:'bold',height:'60px',borderRadius:'10px',color:'#FFFFFF',padding:'5px'}}>
+      <h3 style={{fontWeight:'bold'}}>Total Amount Received from Featured Section: $350</h3>
+      </div>
       <article className="vendor-profile-main">
         <div>
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
