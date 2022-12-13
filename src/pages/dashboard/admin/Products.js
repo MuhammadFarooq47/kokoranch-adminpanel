@@ -23,7 +23,7 @@ function VendorProducts({ setSidebar, sidebar }) {
 
   const [tableRowData, setTableRowData] = useState([
     {
-      code: "01",
+      Code: "01",
       updateDate: "2022-01-22",
       productName: "product1",
       mainCategory: "Main Category",
@@ -32,7 +32,7 @@ function VendorProducts({ setSidebar, sidebar }) {
       action: "Action",
     },
     {
-      code: "01",
+      Code: "02",
       updateDate: "2022-01-23",
       productName: "product1",
       mainCategory: "Main Category",
@@ -41,7 +41,7 @@ function VendorProducts({ setSidebar, sidebar }) {
       action: "Action",
     },
     {
-      code: "01",
+      Code: "03",
       updateDate: "2022-01-24",
       productName: "product1",
       mainCategory: "Main Category",
@@ -50,7 +50,7 @@ function VendorProducts({ setSidebar, sidebar }) {
       action: "Action",
     },
     {
-      code: "01",
+      Code: "04",
       updateDate: "2022-01-25",
       productName: "product1",
       mainCategory: "Main Category",
@@ -59,7 +59,7 @@ function VendorProducts({ setSidebar, sidebar }) {
       action: "Action",
     },
     {
-      code: "01",
+      Code: "05",
       updateDate: "2022-01-26",
       productName: "product1",
       mainCategory: "Main Category",
@@ -92,10 +92,9 @@ function VendorProducts({ setSidebar, sidebar }) {
   const [category, setCategory] = useState("");
   const [options, setOptions] = useState([
     "All",
-    "Landscaping",
-    "lawn Mowing",
-    "Tree Services",
-    "tractor Repair",
+    "T-shirts",
+    "Plant Inspired Jewelry",
+    "Plant Inspired Art",
   ]);
 
   useEffect(() => {
@@ -225,7 +224,7 @@ function VendorProducts({ setSidebar, sidebar }) {
             <div style={{ marginTop: "20px", color: "white" }}>
               <div style={{ marginLeft: "20px" }}>
                 <h4>Filter By Your Categories</h4>
-                <FormControlAuth setCategory={setCategory} />
+                <FormControlAuth setCategory={setCategory} options={options} />
                 {category && (
                   <FormControlAuth
                     setSubCategory={setSubCategory}
@@ -241,11 +240,11 @@ function VendorProducts({ setSidebar, sidebar }) {
               </div>
               <div className="row">
                 <div className="col-5">
-                  <h4 style={{ marginLeft: "20px" }}>Product List:</h4>
+                  <h4 style={{ marginLeft: "20px" }}>All Products:</h4>
                 </div>
                 <div className="col-7 d-flex justify-content-end">
                   <button
-                    onClick={()=>navigate('/add-product')}
+                    onClick={() => navigate("/add-product")}
                     className="btn btn-solid btn-solid-primary table-btn"
                     style={{
                       marginRight: "20px",
@@ -272,10 +271,11 @@ function VendorProducts({ setSidebar, sidebar }) {
                 tHeadData={tableHeadData}
                 tRowData={rowData}
                 edit={"products"}
+                delete1
                 activeCard={"total"}
                 open={deletePopup}
                 setOpen={setDeletePopup}
-                onClick={()=>navigate('/product-details?admin')}
+                onClick={() => navigate("/product-details?admin")}
               />
             </div>
           </div>

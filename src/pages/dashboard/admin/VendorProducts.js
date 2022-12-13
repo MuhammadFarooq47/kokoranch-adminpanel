@@ -232,18 +232,18 @@ function VendorProducts({ setSidebar, sidebar }) {
                   Select Main Categories :
                 </label>
                 <FormControlAuth setCategory={setCategory} />
-                {/* {category && (
-                <FormControlAuth
-                  setSubCategory={setSubCategory}
-                  isSubCategory
-                />
-              )} */}
-                {/* {subCategory && (
-                <FormControlAuth
-                  setSubSubCategory={setSubSubCategory}
-                  isSubCategory
-                />
-              )} */}
+                {category && (
+                  <FormControlAuth
+                    setSubCategory={setSubCategory}
+                    isSubCategory
+                  />
+                )}
+                {subCategory && (
+                  <FormControlAuth
+                    setSubSubCategory={setSubSubCategory}
+                    isSubCategory
+                  />
+                )}
               </div>
             </div>
           </div>

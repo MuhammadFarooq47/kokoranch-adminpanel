@@ -143,7 +143,7 @@ const TableComponent = ({
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.Code}>
                     {tHeadData.map((column) => {
                       // console.log(column.id, row[column.id]);
                       const value = row[column.id];
@@ -194,6 +194,18 @@ const TableComponent = ({
                                 </button>
                               )}
                             </div>
+                          ) : column.id == "price" ? (
+                            `$${value}`
+                          ) : column.id == "status" ? (
+                            value == "Pending" ? (
+                              <span style={{ color: "#FFDD00" }}>{value}</span>
+                            ) : value == "Booked" ? (
+                              <span style={{ color: "#4180FE" }}>{value}</span>
+                            ) : value == "Delivered" ? (
+                              <span style={{ color: "#14A384" }}>{value}</span>
+                            ) : (
+                              value
+                            )
                           ) : column.format && typeof value === "number" ? (
                             column.format(value)
                           ) : (

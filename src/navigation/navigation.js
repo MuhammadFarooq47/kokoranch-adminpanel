@@ -25,7 +25,6 @@ const CreateNewPassword = React.lazy(() =>
   import("../pages/dashboard/admin/pages/CreateNewPassword/CreateNewPassword")
 );
 
-
 // VENDOR STUFF
 const AdminProfile = React.lazy(() =>
   import("../pages/dashboard/admin/profile")
@@ -76,6 +75,9 @@ const VendorProductShippingDetail = React.lazy(() =>
 );
 const AdminProductShippingDetailEdit = React.lazy(() =>
   import("../pages/dashboard/admin/ProductShippingDetailEdit")
+);
+const EditFeaturedProductsAndService = React.lazy(() =>
+  import("../pages/dashboard/admin/EditFeatured")
 );
 const FeaturedProductAndServices = React.lazy(() =>
   import("../pages/dashboard/admin/Featured")
@@ -361,6 +363,16 @@ export default function Navigation() {
           <Suspense fallback={<FullScreenLoader />}>
             <VendorSideBar>
               <VendorServiceOrderDetails />
+            </VendorSideBar>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/make-it-featured"
+        element={
+          <Suspense fallback={<FullScreenLoader />}>
+            <VendorSideBar>
+              <EditFeaturedProductsAndService />
             </VendorSideBar>
           </Suspense>
         }

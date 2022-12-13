@@ -17,10 +17,10 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
   const vendorService = arr[1] == "vendorService" ? true : false;
 
   const [popupOpen, setPopupOpen] = useState(false);
-  const [deletePopup, setDeletePopup] = useState(false);
   const [successfulPopup, setSuccessfulPopup] = useState(false);
+  const [deletePopup, setDeletePopup] = useState(false);
   const [deleteSuccessfulPopup, setDeleteSuccessfulPopup] = useState(false);
-  const [orderStatus, setOrderStatus] = useState("completed");
+  const [orderStatus, setOrderStatus] = useState("cancelled");
   return (
     <div>
       <Popup open={popupOpen} setOpen={setPopupOpen}>
@@ -28,45 +28,94 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
           <h3 className="mb-4">Update Status</h3>
           <div>
             <div className="soi-checkbox my-4">
-              {orderStatus === "active" ? (
+              {orderStatus === "cancelled" ? (
                 <input
                   type="radio"
-                  id="active"
+                  id="cancelled"
                   name="order-status"
                   checked
-                  onClick={() => setOrderStatus("active")}
+                  onClick={() => setOrderStatus("cancelled")}
                 />
               ) : (
                 <input
                   type="radio"
-                  id="active"
+                  id="cancelled"
                   name="order-status"
-                  onClick={() => setOrderStatus("active")}
+                  onClick={() => setOrderStatus("cancelled")}
                 />
               )}
-              <label for="active" onClick={() => setOrderStatus("active")}>
-                Active
+              <label
+                for="cancelled"
+                onClick={() => setOrderStatus("cancelled")}
+              >
+                Cancelled
               </label>
             </div>
             <div className="soi-checkbox my-4">
-              {orderStatus === "inactive" ? (
+              {orderStatus === "pending" ? (
                 <input
                   type="radio"
-                  id="inactive"
+                  id="pending"
                   name="order-status"
                   checked
-                  onClick={() => setOrderStatus("inactive")}
+                  onClick={() => setOrderStatus("pending")}
                 />
               ) : (
                 <input
                   type="radio"
-                  id="inactive"
+                  id="pending"
                   name="order-status"
-                  onClick={() => setOrderStatus("inactive")}
+                  onClick={() => setOrderStatus("pending")}
                 />
               )}
-              <label for="inactive" onClick={() => setOrderStatus("inactive")}>
-                Inactive
+              <label for="pending" onClick={() => setOrderStatus("pending")}>
+                Pending
+              </label>
+            </div>
+            <div className="soi-checkbox my-4">
+              {orderStatus === "onTheWay" ? (
+                <input
+                  type="radio"
+                  id="onTheWay"
+                  name="order-status"
+                  checked
+                  onClick={() => setOrderStatus("onTheWay")}
+                />
+              ) : (
+                <input
+                  type="radio"
+                  id="onTheWay"
+                  name="order-status"
+                  onClick={() => setOrderStatus("onTheWay")}
+                />
+              )}
+              <label for="onTheWay" onClick={() => setOrderStatus("onTheWay")}>
+                On The Way
+              </label>
+            </div>
+
+            <div className="soi-checkbox my-4">
+              {orderStatus === "delivered" ? (
+                <input
+                  type="radio"
+                  id="delivered"
+                  name="order-status"
+                  checked
+                  onClick={() => setOrderStatus("delivered")}
+                />
+              ) : (
+                <input
+                  type="radio"
+                  id="delivered"
+                  name="order-status"
+                  onClick={() => setOrderStatus("delivered")}
+                />
+              )}
+              <label
+                for="delivered"
+                onClick={() => setOrderStatus("delivered")}
+              >
+                Delivered
               </label>
             </div>
           </div>
@@ -184,7 +233,7 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
       <div className="row">
         {!admin && !checkUser && (
           <div
-            className="col-12 col-sm-12 col-md-12 col-lg-6"
+            className="col-12 col-sm-12 col-md-6 col-lg-6"
             style={{
               display: "flex",
               flexDirection: "column",
@@ -209,8 +258,8 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
             </div>
           </div>
         )}
-        <div className="col-12 col-sm-12 col-md-12 col-lg-12  d-flex justify-content-end align-items-center">
-          {!admin && !checkUser && (
+        <div className="col-12 col-sm-12 col-md-6 col-lg-6 mt-3  d-flex justify-content-end align-items-center">
+          {!checkUser && (
             <button
               onClick={() => {
                 setPopupOpen(true);
@@ -238,7 +287,7 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
       >
         <div className="soi-top">
           <div className="row">
-            <div className="col-6 col-sm-12 col-md-6 col-lg-6 soi-orderNo">
+            <div className="col-6 col-sm-12 col-md-6 col-lg-6">
               {checkUser ? (
                 <div className="d-flex align-items-end">
                   <h2 style={{ marginRight: "10px" }}>
@@ -248,13 +297,30 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
                 </div>
               ) : (
                 <>
-                  <h2 style={{ color: vendorService ? "#14A384" : "white" }}>
-                    {vendorProduct ? "Product" : "Service"} Code. 21385
+                  <h2
+                    style={{
+                      color: vendorService || admin ? "#14A384" : "white",
+                    }}
+                  >
+                    {vendorProduct || admin ? "Product" : "Service"} Code. 21385
                   </h2>
                   {(vendorProduct || vendorService) && (
-                    <h4 style={{ marginTop: "10px" }}>
-                      Featured: <span style={{ color: "#14A384" }}>Yes</span>
-                    </h4>
+                    <>
+                      <h4 style={{ marginTop: "10px" }}>
+                        Featured: <span style={{ color: "#14A384" }}>Yes</span>
+                      </h4>
+
+                      <h5
+                        style={{
+                          letterSpacing: "1px",
+                          // textAlign: "end",
+                          marginTop: "5px",
+                        }}
+                      >
+                        Status:
+                        <span style={{ color: "#14A384" }}>Active</span>
+                      </h5>
+                    </>
                   )}
                 </>
               )}
@@ -292,7 +358,7 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
           </div>
         </div>
         <div className="d-flex justify-content-between align-items-center mb-3">
-          <div>
+          {/* <div>
             <h5
               style={{
                 letterSpacing: "1px",
@@ -302,7 +368,7 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
               Status:
               <span style={{ color: "#14A384" }}>Active</span>
             </h5>
-          </div>
+          </div> */}
           {!vendorProduct && !vendorService && (
             <button
               onClick={() => {
@@ -320,7 +386,27 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
           <div className="row ">
             <div className="col-4 ">
               <h3 className="mb-4">
-                {vendorService ? "Service" : "Product"} Name:
+                {vendorService ? (
+                  <span
+                    style={{
+                      color: "#14A384",
+
+                      textDecorationLine: "underline",
+                    }}
+                  >
+                    Service Name:
+                  </span>
+                ) : (
+                  <span
+                    style={{
+                      fontSize: "20px",
+                      color: "#14A384",
+                      textDecorationLine: "underline",
+                    }}
+                  >
+                    Product Name:
+                  </span>
+                )}
               </h3>
             </div>
             <div className="col-8 d-flex justify-content-end">
@@ -433,7 +519,7 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
                 <div className="col-8 d-flex justify-content-end">
                   <h5
                     className="mb-4 active-color"
-                    style={{ color: "blueviolet" }}
+                    style={{ color: "#14A384" }}
                   >
                     500
                   </h5>
@@ -444,7 +530,7 @@ const ProductDetails = ({ setSidebar, sidebar }) => {
             <div className="col-4">
               <h3 className="mb-4">Uploaded Picture:</h3>
             </div>
-            <div className="col-8 d-flex justify-content-end">
+            <div className="col-8 d-flex ">
               <img style={{ height: "80px", width: "80px" }} src={Category1} />
               <img style={{ height: "80px", width: "80px" }} src={Category1} />
               <img style={{ height: "80px", width: "80px" }} src={Category1} />

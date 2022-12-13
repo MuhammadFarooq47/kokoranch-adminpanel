@@ -205,26 +205,6 @@ function VendorAgriculturalServices({ setSidebar, sidebar }) {
       <article className="vendor-profile-main">
         <div className="vendor-profile-main_form">
           <div className="row">
-            <div className="col-12 d-flex justify-content-end">
-              <div className="d-flex" style={{ marginRight: "10px" }}>
-                <div>
-                  <input
-                    style={{ borderRadius: "10px", width: "300px" }}
-                    type="text"
-                    id="form1"
-                    className="form-control"
-                    placeholder="Search by Service Name or Code"
-                  />
-                </div>
-                <button type="button" className="search-btn  ">
-                  <FiSearch className="search-btn-icon" />
-                </button>
-              </div>
-              <FilterIcon
-                width={20}
-                onClick={() => setShowFilterProp(!showFilterProp)}
-              />
-            </div>
             <div className="col-6">
               <div className="d-flex ">
                 {/* <h4>Filter By Your Categories</h4> */}
@@ -245,6 +225,30 @@ function VendorAgriculturalServices({ setSidebar, sidebar }) {
                 />
               )} */}
               </div>
+            </div>
+            <div className="col-6 d-flex justify-content-end">
+              <div className="d-flex" style={{ marginRight: "10px" }}>
+                <div>
+                  <input
+                    style={{
+                      borderRadius: "10px",
+                      width: "300px",
+                      height: "10px",
+                    }}
+                    type="text"
+                    id="form1"
+                    className="form-control"
+                    placeholder="Search by Service Name or Code"
+                  />
+                </div>
+                <button type="button" className="search-btn">
+                  <FiSearch className="search-btn-icon" />
+                </button>
+              </div>
+              <FilterIcon
+                width={20}
+                onClick={() => setShowFilterProp(!showFilterProp)}
+              />
             </div>
           </div>
 
