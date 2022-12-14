@@ -3,22 +3,13 @@ import { FaAngleLeft, FaRegPaperPlane } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import {
-  DELETE_TRADE_REQUEST_ACTION,
-  CREATE_TRADE_REQUEST_MESSAGE_ACTION,
-  GET_TRADE,
-} from "../../../../redux/actions/trades";
 import TradeRequestMessageReply from "./TradeRequestMessageReply";
 // import ReactImageMagnify from "react-image-magnify";
 
 export default function TradeRequest({ setView, singleTrade }) {
-  const { trade, createtradeRequestMessage } = useSelector(
-    (state) => state.TradesReducers
-  );
   // const { _id } = JSON.parse(localStorage.getItem("userData"));
-  const [previewImage, setPeviewImage] = useState(
-    trade ? trade?.images[0] : ""
-  );
+  const trade = [{}];
+  const [previewImage, setPeviewImage] = useState("");
   const dispatch = useDispatch();
   const [tradeRequestComment, settradeRequestComment] = useState("");
   // handle image change
@@ -30,9 +21,6 @@ export default function TradeRequest({ setView, singleTrade }) {
         // traderId: _id,
         tradeRequestComment,
       };
-      // dispatch(
-      //   CREATE_TRADE_REQUEST_MESSAGE_ACTION(data, localStorage.getItem("token"))
-      // );
       settradeRequestComment("");
     } else {
     }
@@ -47,12 +35,6 @@ export default function TradeRequest({ setView, singleTrade }) {
     });
     e.target.classList.add("image-thumb-active");
   };
-  useEffect(() => {
-    if (createtradeRequestMessage) {
-      dispatch(GET_TRADE(trade._id, localStorage.getItem("token")));
-      settradeRequestComment("");
-    }
-  }, [createtradeRequestMessage]);
 
   return (
     <>
@@ -161,14 +143,7 @@ export default function TradeRequest({ setView, singleTrade }) {
                                   </span>
                                 </div>
                                 <div
-                                  onClick={() => {
-                                    dispatch(
-                                      DELETE_TRADE_REQUEST_ACTION(
-                                        trade_request._id,
-                                        localStorage.getItem("token")
-                                      )
-                                    );
-                                  }}
+                                  onClick={() => {}}
                                   className="tab-content_ratings-reviews_customer-reviews-wrapper_review_inner-wrapper_right"
                                 >
                                   <h4 className="fs-4 tab-content_ratings-reviews_customer-reviews-wrapper_review_inner-wrapper_right_delete-btn">

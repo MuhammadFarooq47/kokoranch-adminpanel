@@ -30,7 +30,6 @@ import { ReactComponent as Mobile } from "../../../assets/images/icons/mobile.sv
 import { ReactComponent as ContactIcon } from "../../../assets/images/icons/contacts-icon.svg";
 
 import Images from "../../../constants/images";
-import { LOGOUT } from "../../../redux/actions/authentication";
 
 export default function VendorSideBar({ children }) {
   const [sidebar, setSidebar] = useState(true);

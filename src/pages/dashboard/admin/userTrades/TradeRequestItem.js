@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
-import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";
-import { GET_TRADE } from "../../../../redux/actions/trades";
+// import moment from "moment";
 function TradeRequestItem({ props, setView }) {
-  const dispatch = useDispatch();
-
-  // const { trade } = useSelector((state) => state.TradesReducers)
-
   const [totalUnreadComments, settotalUnreadComments] = useState(0);
   const [lastCommented, setlastCommented] = useState("");
   const caculateUnreadComments = (comments) => {
@@ -17,7 +12,6 @@ function TradeRequestItem({ props, setView }) {
         totalUnreadComments++;
       }
     }
-
     settotalUnreadComments(totalUnreadComments);
   };
   const getLastCommentDate = (comments) => {
@@ -26,7 +20,7 @@ function TradeRequestItem({ props, setView }) {
     } else {
       const lastCommentItem = comments[comments.length - 1];
 
-      setlastCommented(moment(lastCommentItem).format("MMM DD YYYY h:mm A"));
+      // setlastCommented(moment(lastCommentItem.format("MMM DD YYYY h:mm A")));
     }
   };
   const truncate = (str, n) => {
@@ -58,7 +52,6 @@ function TradeRequestItem({ props, setView }) {
           className="btn btn-solid btn-solid-primary px-4 color-white"
           onClick={() => {
             setView("single-trader-request");
-            dispatch(GET_TRADE(props._id));
           }}
         >
           View

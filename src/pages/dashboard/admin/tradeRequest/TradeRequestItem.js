@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";
-import { GET_TRADE } from "../../../../redux/actions/trades";
 function TradeRequestItem({ props, setView }) {
   const dispatch = useDispatch();
-
-  // const { trade } = useSelector((state) => state.TradesReducers)
 
   const [totalUnreadComments, settotalUnreadComments] = useState(0);
   const [lastCommented, setlastCommented] = useState("");
@@ -58,7 +55,6 @@ function TradeRequestItem({ props, setView }) {
           className="btn btn-solid btn-solid-primary px-4 color-white"
           onClick={() => {
             setView("single-trader-request");
-            dispatch(GET_TRADE(props._id));
           }}
         >
           View

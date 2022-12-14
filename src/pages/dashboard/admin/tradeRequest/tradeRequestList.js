@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 
-import { GET_All_SELLER_TRADES } from "../../../../redux/actions/trades";
 import TradeRequestItem from "./TradeRequestItem";
 import TableComponent from "../Components/Table";
 import Popup from "../../../../components/popUp/popUp";
@@ -77,11 +76,6 @@ export default function TradeRequestList({ setView, view }) {
     toDate: "",
   });
   const [rowData, setRowData] = useState(tableRowData);
-  // const { _id } = JSON.parse(localStorage.getItem("userData"));
-
-  // useEffect(() => {
-  //   dispatch(GET_All_SELLER_TRADES(_id, localStorage.getItem('token')))
-  // }, [])
 
   const handleSortProducts = (a, b) => {
     if (sortType === "Newest First") {

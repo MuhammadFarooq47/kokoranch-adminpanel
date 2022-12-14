@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { CREATE_TRADE_REQUEST_MESSAGE_ACTION } from "../../../../redux/actions/trades";
+
 import { FaAngleLeft, FaRegPaperPlane } from "react-icons/fa";
 
 function TradeRequestMessageReply({ trade_request }) {
@@ -15,9 +15,7 @@ function TradeRequestMessageReply({ trade_request }) {
         // traderId: _id,
         tradeRequestComment,
       };
-      dispatch(
-        CREATE_TRADE_REQUEST_MESSAGE_ACTION(data, localStorage.getItem("token"))
-      );
+
       settradeRequestComment("");
     } else {
     }

@@ -1,17 +1,11 @@
 import { useState, useEffect } from "react";
 import { FaSearch, FaAngleDown, FaFilter, FaExclamation } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import moment from "moment";
-
-import { GET_All_SELLER_TRADES } from "../../../../redux/actions/trades";
-import TradeRequestItem from "./TradeRequestItem";
 import TableComponent from "../Components/Table";
 import Popup from "../../../../components/popUp/popUp";
 import { TiTick } from "react-icons/ti";
 
 export default function TradeList({ setView, view }) {
-  const dispatch = useDispatch();
   const [tableHeadData, seTableHeadData] = useState([
     { id: "tradecode", label: "Trade code" },
     { id: "inSearchOf", label: "In Search Of" },
@@ -63,7 +57,6 @@ export default function TradeList({ setView, view }) {
       action: "Action",
     },
   ]);
-  // const { traderTrades } = useSelector((state) => state.TradesReducers);
 
   const traderTrades = [
     { _id: "1", inSearchOf: "sajgd", toExchangeWith: "kjhakjh" },
@@ -78,10 +71,6 @@ export default function TradeList({ setView, view }) {
   });
   const [rowData, setRowData] = useState(tableRowData);
   // const { _id } = JSON.parse(localStorage.getItem("userData"));
-
-  // useEffect(() => {
-  //   dispatch(GET_All_SELLER_TRADES(_id, localStorage.getItem('token')))
-  // }, [])
 
   const handleSortProducts = (a, b) => {
     if (sortType === "Newest First") {
