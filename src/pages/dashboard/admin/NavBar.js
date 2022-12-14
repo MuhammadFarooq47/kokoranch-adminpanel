@@ -4,7 +4,7 @@ import Images from "../../../constants/images";
 import { useSelector } from "react-redux";
 
 export default function NavBar({ setSidebar, sidebar, title, banner }) {
-  const { user } = useSelector((state) => state.authReducer);
+  const user = useSelector((state) => state.user.loggedInUser);
 
   return (
     <nav className="trader-profile-navbar">
@@ -36,12 +36,12 @@ export default function NavBar({ setSidebar, sidebar, title, banner }) {
         </div>
         <div className="trader-profile-navbar_right_user-wrapper">
           <img
-            src={user?.image ? user.image : Images.Pictures.profile}
+            src={user?.image ? user?.image : Images.Pictures.profile}
             className="trader-profile-navbar_right_user-wrapper_image"
             alt="trader"
           />
           <span className="trader-profile-navbar_right_user-wrapper_name">
-            {user.firstName && user.lastName
+            {user?.firstName && user?.lastName
               ? user?.firstName + " " + user?.lastName
               : "Admin"}
           </span>

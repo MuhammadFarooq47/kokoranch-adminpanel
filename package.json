@@ -54,6 +54,7 @@
     "react-tooltip": "^4.4.2",
     "reactflow": "^11.3.2",
     "redux-devtools-extension": "^2.13.9",
+    "redux-persist": "^6.0.0",
     "sass": "^1.49.10",
     "socket.io-client": "^4.4.1",
     "styled-components": "^5.3.6",
