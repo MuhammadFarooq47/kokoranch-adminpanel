@@ -6,8 +6,10 @@ import NavBar from "./NavBar";
 import { Grid } from "@mui/material";
 import { useEffect } from "react";
 import Manager2 from '../../../assets/images/manager2.png';
+import { useSelector } from "react-redux";
 
 export default function Profile({ setSidebar, sidebar }) {
+  const user= useSelector(state=>state.user.loggedInUser);
   const [editAble, setEditAble] = useState(false);
   const [bankEditable, setBankEditable] = useState(false);
   const [show,setShow]=useState(false);
@@ -55,6 +57,7 @@ export default function Profile({ setSidebar, sidebar }) {
     setShowingItems(loginDevices);
     setShow(!show);
   }
+  console.log('user>>>>>>>>>>>>>>',user);
   return (
     <>
       <NavBar setSidebar={setSidebar} sidebar={sidebar} title="My Profile" />
@@ -65,7 +68,7 @@ export default function Profile({ setSidebar, sidebar }) {
             <div className="col-3 col-sm-2 col-md-2 col-lg-2">
               <div className="vendor-profile-main_form_image-input-wrapper">
                 <img
-                  src={Manager2}
+                  src={user.image}
                   className="vendor-profile-main_form_image-input-wrapper_preview"
                   alt="vendor-preview"
                   style={{ width: "10rem", height: "10rem" }}
@@ -106,7 +109,7 @@ export default function Profile({ setSidebar, sidebar }) {
                   style={{borderColor:'#FFFFFF'}}
                 />
               ) : (
-                <p className="preview">Admin</p>
+                <p className="preview">{user?.firstName }</p>
               )}
             </div>
             {/* <div className="col-3 col-lg-3 col-md-3 col-sm-3 d-flex flex-column justify-content-center vendor-system-id">
@@ -130,7 +133,7 @@ export default function Profile({ setSidebar, sidebar }) {
                   style={{borderColor:'#FFFFFF'}}
                 />
               ) : (
-                <p className="vendor-preview">Admin</p>
+                <p className="vendor-preview">{user?.firstName }</p>
               )}
             </div>
             <div className="col-12 col-md-6 col-lg-6">
@@ -148,7 +151,7 @@ export default function Profile({ setSidebar, sidebar }) {
                   style={{borderColor:'#FFFFFF'}}
                 />
               ) : (
-                <p className="vendor-preview">Admin</p>
+                <p className="vendor-preview">{user?.lastName }</p>
               )}
             </div>
           </div>
@@ -168,7 +171,7 @@ export default function Profile({ setSidebar, sidebar }) {
                   style={{borderColor:'#FFFFFF'}}
                 />
               ) : (
-                <p className="vendor-preview">Admin@gmail.com</p>
+                <p className="vendor-preview">{user?.email }</p>
               )}
             </div>
             <div className="col-12 col-md-6 col-lg-6">
@@ -191,7 +194,7 @@ export default function Profile({ setSidebar, sidebar }) {
 
                 />
               ) : (
-                <p className="vendor-preview">+1233454545</p>
+                <p className="vendor-preview">{user?.contact }</p>
               )}
             </div>
           </div>
