@@ -23,52 +23,58 @@ const UserDetails = ({ setSidebar, sidebar }) => {
   const [deleteSuccessfulPopup, setDeleteSuccessfulPopup] = useState(false);
   const [orderStatus, setOrderStatus] = useState("active");
   const [tableHeadData, seTableHeadData] = useState([
-    { id: "userId", label: "User ID" },
-    { id: "signUpDate", label: "Signup Date" },
-    { id: "userName", label: "User Name" },
+    { id: "orderNo", label: "Order No" },
+    { id: "buyerId", label: "Buyer Id" },
+    { id: "Date", label: "Date" },
     { id: "category", label: "Category" },
+    { id: "amountPaid", label: "Amount Paid" },
     { id: "status", label: "Status" },
     { id: "action", label: "Action" },
   ]);
 
   const [tableRowData, setTableRowData] = useState([
     {
-      userId: "01",
-      signUpDate: "2022-01-22",
-      userName: "product1",
-      category: "Main Category",
+      orderNo: "01",
+      Date: "2022-01-22",
+      category: "product1",
+      amountPaid: "$120.00",
+      buyerId: "123456",
       status: "Active",
       action: "Action",
     },
     {
-      userId: "01",
-      signUpDate: "2022-01-23",
-      userName: "product1",
-      category: "Main Category",
+      orderNo: "01",
+      Date: "2022-01-23",
+      category: "product1",
+      amountPaid: "$120.00",
+      buyerId: "123456",
       status: "Active",
       action: "Action",
     },
     {
-      userId: "01",
-      signUpDate: "2022-01-24",
-      userName: "product1",
-      category: "Main Category",
+      orderNo: "01",
+      Date: "2022-01-24",
+      category: "product1",
+      buyerId: "123456",
+      amountPaid: "$120.00",
       status: "Featured",
       action: "Action",
     },
     {
-      userId: "01",
-      signUpDate: "2022-01-25",
-      userName: "product1",
-      category: "Main Category",
+      orderNo: "01",
+      Date: "2022-01-25",
+      category: "product1",
+      buyerId: "123456",
+      amountPaid: "$120.00",
       status: "Inactive",
       action: "Action",
     },
     {
-      userId: "01",
-      signUpDate: "2022-01-26",
-      userName: "product1",
-      category: "Main Category",
+      orderNo: "01",
+      Date: "2022-01-26",
+      category: "product1",
+      buyerId: "123456",
+      amountPaid: "$120.00",
       status: "Inactive",
       action: "Action",
     },
@@ -271,7 +277,7 @@ const UserDetails = ({ setSidebar, sidebar }) => {
               </h4>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <h4 style={{ fontWeight: "bold" }}>Owner UserId:</h4>
+              <h4 style={{ fontWeight: "bold" }}>Owner orderNo:</h4>
               <h4 style={{ color: "#14A384", fontWeight: "bold" }}>1234</h4>
             </div>
           </div>
@@ -335,13 +341,13 @@ const UserDetails = ({ setSidebar, sidebar }) => {
                     />
                   </div>
                 </div>
-                <div className="col-6  d-flex flex-column justify-content-center vendor-profile-info">
-                  <label htmlFor="firstName" className="form-label">
+                <div className="col-6  d-flex flex-column justify-content-center vendor-profile-info ">
+                  <label htmlFor="firstName" className="form-label" style={{fontSize:'16px',fontWeight:'bold',gap:'5px'}}>
                     Sara Miller
                   </label>
-                  <p>User ID:2356</p>
-                  <p>
-                    status:<span style={{ color: "#14A384" }}>Active</span>
+                  <p style={{fontSize:'14px',gap:'5px'}}>User ID:2356</p>
+                  <p style={{fontSize:'14px',gap:'5px'}}>
+                    Status:<span style={{ color: "#14A384" }}>Active</span>
                   </p>
                 </div>
               </div>
@@ -428,46 +434,46 @@ const UserDetails = ({ setSidebar, sidebar }) => {
         <div className="soi-main1">
           <div className="d-flex justify-content-between align-items-center">
             <div>
-              <h3 className="soi-main1-label-wrapper">Personal Information:</h3>
+              <h3 className="soi-main1-label-wrapper" >Personal Information:</h3>
             </div>
             <div></div>
           </div>
           <div className="row mt-5">
             <div className="col-4 ">
-              <label className="mb-4">First Name</label>
+              <label className="mb-4" style={{fontSize:'16px',color:'gray'}}>First Name</label>
             </div>
             <div className="col-8 d-flex justify-content-end">
-              <p className="mb-4 ">Sara</p>
+              <p className="mb-4 " style={{fontSize:'16px',color:'gray'}}>Sara</p>
             </div>
             <div className="col-4 ">
-              <label className="mb-4">Last Name</label>
+              <label className="mb-4" style={{fontSize:'16px',color:'gray'}}>Last Name</label>
             </div>
             <div className="col-8 d-flex justify-content-end">
-              <p className="mb-4 ">Miller</p>
+              <p className="mb-4 " style={{fontSize:'16px',color:'gray'}}>Miller</p>
             </div>
             <div className="col-4 ">
-              <label className="mb-4">Category</label>
+              <label className="mb-4" style={{fontSize:'16px',color:'gray'}}>Category</label>
             </div>
             <div className="col-8 d-flex justify-content-end">
-              <p className="mb-4 ">Vendors</p>
+              <p className="mb-4 " style={{fontSize:'16px',color:'gray'}}>Vendors</p>
             </div>
             <div className="col-4 ">
-              <label className="mb-4">Email Address</label>
+              <label className="mb-4" style={{fontSize:'16px',color:'gray'}}>Email Address</label>
             </div>
             <div className="col-8 d-flex justify-content-end">
-              <p className="mb-4 ">sara@gmail.com</p>
+              <p className="mb-4 " style={{fontSize:'16px',color:'#1878E4'}}>sara@gmail.com</p>
             </div>
             <div className="col-4 ">
-              <label className="mb-4">Phone Number</label>
+              <label className="mb-4" style={{fontSize:'16px',color:'gray'}}>Phone Number</label>
             </div>
             <div className="col-8 d-flex justify-content-end">
-              <p className="mb-4 ">1234567897</p>
+              <p className="mb-4 " style={{fontSize:'16px',color:'gray'}}>1234567897</p>
             </div>
             <div className="col-4 ">
-              <label className="mb-4">Password</label>
+              <label className="mb-4" style={{fontSize:'16px',color:'gray'}}>Password</label>
             </div>
             <div className="col-8 d-flex justify-content-end">
-              <p className="mb-4 ">ksjdfljsdlfjdjf45464</p>
+              <p className="mb-4 " style={{fontSize:'16px',color:'gray'}}>ksjdfljsdlfjdjf45464</p>
             </div>
             <hr className="hr-rule" />
             <div className="d-flex justify-content-between align-items-center mb-5">
@@ -479,33 +485,33 @@ const UserDetails = ({ setSidebar, sidebar }) => {
               <div></div>
             </div>
             <div className="col-4 ">
-              <label className="mb-4">Bank Name</label>
+              <label className="mb-4" style={{fontSize:'16px',color:'gray'}}>Bank Name</label>
             </div>
             <div className="col-8 d-flex justify-content-end">
-              <p className="mb-4 ">Bank Of America</p>
+              <p className="mb-4 " style={{fontSize:'16px',color:'gray'}}>Bank Of America</p>
             </div>
             <div className="col-4 ">
-              <label className="mb-4">Bank Account Number </label>
+              <label className="mb-4" style={{fontSize:'16px',color:'gray'}}>Bank Account Number </label>
             </div>
             <div className="col-8 d-flex justify-content-end">
-              <p className="mb-4 ">51247856321678</p>
+              <p className="mb-4 " style={{fontSize:'16px',color:'gray'}}>51247856321678</p>
             </div>
             <div className="col-4 ">
-              <label className="mb-4">Routing Number</label>
+              <label className="mb-4" style={{fontSize:'16px',color:'gray'}}>Routing Number</label>
             </div>
             <div className="col-8 d-flex justify-content-end">
-              <p className="mb-4 ">ksjdfljsdlfjdjf45464</p>
+              <p className="mb-4 " style={{fontSize:'16px',color:'gray'}}>ksjdfljsdlfjdjf45464</p>
             </div>
             <div className="col-4 ">
-              <label className="mb-4">Bank Account Title</label>
+              <label className="mb-4" style={{fontSize:'16px',color:'gray'}}>Bank Account Title</label>
             </div>
             <div className="col-8 d-flex justify-content-end">
-              <p className="mb-4 ">Sara Miller</p>
+              <p className="mb-4 " style={{fontSize:'16px',color:'gray'}}>Sara Miller</p>
             </div>
             <hr className="hr-rule" />
-            <div className="d-flex justify-content-between align-items-center">
+            <div className="d-flex justify-content-between align-items-center" style={{padding:'0px 30px 0px 30px'}}>
               <div>
-                <h3 className="soi-main1-label-wrapper">User Orders</h3>
+                <h3 className="soi-main1-label-wrapper" >User Orders</h3>
               </div>
               <button
                 onClick={() => {

@@ -5,6 +5,7 @@ import Images from "../../../constants/images";
 import NavBar from "./NavBar";
 import { Grid } from "@mui/material";
 import { useEffect } from "react";
+import Manager2 from '../../../assets/images/manager2.png';
 
 export default function Profile({ setSidebar, sidebar }) {
   const [editAble, setEditAble] = useState(false);
@@ -64,7 +65,7 @@ export default function Profile({ setSidebar, sidebar }) {
             <div className="col-3 col-sm-2 col-md-2 col-lg-2">
               <div className="vendor-profile-main_form_image-input-wrapper">
                 <img
-                  src={Images.Pictures.profile}
+                  src={Manager2}
                   className="vendor-profile-main_form_image-input-wrapper_preview"
                   alt="vendor-preview"
                   style={{ width: "10rem", height: "10rem" }}
@@ -102,17 +103,18 @@ export default function Profile({ setSidebar, sidebar }) {
                   name="profileName"
                   placeholder="Enter Your Profile Name"
                   required
+                  style={{borderColor:'#FFFFFF'}}
                 />
               ) : (
                 <p className="preview">Admin</p>
               )}
             </div>
-            <div className="col-3 col-lg-3 col-md-3 col-sm-3 d-flex flex-column justify-content-center vendor-system-id">
+            {/* <div className="col-3 col-lg-3 col-md-3 col-sm-3 d-flex flex-column justify-content-center vendor-system-id">
               <p className="vendor-id">User Id : 123456</p>
               <p className="vendor-text">(System Generated)</p>
-            </div>
+            </div> */}
           </div>
-          <div className="row">
+          <div className="row" style={{marginTop:'30px'}} >
             <div className="col-12 col-md-6 col-lg-6 mb-4">
               <label htmlFor="firstName" className="form-label">
                 First Name
@@ -125,6 +127,7 @@ export default function Profile({ setSidebar, sidebar }) {
                   name="firstName"
                   placeholder="Enter Your First Name"
                   required
+                  style={{borderColor:'#FFFFFF'}}
                 />
               ) : (
                 <p className="vendor-preview">Admin</p>
@@ -142,13 +145,14 @@ export default function Profile({ setSidebar, sidebar }) {
                   name="lastName"
                   placeholder="Enter Your Last Name"
                   required
+                  style={{borderColor:'#FFFFFF'}}
                 />
               ) : (
                 <p className="vendor-preview">Admin</p>
               )}
             </div>
           </div>
-          <div className="row">
+          <div className="row" style={{marginTop:'50px'}} >
             <div className="col-12 col-md-6 col-lg-6">
               <label htmlFor="email" className="form-label">
                 Email Address
@@ -161,6 +165,7 @@ export default function Profile({ setSidebar, sidebar }) {
                   name="email"
                   placeholder="Enter Your Email Address"
                   required
+                  style={{borderColor:'#FFFFFF'}}
                 />
               ) : (
                 <p className="vendor-preview">Admin@gmail.com</p>
@@ -174,10 +179,16 @@ export default function Profile({ setSidebar, sidebar }) {
                 <PhoneInput
                   country={"us"}
                   enableSearch={true}
-                  id="contact"
-                  name="contact"
+                  // id="contact"
+                  // name="contact"
                   placeholder="Phone Number"
                   required
+                  inputStyle={{borderColor:'#FFFFFF'}}
+                  dropdownStyle={{borderColor:'#FFFFFF'}}
+                  containerStyle={{borderColor:'#FFFFFF'}}
+                  searchStyle={{borderColor:'#FFFFFF'}}
+                  buttonStyle={{borderColor:'#FFFFFF'}}
+
                 />
               ) : (
                 <p className="vendor-preview">+1233454545</p>
@@ -185,13 +196,9 @@ export default function Profile({ setSidebar, sidebar }) {
             </div>
           </div>
           {editAble ? (
-            <div className="row mt-5">
-              <div className="col-12 col-md-6 col-lg-4">
-                <button className="btn btn-solid btn-solid-primary-rounded w-50 py-3">
-                  Save
-                </button>
-              </div>
-              <div className="col-12 col-md-6 col-lg-4">
+            <div className="row" style={{marginTop:'80px'}}>
+              
+              <div className="col-12 col-md-6 col-lg-5">
                 <button
                   className="btn btn-outline-primary-rounded w-50 py-3"
                   onClick={() => {
@@ -199,6 +206,11 @@ export default function Profile({ setSidebar, sidebar }) {
                   }}
                 >
                   Cancel
+                </button>
+              </div>
+              <div className="col-12 col-md-6 col-lg-5">
+                <button className="btn btn-solid btn-solid-primary-rounded w-50 py-3">
+                  Save
                 </button>
               </div>
             </div>
@@ -222,6 +234,8 @@ export default function Profile({ setSidebar, sidebar }) {
           )}
         </div>
         {/* ******************************************************* */}
+        {!editAble && (
+          <>
         <hr className="hr-rule" />
         <div className="vendor-profile-main_form">
           <div className="bank-details">
@@ -366,6 +380,9 @@ export default function Profile({ setSidebar, sidebar }) {
             )}
           </div>
         </div>
+        </>
+        
+        )}
       </article>
     </>
   );

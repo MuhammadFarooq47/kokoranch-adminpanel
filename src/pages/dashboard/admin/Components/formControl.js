@@ -21,6 +21,8 @@ const FormControlAuth = ({
   value,
   setValue,
   disabled = false,
+  width,
+  border
 }) => {
   const [inputTypeState, setInputTypeState] = useState(inputType);
   const showPasswordText = () => {
@@ -32,7 +34,7 @@ const FormControlAuth = ({
   };
   if (!isSelectInput) {
     return (
-      <FormControl sx={{ marginBottom: 5, width: "30%" }} size={"small"}>
+      <FormControl sx={{ marginBottom: 5, width:width? width :  "50%",border:border? border : '',borderRadius:'5px' }} size={"small"}>
         <InputLabel
           id="demo-simple-select-helper-label"
           sx={{
@@ -42,7 +44,7 @@ const FormControlAuth = ({
             },
           }}
         >
-          select category
+          Select Category
         </InputLabel>
         <Select
           sx={{
@@ -65,7 +67,7 @@ const FormControlAuth = ({
           id="demo-simple-select-helper"
           value={age}
           placeholder={"age"}
-          label="select category"
+          label="Select Category"
           onChange={handleChange}
         >
           {/* <MenuItem value="">

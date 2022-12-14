@@ -1,6 +1,5 @@
-import { Paper } from "@mui/material";
+import { makeStyles, Paper } from "@mui/material";
 import React, { useState } from "react";
-import { ReactComponent as PlusIcon } from "../../../assets/images/icons/icons8-plus.svg";
 import NavBar from "./NavBar";
 import { useNavigate, useLocation } from "react-router-dom";
 import Popup from "../../../components/popUp/popUp";
@@ -10,6 +9,13 @@ import {MdCancel} from "react-icons/md"
 import{ReactComponent as CameraInputIcon}  from '../../../assets/images/icons/camera-input-icon.svg';
 import {Grid} from "@mui/material";
 import {toast} from "react-toastify";
+import {RiArrowDropDownLine} from 'react-icons/ri';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
 function ProductDetailsEdit({ sidebar, setSidebar }) {
   let navigate = useNavigate();
   const location = useLocation();
@@ -54,6 +60,11 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
     setDetailsInputs(arr);
     toast.success("one more description added!");
   };
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
 
   return (
     <>
@@ -79,7 +90,7 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
         setSidebar={setSidebar}
         sidebar={sidebar}
         title={
-          location?.state?.addProduct ? "Add Product" : "Edit Product Details"
+          location?.state?.addProduct ? "Add Product" : "Edit Product"
         }
       />
       <Paper
@@ -129,53 +140,114 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
                 className="form-control"
                 id="firstName"
                 name="firstName"
-                placeholder="product name"
+                placeholder="Product name"
                 required
+                style={{border:'1px solid #FFFFFF',color:'#FFFFFF', backgroundColor:'transparent'}}
               />
             </div>
           </div>
           <div className="row">
-            <div className="col-3 col-md-3 col-lg-3 mb-5 col-sm-12 col-xs-12">
-              <label htmlFor="firstName" className="form-label">
-                Category 1
+          <div className="col-3 col-md-3 col-lg-3 mb-5 col-sm-12 col-xs-12">
+               <label htmlFor="firstName" className="form-label">
+                Category
               </label>
-
-              <input
-                type="text"
-                className="form-control"
-                id="firstName"
-                name="firstName"
-                placeholder="Globally"
-                required
-              />
+                    <FormControl fullWidth style={{borderRadius:'5px',border:'1px solid #FFFFFF'}}>
+                      {/* <InputLabel id="demo-simple-select-label" style={{color:'#FFFFFF',fill:'#FFFFFF'}}>Select Category</InputLabel> */}
+                      <Select
+                        // labelId="demo-simple-select-label"
+                        // id="demo-simple-select"
+                        value={age}
+                        // label="Age"
+                        onChange={handleChange}
+                        sx={{
+                          color: "white",
+                          '.MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'rgba(228, 219, 233, 0.25)',
+                          },
+                          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'rgba(228, 219, 233, 0.25)',
+                          },
+                          '&:hover .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'rgba(228, 219, 233, 0.25)',
+                          },
+                          '.MuiSvgIcon-root ': {
+                            fill: "white !important",
+                          }
+                        }}
+                      >
+                        <MenuItem value={10}>Plants</MenuItem>
+                        <MenuItem value={20}>Plants</MenuItem>
+                        <MenuItem value={30}>Plants</MenuItem>
+                      </Select>
+                    </FormControl>
+                {/* </Box> */}
             </div>
             <div className="col-3 col-md-3 col-lg-3 mb-5 col-sm-12 col-xs-12">
-              <label htmlFor="firstName" className="form-label">
-                Category 2
+               <label htmlFor="firstName" className="form-label">
+                Sub Category
               </label>
-
-              <input
-                type="text"
-                className="form-control"
-                id="firstName"
-                name="firstName"
-                placeholder="Globally"
-                required
-              />
+                    <FormControl fullWidth style={{borderRadius:'5px',border:'1px solid #FFFFFF'}}>
+                      {/* <InputLabel id="demo-simple-select-label" style={{color:'#FFFFFF',fill:'#FFFFFF'}}>Select Sub Category</InputLabel> */}
+                      <Select
+                        value={age}
+                        // label="Age"
+                        onChange={handleChange}
+                        sx={{
+                          color: "white",
+                          '.MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'rgba(228, 219, 233, 0.25)',
+                          },
+                          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'rgba(228, 219, 233, 0.25)',
+                          },
+                          '&:hover .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'rgba(228, 219, 233, 0.25)',
+                          },
+                          '.MuiSvgIcon-root ': {
+                            fill: "white !important",
+                          }
+                        }}
+                      >
+                        <MenuItem value={10}>Plants</MenuItem>
+                        <MenuItem value={20}>Plants</MenuItem>
+                        <MenuItem value={30}>Plants</MenuItem>
+                      </Select>
+                    </FormControl>
             </div>
             <div className="col-3 col-md-3 col-lg-3 mb-5 col-sm-12 col-xs-12">
-              <label htmlFor="firstName" className="form-label">
-                Category 3
+               <label htmlFor="firstName" className="form-label">
+                Sub-Sub Category
               </label>
+                    <FormControl fullWidth style={{borderRadius:'5px',border:'1px solid #FFFFFF'}}>
+                      {/* <InputLabel id="demo-simple-select-label" style={{color:'#FFFFFF',fill:'#FFFFFF'}}>Select Sub-Sub Category</InputLabel> */}
+                      <Select
+                        // labelId="demo-simple-select-label"
+                        // id="demo-simple-select"
+                        value={age}
+                        // label="Age"
+                        onChange={handleChange}
+                        sx={{
+                          color: "white",
+                          '.MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'rgba(228, 219, 233, 0.25)',
+                          },
+                          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'rgba(228, 219, 233, 0.25)',
+                          },
+                          '&:hover .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'rgba(228, 219, 233, 0.25)',
+                          },
+                          '.MuiSvgIcon-root ': {
+                            fill: "white !important",
+                          }
+                        }}
+                      >
+                        <MenuItem value={10}>Plants</MenuItem>
+                        <MenuItem value={20}>Plants</MenuItem>
+                        <MenuItem value={30}>Plants</MenuItem>
+                      </Select>
+                    </FormControl>
 
-              <input
-                type="text"
-                className="form-control"
-                id="firstName"
-                name="firstName"
-                placeholder="Globally"
-                required
-              />
             </div>
           </div>
           <div className="row">
@@ -183,7 +255,9 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
               <label htmlFor="firstName" className="form-label">
                 Price
               </label>
-
+              <div style={{display:'flex',height:'70%',width:'100%',alignItems:'center',borderRadius:'5px',border:'1px solid #FFFFFF',color:'#FFFFFF', backgroundColor:'transparent'}}>
+                <div style={{width:'10%',textAlign:'center'}}>$</div>
+                <div style={{height:'100%',borderRight:'1px solid #FFFFFF'}}></div>
               <input
                 type="text"
                 className="form-control"
@@ -191,21 +265,32 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
                 name="firstName"
                 placeholder="local 14 days and Global 30 days"
                 required
-              />
+                style={{border:'none',backgroundColor:'transparent'}}
+                />
+                </div>
             </div>
           </div>
           <div className="row">
             <div className="col-12 col-md-9 col-lg-9 mb-5 col-sm-12 col-xs-12">
-                <div style={{display:'flex',alignItems:'center',gap:'20px',height:'60px'}} >
+                <div style={{display:'flex',alignItems:'center',gap:'20px',height:'60px',position:'relative'}} >
+                  <div style={{display:'flex',alignItems:'center',justifyContent:'center',gap:'5px'}}>
                 <label htmlFor="firstName" className="form-label">
                     Description 1
                 </label>
+                <div style={{borderRadius:'50%',height:'15px',width:'15px',backgroundColor:'#4180FE',display:'flex',alignItems:'center',justifyContent:'center'}}>
+                  <label style={{fontSize:'10px',color:'black',fontWeight:'bolder',cursor:'pointer'}} onClick={()=>setPopupOpen(!popupOpen)}>i</label>
+                </div>
+               {popupOpen && ( <div style={{position:'absolute',borderRadius:'10px',left:90,zIndex:5,bottom:-30,backgroundColor:'#FFFFFF',color:'black',padding:'2px',width:'100px'}}>
+                <span style={{fontSize:'10px'}}>Description will appear in bullet points</span>
+                </div>)}
+                </div>
+
                 <button
                 className="btn btn-solid btn-solid-primary soi-success-btn"
                 onClick={() => addDescriptionInput()}
                 >
                 Add Another Description
-                </button>
+                </button>     
                 </div>
               <textarea
                 rows={4}
@@ -214,6 +299,7 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
                 placeholder="30 days return, Buyers will pay return shipping fee "
                 required
                 className="form-control"
+                style={{border:'1px solid #FFFFFF',color:'#FFFFFF', backgroundColor:'transparent'}}
               ></textarea>
             </div>
           </div>
@@ -233,6 +319,7 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
                 placeholder="30 days return, Buyers will pay return shipping fee "
                 required
                 className="form-control"
+                style={{border:'1px solid #FFFFFF',color:'#FFFFFF', backgroundColor:'transparent'}}
               ></textarea>
             </div>
           </div>
@@ -241,21 +328,6 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
             })
           
             }
-          {/* <div className="row">
-            <div className="col-12 col-md-9 col-lg-9 mb-5 col-sm-12 col-xs-12">
-              <label htmlFor="firstName" className="form-label">
-                Description 3
-              </label>
-              <textarea
-                rows={4}
-                id="firstName"
-                name="firstName"
-                placeholder="30 days return, Buyers will pay return shipping fee "
-                required
-                className="form-control"
-              ></textarea>
-            </div>
-          </div> */}
           <div className="row">
             <div className="col-12 col-md-6 col-lg-5 mb-5 col-sm-12 col-xs-12">
               <label htmlFor="firstName" className="form-label">
@@ -269,12 +341,13 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
                 name="firstName"
                 placeholder="Free Shipping"
                 required
+                style={{border:'1px solid #FFFFFF',color:'#FFFFFF', backgroundColor:'transparent'}}
               />
             </div>
           </div>
           <div className="row">
             <div className="col-12 col-md-6 col-lg-5 mb-5 col-sm-12 col-xs-12">
-              <label htmlFor="firstName" className="form-label">
+              <label htmlFor="firstName" className="form-label" style={{fontSize:'16px'}}>
                 Upload Up to 12 Photos
               </label>
               <Grid container alignItems={'center'} spacing={2} gap='10px'>
@@ -303,18 +376,19 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
           </div>
           <div className="row">
             <div className="col-12 col-md-8 col-lg-8 mb-5 col-sm-12 col-xs-12 d-flex flex-row ">
-              <label htmlFor="firstName" className="form-label">
+              <label htmlFor="firstName" className="form-label" style={{fontSize:'16px'}}>
                 Enter Shipping Details:
               </label>
               <label style={{ display: "flex", alignItems: "center" }}>
                 <input
-                  style={{ marginLeft: "20px" }}
+                  style={{ marginLeft: "20px",border:'1px solid #FFFFFF',color:'#FFFFFF' }}
                   type="checkbox"
                   value="Male"
                   name="gender"
+                 
                 />{" "}
                 <span style={{ marginLeft: "10px" }}>
-                  use saved shipping details
+                  Use saved shipping details
                 </span>
               </label>
             </div>
@@ -332,6 +406,7 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
                 name="firstName"
                 placeholder="Wisconsin"
                 required
+                style={{border:'1px solid #FFFFFF',color:'#FFFFFF', backgroundColor:'transparent'}}
               />
             </div>
           </div>
@@ -348,6 +423,7 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
                 name="firstName"
                 placeholder="Globally"
                 required
+                style={{border:'1px solid #FFFFFF',color:'#FFFFFF', backgroundColor:'transparent'}}
               />
             </div>
           </div>
@@ -364,6 +440,7 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
                 name="firstName"
                 placeholder="local 14 days and Global 30 days"
                 required
+                style={{border:'1px solid #FFFFFF',color:'#FFFFFF', backgroundColor:'transparent'}}
               />
             </div>
           </div>
@@ -380,6 +457,7 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
                 name="firstName"
                 placeholder="30 days return, Buyers will pay return shipping fee "
                 required
+                style={{border:'1px solid #FFFFFF',color:'#FFFFFF', backgroundColor:'transparent'}}
               />
             </div>
           </div>
@@ -396,10 +474,11 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
                 name="firstName"
                 placeholder="Free Shipping"
                 required
+                style={{border:'1px solid #FFFFFF',color:'#FFFFFF', backgroundColor:'transparent'}}
               />
             </div>
           </div>
-          <div style={{ display: "flex", flexDirection: "row" }}>
+          <div style={{ display: "flex", flexDirection: "row" ,marginBottom:'10px'}}>
             <button
               onClick={() => {
                 setSuccessfulPopup(true);
@@ -449,6 +528,7 @@ function ProductDetailsEdit({ sidebar, setSidebar }) {
           </div>
         </div>
       </Paper>
+  
     </>
   );
 }

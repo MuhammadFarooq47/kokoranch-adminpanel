@@ -4,6 +4,8 @@ const TextInput = ({
     height,
     width,
     placeholder,
+    value,
+    onChange,
 }) => {
   return (
     <div
@@ -17,6 +19,8 @@ const TextInput = ({
        className='TextInput'
         type='text'
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
            />
     </div>
   )

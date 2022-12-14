@@ -39,7 +39,6 @@ const ManagerRoles = ({ setSidebar, sidebar }) => {
                 {label:'Select All',value:false},
                 {label:'View admin product orders',value:false},
                 {label:'Update admin product orders details',value:false},
-                {label:'Edit admin products',value:false},
                 {label:'Send message to buyers',value:false},
             ]
         },
@@ -51,9 +50,6 @@ const ManagerRoles = ({ setSidebar, sidebar }) => {
                 {label:'Read messages',value:false},
                 {label:'Reply to messages',value:false},
                 {label:'Delete conversation',value:false},
-                {label:'Delete admin products',value:false},
-                {label:'Update admin product status',value:false},
-                {label:'Make admin products featured',value:false},
             ]
         },
         {
@@ -64,7 +60,6 @@ const ManagerRoles = ({ setSidebar, sidebar }) => {
                 {label:'View admin product rating&reviews',value:false},
                 {label:'View user product/services rating&reviews',value:false},
                 {label:'Delete review',value:false},
-                {label:'Delete admin products',value:false},
                 {label:'Reply to rating&reviews',value:false},
             ]
         },
@@ -110,8 +105,8 @@ const ManagerRoles = ({ setSidebar, sidebar }) => {
             access:'Don’t Give Access to Manager',
             cond:[
                 {label:'Select All',value:false},
-                {label:'View agricultural Services',value:false},
-                {label:'Delete agricultural Services',value:false},
+                {label:'View Vendor agricultural Services',value:false},
+                {label:'Delete Vendor agricultural Services',value:false},
             ]
         },
         {

@@ -73,6 +73,7 @@ const TableComponent = ({
   setView,
   edit,
   setOpen,
+  pageView
 }) => {
   // console.log("activeCard", activeCard);
   const [page, setPage] = React.useState(0);
@@ -179,6 +180,17 @@ const TableComponent = ({
                                   style={{ marginLeft: "10px" }}
                                 >
                                   Delete
+                                </button>
+                              )}
+                               {pageView == true && (
+                                <button
+                                  onClick={() => {
+                                    setOpen(true);
+                                  }}
+                                  className="btn btn-solid btn-solid-success table-btn"
+                                  style={{ marginLeft: "10px",backgroundColor:'#4180FE' }}
+                                >
+                                  Page View
                                 </button>
                               )}
                             </div>

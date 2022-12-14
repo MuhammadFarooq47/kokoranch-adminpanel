@@ -7,10 +7,15 @@ import './SplashScreen.css'
 import PopUp from '../../Components/popUp/CustomPopUp';
 import {useNavigate} from 'react-router-dom';
 import TextInput from '../../Components/TextInput/TextInput';
+import {login} from "../../../../../apiCalls/auth";
 function SplashScreen() {
     const [state,setState]=useState(false);
     const [scale,setScale]=useState(false);
     const [openModal,setOpenModal]=useState(false);
+    const [cred,setCred]=useState({
+      email:'',
+      password:''
+    });
     const navigate= useNavigate();
     const [windowSize, setWindowSize] = useState(getWindowSize());
     function getWindowSize() {
@@ -118,8 +123,18 @@ function SplashScreen() {
           </h3>
           {/* inputs */}
           <div className='formBody'>
-          <TextInput placeholder='Email or Phone'  />
-          <TextInput placeholder='Enter Password' />
+          <TextInput 
+          placeholder='Email or Phone' 
+          value={cred.email} 
+          onChange={(e)=>setCred({
+            ...cred,
+            email:e.target.value
+          })
+          } />
+          <TextInput placeholder='Enter Password' value={cred.password} onChange={(e)=>setCred({
+            ...cred,
+            password:e.target.value
+          })} />
           {/* forgotpassowrd */}
           <div className='forgotPassowrd'>
             <div style={{display:'flex'}}>
@@ -129,7 +144,9 @@ function SplashScreen() {
             <span style={{color:'#14A384',fontFamily: 'poppins',fontSize:'12px',cursor:'pointer'}} onClick={()=>setOpenModal(true)}> Forgot Password?</span>
           </div>
           </div>
-          <AppButton height={'43px'} width={'18vw'} buttonText={'Login'} onClick={()=>navigate('/admin-profile')}  />
+          <AppButton height={'43px'} width={'18vw'} buttonText={'Login'} 
+          onClick={()=>login(cred.email,cred.password,navigate)} 
+          />
       </div>
       </motion.div>
     </div>

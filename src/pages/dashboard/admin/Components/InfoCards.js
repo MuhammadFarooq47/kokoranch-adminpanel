@@ -10,9 +10,10 @@ const InfoCards = ({
   featured1,
   sortData,
   setSortData,
+  price,
 }) => {
   const [showFilterProp, setShowFilterProp] = useState(false);
-
+  console.log('preice',price)
   return (
     <>
       <div className="row">
@@ -59,6 +60,7 @@ const InfoCards = ({
           featured1={featured1}
           sortData={sortData}
           setSortData={setSortData}
+          price={price}
         />
       )}
     </>

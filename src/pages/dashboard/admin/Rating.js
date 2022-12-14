@@ -12,59 +12,57 @@ import CustomPopup from './Components/popUp/CustomPopUp'
 function Rating({ setSidebar, sidebar }) {
   const navigate = useNavigate();
   const [tableHeadData, seTableHeadData] = useState([
-    { id: "code", label: "code" },
-    { id: "updateDate", label: "Update Date" },
-    { id: "productName", label: "Product Name" },
-    { id: "mainCategory", label: "Main Category" },
-    { id: "price", label: "Price" },
-    { id: "status", label: "Status" },
+    { id: "Type", label: "Type" },
+    { id: "Name", label: "Name" },
+    { id: "Rating", label: "Rating" },
+    { id: "TotalReviews", label: "Total Reviews" },
+    { id: "NewReviews", label: "New Reviews" },
     { id: "action", label: "Action" },
   ]);
 
   const [tableRowData, setTableRowData] = useState([
     {
-      code: "01",
-      updateDate: "2022-01-22",
-      productName: "product1",
-      mainCategory: "Main Category",
-      price: "21.00",
-      status: "Active",
+      Type: "01",
+      Name: "Product Name",
+      Rating: "3.5",
+      TotalReviews: "21",
+      NewReviews: "5",
       action: "Action",
     },
     {
-      code: "01",
-      updateDate: "2022-01-23",
-      productName: "product1",
-      mainCategory: "Main Category",
-      price: "31.00",
-      status: "Active",
+      Type: "01",
+      Name: "Product Name",
+      Rating: "3.5",
+      TotalReviews: "21",
+    
+      NewReviews: "5",
       action: "Action",
     },
     {
-      code: "01",
-      updateDate: "2022-01-24",
-      productName: "product1",
-      mainCategory: "Main Category",
-      price: "41.00",
-      status: "Featured",
+      Type: "01",
+      Name: "Product Name",
+      Rating: "3.5",
+      TotalReviews: "21",
+    
+      NewReviews: "5",
       action: "Action",
     },
     {
-      code: "01",
-      updateDate: "2022-01-25",
-      productName: "product1",
-      mainCategory: "Main Category",
-      price: "51.00",
-      status: "Inactive",
+      Type: "01",
+      Name: "Product Name",
+      Rating: "3.5",
+      TotalReviews: "21",
+      
+      NewReviews: "5",
       action: "Action",
     },
     {
-      code: "01",
-      updateDate: "2022-01-26",
-      productName: "product1",
-      mainCategory: "Main Category",
-      price: "61.00",
-      status: "Inactive",
+      Type: "01",
+      Name: "Product Name",
+      Rating: "3.5",
+      TotalReviews: "21",
+      
+      NewReviews: "5",
       action: "Action",
     },
   ]);
@@ -112,13 +110,13 @@ function Rating({ setSidebar, sidebar }) {
       if (sortData == "asc") {
         temp = rowData.sort((a, b) => {
           return (
-            Number(new Date(a.updateDate)) - Number(new Date(b.updateDate))
+            Number(new Date(a.Name)) - Number(new Date(b.Name))
           );
         });
       } else if (sortData == "dec") {
         temp = rowData.sort((a, b) => {
           return (
-            Number(new Date(b.updateDate)) - Number(new Date(a.updateDate))
+            Number(new Date(b.Name)) - Number(new Date(a.Name))
           );
         });
       } else if (sortData == "low") {
@@ -193,7 +191,7 @@ function Rating({ setSidebar, sidebar }) {
         </div>
       </Popup>
       <CustomPopup open={viewRatings} setOpen={setViewRatings} rating={true} /> 
-      <NavBar setSidebar={setSidebar} sidebar={sidebar} title="My Products" />
+      <NavBar setSidebar={setSidebar} sidebar={sidebar} title="Rating and Reviews" />
 
       <article className="vendor-profile-main">
         <div className="vendor-profile-main_form">
@@ -219,8 +217,8 @@ function Rating({ setSidebar, sidebar }) {
           <div className=" col-md-12">
             <div style={{ marginTop: "20px", color: "white" }}>
               <div style={{ marginLeft: "20px" }}>
-                <h4>Filter By Your Category</h4>
-                <FormControlAuth setCategory={setCategory} />
+                <h4 style={{marginBottom:'10px'}}>Filter By Your Category</h4>
+                <FormControlAuth setCategory={setCategory} width={'30%'} border={'1px solid #FFFFFF'}/>
                 {category && (
                   <FormControlAuth
                     setSubCategory={setSubCategory}
@@ -247,6 +245,7 @@ function Rating({ setSidebar, sidebar }) {
                 open={deletePopup}
                 setOpen={setDeletePopup}
                 onClick={()=>setViewRatings(!viewRatings)}
+                pageView={true}
               />
             </div>
           </div>
