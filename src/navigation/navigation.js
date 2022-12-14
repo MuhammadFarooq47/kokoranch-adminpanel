@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes} from "react-router-dom";
 // Full Screen Loader
 import FullScreenLoader from "../components/FullScreenLoader";
 // VendorSideBar
@@ -16,6 +16,8 @@ import Categories from "../pages/dashboard/admin/Categories";
 import CategoryDetails from "../pages/dashboard/admin/CategoryDetails";
 import AddNewCategory from "../pages/dashboard/admin/AddNewCategory";
 import CategoryPositioning from "../pages/dashboard/admin/CategoryPositioning";
+import NotFound from "../pages/dashboard/admin/NotFound";
+import { useSelector } from "react-redux";
 // SCREENS
 
 const OtpScreen = React.lazy(() =>
@@ -115,28 +117,34 @@ const ContactDetails = React.lazy(() =>
 );
 
 const AllUsers = React.lazy(() => import("../pages/dashboard/admin/AllUsers"));
-
 export default function Navigation() {
+  const user= useSelector(state=>state.user.loggedInUser);
   return (
     <Routes>
-      <Route path="/" element={<SplashScreen />} />
+      <Route exact path="/" element={user?<Navigate to='/admin-profile'/> :<SplashScreen />} />
+      <Route path='*' element={<NotFound/>} />
       <Route
+        exact
         path="/otp-screen"
         element={
           <Suspense fallback={<FullScreenLoader />}>
             <OtpScreen />
           </Suspense>
         }
+        
       />
       <Route
+        exact
         path="/create-new-password"
         element={
           <Suspense fallback={<FullScreenLoader />}>
             <CreateNewPassword />
           </Suspense>
         }
+     
       />
       <Route
+        exact
         path="/admin-profile"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -145,8 +153,10 @@ export default function Navigation() {
             </VendorSideBar>
           </Suspense>
         }
+        
       />
       <Route
+        exact
         path="/my-products"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -157,6 +167,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/add-product"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -167,6 +178,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/product-details"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -177,6 +189,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/product-details/edit"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -187,6 +200,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/admin-product-details"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -197,6 +211,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/agricultural-services"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -207,6 +222,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/vendor-productshippingdetails"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -217,6 +233,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/inbox"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -227,6 +244,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/managers"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -237,6 +255,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/add-new-manager"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -247,6 +266,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/manager-roles"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -257,6 +277,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/notification-settings"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -267,6 +288,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/all-notifications"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -277,6 +299,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/rating-reviews"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -288,6 +311,7 @@ export default function Navigation() {
       />
 
       <Route
+      exact
         path="/categories"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -298,6 +322,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/category-details"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -308,6 +333,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/:route/category"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -318,6 +344,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/category-positioning"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -328,6 +355,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/admin-productshippingdetails-edit"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -338,6 +366,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/admin-productorders"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -348,6 +377,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/vendor-serviceorders"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -358,6 +388,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/vendor-serviceorder-details"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -368,6 +399,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/make-it-featured"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -378,6 +410,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/featured-productandservices"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -388,6 +421,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/view-featured-productandservices/:id"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -398,6 +432,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/vendor-serviceorder"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -408,6 +443,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/all-users"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -418,6 +454,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/all-user-UserDetails"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -428,6 +465,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/vendor-products"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -438,6 +476,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/vendor-agricultural-services"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -448,6 +487,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/user-trades"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -458,6 +498,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/trade-request"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -468,6 +509,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/vendor-productorders"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -478,6 +520,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/MedicalMerijuana"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -488,6 +531,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/banners/:name"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -498,6 +542,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/banners/:name/details"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -508,6 +553,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/banners/:name/:change/banner-details"
         element={
           <Suspense fallback={<FullScreenLoader />}>
@@ -518,6 +564,7 @@ export default function Navigation() {
         }
       />
       <Route
+      exact
         path="/contact-details"
         element={
           <Suspense fallback={<FullScreenLoader />}>

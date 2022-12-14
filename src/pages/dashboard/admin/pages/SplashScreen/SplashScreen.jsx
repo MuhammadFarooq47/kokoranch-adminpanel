@@ -7,8 +7,20 @@ import './SplashScreen.css'
 import PopUp from '../../Components/popUp/CustomPopUp';
 import {useNavigate} from 'react-router-dom';
 import TextInput from '../../Components/TextInput/TextInput';
-import {login} from "../../../../../apiCalls/auth";
+import {Login} from "../../../../../apiCalls/auth";
+import { Formik, Form, Field } from 'formik';
+import { toast } from "react-toastify";
+import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+const LoginSchema = Yup.object().shape({
+  password: Yup.string()
+    .min(5, 'Too Short!')
+    .max(15, 'Too Long!')
+    .required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+});
 function SplashScreen() {
+  const dispatch=useDispatch();
     const [state,setState]=useState(false);
     const [scale,setScale]=useState(false);
     const [openModal,setOpenModal]=useState(false);
@@ -117,24 +129,41 @@ function SplashScreen() {
         ease: [0, 0.71, 0.2, 1.01]
           }}
         >
-        <div className='loginForm'>
+        <div className='loginForm' >
           <h3 style={{fontFamily:'poppins',color:'#FFFFFF',fontSize:'30px',opacity: 1,textAlign:'center',fontWeight:'lighter'}}>
           Admin/Manager Login
           </h3>
           {/* inputs */}
+          <Formik
+       initialValues={{
+         password: '',
+         email: '',
+       }}
+       validationSchema={LoginSchema}
+       onSubmit={values => {
+         // same shape as initial values
+         console.log(values);
+         Login(values.email,values.password,navigate,toast,dispatch)
+       }}
+       
+     >
+      {({ errors, touched }) => (
+       <Form className='form'>
           <div className='formBody'>
-          <TextInput 
+          <Field 
+          className='TextInput'
           placeholder='Email or Phone' 
-          value={cred.email} 
-          onChange={(e)=>setCred({
-            ...cred,
-            email:e.target.value
-          })
-          } />
-          <TextInput placeholder='Enter Password' value={cred.password} onChange={(e)=>setCred({
-            ...cred,
-            password:e.target.value
-          })} />
+          type={'email'}
+          name='email'
+          />
+           {errors.email && touched.email ? (
+             <div style={{color:'red',fontSize:'12px'}}>{errors.email}</div>
+           ) : null}
+          <Field name='password' className='TextInput' placeholder='Enter Password' type={'password'} 
+          />
+           {errors.password && touched.password ? (
+             <div style={{color:'red',fontSize:'12px'}}>{errors.password}</div>
+           ) : null}
           {/* forgotpassowrd */}
           <div className='forgotPassowrd'>
             <div style={{display:'flex'}}>
@@ -144,9 +173,12 @@ function SplashScreen() {
             <span style={{color:'#14A384',fontFamily: 'poppins',fontSize:'12px',cursor:'pointer'}} onClick={()=>setOpenModal(true)}> Forgot Password?</span>
           </div>
           </div>
-          <AppButton height={'43px'} width={'18vw'} buttonText={'Login'} 
-          onClick={()=>login(cred.email,cred.password,navigate)} 
+          <AppButton type={'submit'} height={'43px'} width={'18vw'} buttonText={'Login'} 
+          
           />
+       </Form>
+        )}
+          </Formik>
       </div>
       </motion.div>
     </div>
