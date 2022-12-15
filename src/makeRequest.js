@@ -1,22 +1,22 @@
-import axios from 'axios';
-export const BASE_URL = 'http://localhost:4000';
+import axios from "axios";
+export const BASE_URL = "http://localhost:4000";
 
 export const publicRequest = axios.create({
   baseURL: BASE_URL,
   headers: {
-    Accept: 'application/json',
+    Accept: "application/json",
   },
 });
 export const userRequest = async (method, url, formData, data, token) => {
   let config = {};
   if (token) {
     config = {
-      token: `Bearer ${token}`,
-      'Content-Type': formData ? 'multipart/form-data' : 'application/json',
+      Authorization: `Bearer ${token}`,
+      "Content-Type": formData ? "multipart/form-data" : "application/json",
     };
   } else {
     config = {
-      'Content-Type': formData ? 'multipart/form-data' : 'application/json',
+      "Content-Type": formData ? "multipart/form-data" : "application/json",
     };
   }
   if (data) {
@@ -35,9 +35,9 @@ export const userRequest = async (method, url, formData, data, token) => {
       data: formData,
       onUploadProgress: function (progressEvent) {
         const percentComplete = Math.round(
-          (progressEvent.loaded / progressEvent.total) * 100,
+          (progressEvent.loaded / progressEvent.total) * 100
         );
-        console.log('complete', percentComplete);
+        // console.log("complete", percentComplete);
         // Do whatever you want with the native progress event
       },
     });

@@ -1,17 +1,16 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import userReducer from "./userSlice";
 import thunk from "redux-thunk";
-// import cartReducer from "./cartRedux";
 import storage from "redux-persist/lib/storage";
 import {
   persistStore,
   persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
+  //   FLUSH,
+  //   REHYDRATE,
+  //   PAUSE,
+  //   PERSIST,
+  //   PURGE,
+  //   REGISTER,
 } from "redux-persist";
 const rootReducer = combineReducers({
   user: userReducer,
