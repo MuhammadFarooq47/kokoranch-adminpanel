@@ -11,7 +11,7 @@ export const userRequest = async (method, url, formData, data, token) => {
   let config = {};
   if (token) {
     config = {
-      token: `Bearer ${token}`,
+      'Authorization': `Bearer ${token}`,
       'Content-Type': formData ? 'multipart/form-data' : 'application/json',
     };
   } else {
