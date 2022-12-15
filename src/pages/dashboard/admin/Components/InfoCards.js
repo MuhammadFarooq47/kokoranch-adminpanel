@@ -25,7 +25,7 @@ const InfoCards = ({
         </div>
         {/* <div className="infocard-container col-12 col-sm-4 col-md-4 col-lg-4"> */}
         <div className="col-10">
-          <div class="row">
+          <div className="row">
             {data.map((data, index) => {
               return activeCard === data.topText ? (
                 <div
