@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 import { userRequest } from "../../../makeRequest";
 import { Token } from "@mui/icons-material";
 import { updateProfile } from "../../../redux/userSlice";
-
+import { PUT } from "../../../apis/requests";
 export default function Profile({ setSidebar, sidebar }) {
   const user = useSelector((state) => state.user.loggedInUser);
   const dispatch = useDispatch();

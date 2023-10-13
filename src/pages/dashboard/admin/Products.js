@@ -10,11 +10,11 @@ import { FaExclamation } from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
 import { publicRequest, userRequest } from "../../../makeRequest";
 import { useSelector } from "react-redux";
-import Skeleton from '@mui/material/Skeleton';
-import Stack from '@mui/material/Stack';
+import Skeleton from "@mui/material/Skeleton";
+import Stack from "@mui/material/Stack";
 
 function VendorProducts({ setSidebar, sidebar }) {
-  const user= useSelector(state=>state.user.loggedInUser);
+  const user = useSelector((state) => state.user.loggedInUser);
   const navigate = useNavigate();
   const [tableHeadData, seTableHeadData] = useState([
     { id: "code", label: "Code" },
@@ -26,53 +26,7 @@ function VendorProducts({ setSidebar, sidebar }) {
     { id: "action", label: "Action" },
   ]);
 
-  const [tableRowData, setTableRowData] = useState([
-    // {
-    //   Code: "01",
-    //   updateDate: "2022-01-22",
-    //   productName: "product1",
-    //   mainCategory: "Main Category",
-    //   price: "21.00",
-    //   status: "Active",
-    //   action: "Action",
-    // },
-    // {
-    //   Code: "02",
-    //   updateDate: "2022-01-23",
-    //   productName: "product1",
-    //   mainCategory: "Main Category",
-    //   price: "31.00",
-    //   status: "Active",
-    //   action: "Action",
-    // },
-    // {
-    //   Code: "03",
-    //   updateDate: "2022-01-24",
-    //   productName: "product1",
-    //   mainCategory: "Main Category",
-    //   price: "41.00",
-    //   status: "Featured",
-    //   action: "Action",
-    // },
-    // {
-    //   Code: "04",
-    //   updateDate: "2022-01-25",
-    //   productName: "product1",
-    //   mainCategory: "Main Category",
-    //   price: "51.00",
-    //   status: "Inactive",
-    //   action: "Action",
-    // },
-    // {
-    //   Code: "05",
-    //   updateDate: "2022-01-26",
-    //   productName: "product1",
-    //   mainCategory: "Main Category",
-    //   price: "61.00",
-    //   status: "Inactive",
-    //   action: "Action",
-    // },
-  ]);
+  const [tableRowData, setTableRowData] = useState([]);
 
   const [filterCard, setFilterCard] = useState([
     // { topText: "All Products", bottomText: tableRowData.length },
@@ -87,7 +41,9 @@ function VendorProducts({ setSidebar, sidebar }) {
     // },
   ]);
 
-  const [activeCard, setActiveCard] = useState(filterCard[0]?.topText);
+  const [activeCard, setActiveCard] = useState(
+    filterCard.length > 0 ? filterCard[0]?.topText : null
+  );
   const [deletePopup, setDeletePopup] = useState(false);
   const [deleteSuccessfulPopup, setDeleteSuccessfulPopup] = useState(false);
   const [subCategory, setSubCategory] = useState("");
@@ -102,98 +58,101 @@ function VendorProducts({ setSidebar, sidebar }) {
     "Plant Inspired Art",
   ]);
 
-  // useEffect(() => {
-  //   let temp = [];
-  //   if (activeCard == "All Products") {
-  //     temp = tableRowData;
-  //     console.log("all");
-  //   } else if (activeCard == "Active Products") {
-  //     console.log("active");
-  //     temp = tableRowData.filter((item) => item.status == "Active");
-  //   } else if (activeCard == "Inactive Products") {
-  //     console.log("inactive");
-  //     temp = tableRowData.filter((item) => item.status == "Inactive");
-  //   }
-  //   setRowData(temp);
-  // }, [activeCard]);
-  // useEffect(() => {
-  //   if (sortData) {
-  //     let temp = [];
-  //     if (sortData == "asc") {
-  //       temp = rowData.sort((a, b) => {
-  //         return (
-  //           Number(new Date(a.updateDate)) - Number(new Date(b.updateDate))
-  //         );
-  //       });
-  //     } else if (sortData == "dec") {
-  //       temp = rowData.sort((a, b) => {
-  //         return (
-  //           Number(new Date(b.updateDate)) - Number(new Date(a.updateDate))
-  //         );
-  //       });
-  //     } else if (sortData == "low") {
-  //       temp = rowData.sort((a, b) => {
-  //         return Number(a.price) - Number(b.price);
-  //       });
-  //     } else if (sortData == "high") {
-  //       temp = rowData.sort((a, b) => {
-  //         return Number(b.price) - Number(a.price);
-  //       });
-  //     }
-
-  //     setRowData(temp);
-  //   }
-  // }, [sortData]);
-
-  const getAdminProducts=async()=>{
-    try{
-      const data='';
-      const token= user.token;
-      const res= await userRequest('get',`/products/user_products/${user._id}`,null,data,token);
-      console.log('response>>>>>>>>>>>>>>>>>',res.data.products);
-      let arr=[];
-      res.data.products.map(item=>{
-        let obj ={
-          code:item._id.charAt(item._id.length-2)+ item._id.charAt(item._id.length-2),
-          updatedAt:item.updatedAt,
-          name:item.name,
-          category:item.category.category,
-          price:item.price,
-          status:item.status,
-          action:'Action'
+  const getAdminProducts = async () => {
+    try {
+      const data = "";
+      const token = user.token;
+      const res = await userRequest(
+        "get",
+        `/products/user_products/${user._id}`,
+        null,
+        data,
+        token
+      );
+      console.log("response>>>>>>>>>>>>>>>>>", res.data.products);
+      let arr = [];
+      res.data.products.map((item) => {
+        let obj = {
+          code:
+            item._id.charAt(item._id.length - 2) +
+            item._id.charAt(item._id.length - 2),
+          updatedAt: item.updatedAt,
+          name: item.name,
+          category: item.category.category,
+          price: item.price,
+          status: item.status,
+          action: "Action",
         };
         arr.push(obj);
-      })
-    
+      });
+
       setTableRowData(arr);
       setRowData(arr);
-      let filterArray=[
+      let filterArray = [
         { topText: "All Products", bottomText: arr.length },
-      {
-        topText: "Active Products",
-        bottomText: arr.filter((item) => item.status == "Active").length,
-      },
-      {
-        topText: "Inactive Products",
-        bottomText: arr.filter((item) => item.status == "inActive")
-          .length,
-      },
-      ]
-      setFilterCard(filterArray)
-    }
-    catch(err){
+        {
+          topText: "Active Products",
+          bottomText: arr.filter((item) => item.status == "Active").length,
+        },
+        {
+          topText: "Inactive Products",
+          bottomText: arr.filter((item) => item.status == "inActive").length,
+        },
+      ];
+      setFilterCard(filterArray);
+    } catch (err) {
       console.log(err);
     }
-  }
-  useEffect(()=>{
-    console.log('called')
+  };
+  useEffect(() => {
+    console.log("called");
     getAdminProducts();
-   
-  },[])
+  }, []);
+  useEffect(() => {
+    console.log("called 1");
+    setActiveCard("All Products");
+  }, [filterCard]);
 
-  useEffect(()=>{
-    console.log('row>>>>>>>>>>',filterCard)
-  },[filterCard])
+  useEffect(() => {
+    let temp = [];
+    if (activeCard == "All Products") {
+      temp = tableRowData;
+    } else if (activeCard == "Active Products") {
+      temp = tableRowData.filter((item) => item.status == "Active");
+    } else if (activeCard == "Inactive Products") {
+      temp = tableRowData.filter((item) => item.status == "inActive");
+    }
+    setRowData(temp);
+  }, [activeCard]);
+
+  useEffect(() => {
+    if (sortData) {
+      let temp = [];
+      if (sortData == "asc") {
+        temp = rowData.sort((a, b) => {
+          return (
+            Number(new Date(a.updateDate)) - Number(new Date(b.updateDate))
+          );
+        });
+      } else if (sortData == "dec") {
+        temp = rowData.sort((a, b) => {
+          return (
+            Number(new Date(b.updateDate)) - Number(new Date(a.updateDate))
+          );
+        });
+      } else if (sortData == "low") {
+        temp = rowData.sort((a, b) => {
+          return Number(a.price) - Number(b.price);
+        });
+      } else if (sortData == "high") {
+        temp = rowData.sort((a, b) => {
+          return Number(b.price) - Number(a.price);
+        });
+      }
+
+      setRowData(temp);
+    }
+  }, [sortData]);
   return (
     <>
       <Popup open={deletePopup} setOpen={setDeletePopup}>
@@ -251,24 +210,28 @@ function VendorProducts({ setSidebar, sidebar }) {
           </button>
         </div>
       </Popup>
+
       <NavBar setSidebar={setSidebar} sidebar={sidebar} title="My Products" />
 
       <article className="vendor-profile-main">
         <div className="vendor-profile-main_form">
-          {filterCard.length>0? (
-          <InfoCards
-            data={filterCard}
-            activeCard={activeCard}
-            setActiveCard={setActiveCard}
-            sortData={sortData}
-            setSortData={setSortData}
-          />
-          )
-          :(
-            <Skeleton animation='wave' variant="rectangular" width={130} height={'130px'} sx={{borderRadius:'1rem'}} />
-          )
-          
-          }
+          {filterCard.length > 0 ? (
+            <InfoCards
+              data={filterCard}
+              activeCard={activeCard}
+              setActiveCard={setActiveCard}
+              sortData={sortData}
+              setSortData={setSortData}
+            />
+          ) : (
+            <Skeleton
+              animation="wave"
+              variant="rectangular"
+              width={130}
+              height={"130px"}
+              sx={{ borderRadius: "1rem" }}
+            />
+          )}
         </div>
         <div
           className="row"
@@ -284,7 +247,9 @@ function VendorProducts({ setSidebar, sidebar }) {
           <div className=" col-md-12">
             <div style={{ marginTop: "20px", color: "white" }}>
               <div style={{ marginLeft: "20px" }}>
-                <h4>Filter By Your Categories</h4>
+                <h4 style={{ marginBottom: "10px" }}>
+                  Filter By Your Categories
+                </h4>
                 <FormControlAuth setCategory={setCategory} options={options} />
                 {category && (
                   <FormControlAuth
@@ -301,7 +266,7 @@ function VendorProducts({ setSidebar, sidebar }) {
               </div>
               <div className="row">
                 <div className="col-5">
-                  <h4 style={{ marginLeft: "20px" }}>All Products:</h4>
+                  <h4 style={{ marginLeft: "20px" }}>{activeCard}:</h4>
                 </div>
                 <div className="col-7 d-flex justify-content-end">
                   <button
@@ -328,22 +293,26 @@ function VendorProducts({ setSidebar, sidebar }) {
                   </button>
                 </div>
               </div>
-            { tableRowData.length>0 ? (
-               <TableComponent
-                tHeadData={tableHeadData}
-                tRowData={rowData}
-                edit={"products"}
-                delete1
-                activeCard={"total"}
-                open={deletePopup}
-                setOpen={setDeletePopup}
-                onClick={() => navigate("/product-details?admin")}
-              />
-              )
-            :(
-              <Skeleton animation="wave" variant="rectangular" width={'80vw'} height={'200px'} sx={{borderRadius: "20px 20px 0 0",margin:'10px'}} />
-            )
-            }
+              {tableRowData.length > 0 ? (
+                <TableComponent
+                  tHeadData={tableHeadData}
+                  tRowData={rowData}
+                  edit={"products"}
+                  delete1
+                  activeCard={"total"}
+                  open={deletePopup}
+                  setOpen={setDeletePopup}
+                  onClick={() => navigate("/product-details?admin")}
+                />
+              ) : (
+                <Skeleton
+                  animation="wave"
+                  variant="rectangular"
+                  width={"80vw"}
+                  height={"200px"}
+                  sx={{ borderRadius: "20px 20px 0 0", margin: "10px" }}
+                />
+              )}
             </div>
           </div>
         </div>
